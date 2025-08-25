@@ -1,0 +1,3671 @@
+/* My Miro Page Styles */
+
+.mymiro-section {
+    padding: 160px 0 120px;
+}
+
+.mymiro-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+}
+
+.mymiro-welcome h1 {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.mymiro-welcome p {
+    color: #666;
+    font-size: 16px;
+}
+
+.logout-btn {
+    padding: 12px 24px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.logout-btn:hover {
+    opacity: 0.8;
+}
+
+.mymiro-loading {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #666;
+}
+
+.saved-products h2,
+.quotation-form h2 {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 32px;
+}
+
+/* .products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+} */
+
+/* .product-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    padding: 16px;
+} */
+
+.product-select {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+
+.product-select input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+/* .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+} */
+
+/* .form-group.full-width {
+    grid-column: span 2;
+} */
+
+/* .form-group label {
+    font-size: 15px;
+    font-weight: 500;
+} */
+
+/* .form-group input,
+.form-group textarea {
+    padding: 12px;
+    border: 1px solid rgba(112, 112, 112, .6);
+    border-radius: 3px;
+    font-size: 18px;
+    font-weight: 300;
+} */
+
+/* .form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: rgba(112, 112, 112, 1);
+} */
+
+/* .form-group textarea {
+    resize: vertical;
+} */
+
+.submit-btn {
+    grid-column: span 2;
+    padding: 16px 32px;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    border-radius: 8px;
+}
+
+.submit-btn:hover {
+    opacity: 0.8;
+}
+
+/* Book Appointment Part */
+
+.book-appointment {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    max-width: 60%;
+}
+
+.book-appointment h2 {
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 500px;
+    font-family: 'Montserrat', 'sans-serif';
+    letter-spacing: -0.38px;
+    color: #1A1B1F;
+    margin-bottom: 23px;
+}
+
+.form-button {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+/* .form-group input {
+    border-radius: 8px;
+    border: 0.75px solid #707070;
+    text-align: left;
+    font-size: 13px;
+    line-height: 16px;
+    font-style: normal;
+    font-weight: 300px;
+    font-family: 'Montserrat', 'sans-serif';
+    letter-spacing: 0px;
+    color: #1A1B1F;
+} */
+
+/* .form-group button {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #707070;
+    opacity: 0.71;
+    padding: 10px 40px;
+    cursor: pointer;
+    text-align: left;
+    font-size: 15px;
+    line-height: 19px;
+    font-style: normal;
+    font-weight: 300px;
+    font-family: 'Montserrat', 'sans-serif';
+    letter-spacing: 0px;
+    color: #1A1B1F;
+    opacity: 1;
+} */
+
+.error-message {
+    background-color: #fee2e2;
+    border: 1px solid #ef4444;
+    color: #dc2626;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.form-group .error {
+    color: #dc2626;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+.loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+
+    .book-appointment {
+        max-width: 80%;
+    }
+
+    .book-appointment h2 {
+        font-size: 18px;
+        line-height: 22px;
+        letter-spacing: -0.38px;
+    }
+
+    /* .form-group input {
+        font-size: 13px;
+        line-height: 16px;
+        font-style: normal;
+        font-weight: 300px;
+        font-family: 'Montserrat', 'sans-serif';
+        letter-spacing: 0px;
+        color: #1A1B1F;
+        padding: 2px 10px;
+    } */
+
+    .form-group button {
+        background: #FFFFFF 0% 0% no-repeat padding-box;
+        opacity: 0.71;
+        padding: 6px 15px;
+        font-size: 15px;
+        line-height: 19px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .book-appointment {
+        max-width: 90%;
+    }
+
+    .form-phone-book {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
+/* Auth Pages Styles */
+
+.auth-section {
+    padding: 80px 0;
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+}
+
+.auth-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    max-width: 1536px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.auth-left {
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.auth-left img {
+    margin-top: 75px;
+}
+
+.auth-left h1 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 60px;
+}
+
+.auth-left p {
+    font-size: 20px;
+    line-height: 40px;
+    margin-bottom: 32px;
+    color: #1A1B1F;
+    font-weight: lighter;
+}
+
+.auth-form {
+    max-width: 436px;
+    width: 100%;
+}
+
+.auth-form h2 {
+    margin-bottom: 40px;
+    text-align: left;
+    letter-spacing: 0px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 37px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* .form-group {
+    margin-bottom: 35px;
+} */
+
+/* .form-label {
+    font-style: italic;
+    font-variant: normal;
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 24px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0px;
+    color: #737476;
+    opacity: 1;
+    margin-bottom: 5px;
+    padding-left: 30px;
+} */
+
+/* .form-group input {
+    width: 100%;
+    height: 55px;
+    border: 1px solid #dadada;
+    font-size: 18px;
+    font-weight: 300;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 18px;
+} */
+
+.form-group input::placeholder {
+    color: rgba(158, 158, 158, 0.5);
+}
+
+.auth-form .forgot-password {
+    display: inline-block;
+    text-align: right;
+    font-size: 15px;
+    color: rgba(158, 158, 158, .5);
+    margin-top: -8px;
+    text-decoration: none;
+    font-style: italic;
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+.login-btn,
+.create-account-btn {
+    width: 100%;
+    padding: 10px 4ch;
+    background: rgba(214, 215, 214, .45);
+    color: #1A1B1F;
+    border-radius: 3px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    border: 1px solid rgba(112, 112, 112, .45);
+    max-width: 500px;
+    font-weight: 300;
+    transition: background-color 0.3s;
+    width: max-content;
+}
+
+.create-account-btn {
+    width: 75%;
+}
+
+
+.login-btn:hover,
+.create-account-btn:hover {
+    background: rgba(45, 85, 134, 1);
+    border: 1px solid rgba(112, 112, 112, 1);
+    color: #fff;
+}
+
+.auth-form .form-group input {
+    border-radius: 3px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+.ligin-form.auth-form .form-group input {
+    margin-bottom: 50px;
+    padding: 15px;
+}
+
+
+.auth-form .form-group {
+    position: relative;
+}
+
+
+
+@media (max-width: 768px) {
+    .auth-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .auth-left {
+        text-align: center;
+    }
+
+    .auth-form {
+        margin: 0 auto;
+    }
+}
+
+.auth-image-container {
+    margin-top: 40px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.auth-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.auth-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 15px;
+    background-color: white;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.auth-form select:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.auth-switch {
+    text-align: left;
+    margin-top: 24px;
+    font-size: 14px;
+    color: #666;
+}
+
+.auth-switch a {
+    color: #000;
+    text-decoration: underline;
+}
+
+.auth-switch a:hover {
+    opacity: 0.8;
+}
+
+.signup-btn {
+    width: 50%;
+    padding: 9px;
+    background: #ECECEC;
+    color: #1A1B1F;
+    font-size: 18px;
+    border: 1px solid #BEBEBE;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: opacity 0.3s;
+    margin-top: 20px;
+}
+
+.signup-btn:hover {
+    background: #295383;
+    border: 1px solid #BEBEBE;
+    color: #FFFFFF;
+    opacity: 0.8;
+}
+
+.signup-btn:disabled {
+    background: #666;
+    cursor: not-allowed;
+}
+
+
+
+/* Form Styles */
+
+.login-form .form-group {
+    margin-bottom: 24px;
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+
+.auth-form .form-group  {
+    flex-direction: column;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+.input-with-icon input:focus {
+    border-color: #3B5998;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 89, 152, 0.1);
+}
+
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    cursor: pointer;
+}
+
+.login-button {
+    width: 100%;
+    padding: 14px;
+    background: #3B5998;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background: #324b81;
+}
+
+.error-message {
+    color: #dc2626;
+    font-size: 14px;
+    margin-top: 4px;
+    display: block;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 1024px) {
+    .admin-login-container {
+        grid-template-columns: 1fr;
+    }
+
+    .login-left {
+        display: none;
+    }
+
+    .login-right {
+        padding: 40px 20px;
+    }
+}
+
+/* My Miro Menu Sidebar */
+
+.mymiro-dashboard {
+
+    display: flex;
+    flex-direction: column;
+}
+
+.top-bar {
+    height: 36px;
+    background:#2C2829;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: white;
+    border-bottom: 1px solid #707070;
+}
+
+.profile-dropdown {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    font-size: 15px;
+    letter-spacing: 0.53px;
+    margin-right: 140px;
+}
+
+.profile-dropdown_triangle_down {
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #ffffff;
+    transition: transform .3s ease;
+}
+
+.profile-dropdown_triangle_down.open {
+    transform: rotate(180deg);
+}
+
+.dropdown-box {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 132px;
+    right: 140px;
+    background-color: #F6F6F5;
+    border: 1px solid rgba(191, 191, 191, .5);
+    border-radius: 5px;
+    box-shadow: 0px 2px 3px #00000029;
+    z-index: 10000;
+    width: max-content;
+    padding: 20px 0 15px;
+}
+
+.dropdown-box.open {
+    display: flex;   
+}
+
+
+.dropdown-box svg {
+    width: 15px;
+    height: auto;
+}
+
+.dropdown-box .topBar-nav-item-logout svg {
+    width: 18px;
+    height: auto;
+    margin-top: 3px;
+}
+
+
+.topBar-nav-item {
+    display: flex;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    gap: 7px;
+    padding: 8px 48px;
+}
+
+.topBar-nav-item:hover {
+    background-color: rgba(45, 85, 134, .2);
+}
+
+.topBar-nav-text {
+    font-size: 15px;
+    line-height: 19px;
+    font-weight: 500;
+    letter-spacing: 0.53px;
+    color: #2C2829;
+}
+
+.topBar-nav-item-border {
+    width: 100%;
+    height: 1px;
+    background-color: rgba(191, 191, 191, .5);
+    margin: 10px 0 12px;
+}
+
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 2fr 9fr;
+    background-color: white;
+}
+
+.topBar-icon {
+    font-size: 15px;
+    color: #1A1B1F;
+}
+
+.menu-ham {
+    margin-left: 20px;
+    font-size: 28px;
+    font-weight: 500;
+}
+
+.left-menu {
+    width: 17.4vw;
+    background: #F7F7F6;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease;
+    margin-left: 130px;
+    height: calc(100vh - 135px);
+    border-radius: 8px;
+}
+
+.left-menu.collapsed {
+    width: 70px;
+}
+
+.menu-toggle {
+    border: none;
+    background: none;
+    color: #1A1B1F;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 34px;
+    font-size: 28px;
+    font-weight: 500;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 28px 0 20px;
+    height: 91px;
+}
+
+.menu-toggle-icon {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 6.5px;
+    font-size: 28px;
+    font-weight: 500;
+    margin-left: 19px;
+    width: 35px;
+    justify-content: space-around;
+}
+
+.menu-toggle-icon-span {
+    width: 31px;
+    height: 2px;
+    background-color: #1A1B1F;
+}
+
+.collapsed .menu-toggle .menu-toggle-text {
+    display: none;
+}
+
+.left-menu-nav {
+    padding: 0 22px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    margin-bottom: 10px;
+    height: 40px;
+}
+
+.nav-text {
+    color: #1A1B1F;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 5px 15px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.4px;
+    font-weight: 400;
+    flex: 1;
+}
+
+.nav-text:hover {
+    background: rgba(45, 85, 134, 0.2);
+}
+
+.nav-text.active {
+    background: rgba(45, 85, 134, 0.2);
+}
+
+.nav-icon {
+    width: 35px;
+    text-align: center;
+}
+
+.left-menu-nav .nav-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.left-menu-nav .nav-icon-overview svg {
+    width: 38px;
+    height: 38px;
+    margin-left: -4px;
+}
+
+.left-menu-nav .nav-icon-meetingSchedule svg{
+    width: 37px;
+    height: 37px;
+    margin-left: -4px;
+}
+
+.bottom-nav .nav-icon-back svg{
+    width: 24px;
+    height: 24px;
+}
+
+.collapsed .nav-text {
+    display: none;
+}
+
+.collapsed .nav-item {
+    justify-content: center;
+}
+
+
+
+/* Main content adjustment */
+
+.dashboard-container .main-content {
+    padding: 70px 90px 135px 90px;
+    background: #FFFFFF;
+    transition: margin-left 0.3s ease;
+}
+
+.bottom-nav {
+    margin-top: auto;
+    padding: 0 20px 92px;
+}
+
+/* 
+.collapsed .nav-item:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #333;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    margin-left: 8px;
+    z-index: 1000;
+}
+
+.collapsed .nav-item:hover {
+    background-color: rgba(45, 85, 134, 0.2);
+    color: #111827;
+} */
+
+/* New codes for Active */
+
+/* .collapsed .nav-icon.active {
+    background-color: rgba(45, 85, 134, 0.2);
+} */
+
+.mobileMenuHead {
+    display: none;
+}
+
+/* Responsive Part For MyMiro Menus */
+
+@media (max-width: 1024px) {
+
+    .left-menu.collapsed {
+        margin-left: 50px;
+    }
+
+
+
+}
+
+@media (max-width: 768px) {
+
+    .mobileMenuHead {
+        display: block;
+    }
+
+    .mymiro-dashboard {
+        position: relative;
+    }
+
+    .top-bar {
+        display: none;
+    }
+
+    .left-menu {
+        display: none;
+    }
+
+    .dashboard-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: 40px;
+    }
+
+    .mobileMenuContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #2C2829;
+        z-index: 1000;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .mobileMenuContainer.open {
+        transform: translateX(0);
+    }
+
+    .mobileMenuToggle {
+        position: fixed;
+        background: black;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        margin: 20px 20px;
+        z-index: 1100;
+        color: white;
+        padding: 5px;
+    }
+
+    .mobileMenuItems {
+        display: flex;
+        flex-direction: column;
+        padding: 50px 20px;
+        margin-top: 50px;
+        color: white;
+    }
+
+    .mobileMenuItems .nav-item {
+        padding: 15px 20px;
+        font-size: 18px;
+        color: white;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .mobileMenuItems .nav-item:hover {
+        background-color: #444;
+    }
+
+    .mymiro-dashboard {
+        overflow: hidden;
+    }
+
+    .website-menu {
+        margin-top: 20px;
+    }
+}
+
+/*  Overview Part in MyMiro.jsx*/
+
+.overview-mobile-data {
+    display: none;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 87px;
+    -moz-column-gap: 60px;
+    column-gap: 157px;
+    max-width: 960px;
+    margin-left: 108px;
+    margin-top: 19px;
+}
+
+.content-card {
+    width: 398px;
+    height: 400px;
+    background: white;
+    border: 1px solid #707070;
+    border-radius: 8px;
+    padding: 44px 39px;
+    margin: 0 auto;
+}
+
+.content-card h2 {
+    margin-bottom: 44px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E5E7EB;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.4px;
+    color: #1A1B1F;
+}
+
+.account-info {
+    margin-bottom: 85px;
+}
+
+.content-card p {
+    color: #1A1B1F;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    letter-spacing: 0.35px;
+    margin-bottom: 15px;
+}
+
+.content-card .empty-state-subtitle{
+    font-weight: 500;
+}
+
+.action-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+
+.action-links-button{
+    color: #1A1B1F;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: 0.4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-grid;
+}
+
+.action-link-underline {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #9E9E9E;
+    transition: all 0.3s ease;
+}
+
+.action-links-button:hover {
+    color: #2D5586;
+}
+
+.action-links-button:hover .action-link-underline {
+    background-color: #2D5586;
+    width: 120%;
+}
+
+
+/* Part For Responsive of the Overview */
+
+@media (max-width: 1024px) {
+
+    .content-grid {
+        grid-template-columns: 1fr;
+        row-gap: 70px;
+    }
+
+    .content-card {
+        width: 300px;
+        height: 300px;
+        background: white;
+        border: 1px solid #707070;
+        border-radius: 8px;
+        /* Changed by Zayed */
+        padding: 20px 30px;
+    }
+
+    .action-links,
+    .link-action {
+        margin-top: 5px;
+    }
+
+    .content-card h2 {
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        font-size: 15px;
+        line-height: 19px;
+        letter-spacing: 0px;
+    }
+
+    .account-info {
+        margin-bottom: 0;
+    }
+
+    .account-info p {
+        font-size: 12px;
+        line-height: 15px;
+        letter-spacing: 0px;
+        margin-bottom: 6px;
+    }
+
+    .action-links {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        margin-top: 10px;
+    }
+
+    .link-action,
+    .action-links {
+        text-align: left;
+        font-size: 15px;
+        line-height: 19px;
+        letter-spacing: 0px;
+    }
+
+    .empty-state {
+        margin-bottom: 0;
+    }
+
+    .link-action {
+        display: inline-block;
+        margin-top: 10px;
+        color: #4B5563;
+        text-decoration: underline;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .overview-mobile-data {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .mobile-hi {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .mobile-logout-text {
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .menu-name-mobile {
+        margin-top: 60px;
+        font-size: 20px;
+        letter-spacing: 0.4px;
+        border-bottom: 0.5px solid #707070;
+        padding-bottom: 20px;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+        row-gap: 40px;
+    }
+
+    .content-card {
+        padding: 10px 15px;
+    }
+
+    .action-links,
+    .link-action {
+        margin-top: 0;
+    }
+}
+
+/* This is the Part for the Meeting Schedule Page */
+
+
+.meeting-schedule {
+    padding: 68px 0;
+}
+
+.schedule-title {
+    font-weight: 500;
+    margin-bottom: 2rem;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    font-size: 15px;
+    line-height: 19px;
+    letter-spacing: 0px;
+}
+
+.appointment-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    border: 1px solid #e2e8f0;
+}
+
+.appointment-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+}
+
+.meeting-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 8px;
+}
+
+.meeting-details {
+    flex: 1;
+}
+
+.meeting-details h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #333;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.detail-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.detail-label {
+    font-weight: 500;
+    color: #333;
+}
+
+.detail-value {
+    color: #4a5568;
+}
+
+.map-link {
+    display: block;
+    color: #3182ce;
+    text-decoration: none;
+    margin-top: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.map-link:hover {
+    text-decoration: underline;
+}
+
+.meeting-footer {
+    margin-top: 2rem;
+    font-style: italic;
+    color: #4a5568;
+}
+
+@media (max-width: 768px) {
+    .appointment-content {
+        grid-template-columns: 1fr;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .meeting-icon {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+.no-appointments {
+    text-align: center;
+    padding: 3rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    color: #4a5568;
+}
+
+.meeting-empty-state {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.meeting-empty-state p {
+    font-size: 18px;
+    color: #6B7280;
+    margin-bottom: 20px;
+}
+
+.book-appointment-btn {
+    background-color: #1A1B1F;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #4a5568;
+}
+
+.error-message {
+    text-align: center;
+    padding: 2rem;
+    color: #e53e3e;
+    background: #fff5f5;
+    border-radius: 8px;
+}
+
+.meeting-schedule-container {
+    padding: 40px;
+    margin: 0 auto;
+}
+
+.meeting-schedule-title {
+    font-size: 28px;
+    color: #1A1B1F;
+    margin-bottom: 20px;
+}
+
+.meeting-box {
+    border: 2px solid #b7b7b7;
+    border-radius: 8px;
+    padding: 50px;
+    max-width: 800px;
+    max-height: 450px;
+}
+
+.meeting-details-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    background-color: #FFFFFF;
+}
+
+.meeting-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 8px;
+    border: 0.5px solid #b7b7b7;
+}
+
+.meeting-icon {
+    font-size: 40px;
+    color: #1A1B1F;
+}
+
+.meeting-details {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.meeting-details h3 {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: -0.27px;
+    color: #1A1B1F;
+    padding-bottom: 6px;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    margin-bottom: 40px;
+}
+
+.meeting-info p {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: -0.21px;
+    color: #6B7280;
+    margin-bottom: 6px;
+}
+
+.meeting-info p strong {
+    margin-right: 5px;
+}
+
+.meeting-footer {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    font-size: 14px;
+    color: #6B7280;
+    font-style: italic;
+    text-align: left;
+    width: 100%;
+}
+
+.footer-vanish {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+
+    .meeting-schedule-container {
+        padding: 10px;
+        margin: 0 auto;
+    }
+
+    .meeting-schedule-title {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .meeting-box {
+        padding: 10px;
+        max-width: 400px;
+        max-height: 250px;
+    }
+
+    .meeting-details-card {
+        column-gap: 10px;
+    }
+
+    .meeting-image {
+        width: 100%;
+        height: 100%;
+        padding: 5px;
+    }
+
+    .meeting-details {
+        flex-grow: 1;
+        padding: 5px;
+    }
+
+    .meeting-details h3 {
+        font-size: 15px;
+        line-height: 18px;
+        letter-spacing: -0.27px;
+        color: #1A1B1F;
+        padding-bottom: 3px;
+        text-decoration: underline;
+        text-underline-offset: 6px;
+        margin-bottom: 20px;
+    }
+
+    .meeting-info p {
+        font-size: 12px;
+        line-height: 15px;
+        letter-spacing: -0.21px;
+        color: #6B7280;
+        margin-bottom: 6px;
+    }
+
+    .meeting-info p strong {
+        margin-right: 3px;
+    }
+
+    .meeting-footer {
+        margin-top: 10px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .meeting-footer p {
+        margin-top: 10px;
+        padding-bottom: 0;
+        font-size: 12px;
+        color: #6B7280;
+        font-style: italic;
+        text-align: left;
+    }
+
+    .footer-vanish {
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .meeting-schedule-container {
+        padding: 0px;
+        margin: 0 auto;
+    }
+
+    .meeting-schedule-title {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+
+    .meeting-box {
+        padding: 30px 5px;
+        max-width: 400px;
+        max-height: 600px;
+    }
+
+    .meeting-details-card {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        row-gap: 0;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .meeting-image {
+        width: 200px;
+        height: 200px;
+        padding: 5px;
+        margin: 0 auto;
+    }
+
+    .meeting-details {
+        flex-grow: 1;
+        padding: 0px;
+        margin: 0 auto;
+    }
+
+    .meeting-details h3 {
+        font-size: 15px;
+        line-height: 18px;
+        letter-spacing: -0.27px;
+        color: #1A1B1F;
+        padding-bottom: 3px;
+        text-decoration: none;
+        text-underline-offset: 0px;
+        border-bottom: 1px solid #707070;
+        margin-bottom: 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    .meeting-info p {
+        font-size: 12px;
+        line-height: 15px;
+        letter-spacing: -0.21px;
+        color: #6B7280;
+        margin-bottom: 6px;
+    }
+
+    .meeting-info p strong {
+        margin-right: 3px;
+    }
+
+    .meeting-footer {
+        margin-top: 5px;
+        text-align: left;
+        width: 100%;
+    }
+
+    .meeting-footer p {
+        margin-top: 10px;
+        padding-bottom: 0;
+        font-size: 12px;
+        color: #6B7280;
+        font-style: italic;
+        text-align: left;
+    }
+
+    .footer-vanish {
+        display: flex;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-pc {
+        display: none;
+    }
+}
+
+/* This is the part for the My Account Component */
+
+.my-account-container {
+    max-width: 1109px;
+    margin: 0 auto;
+    background: white;
+    position: relative;
+    padding: 90px 132px;
+    border-radius: 10px;
+    border: 1px solid #707070;
+    margin-top: 19px;
+}
+
+.my-account-container h1 {
+    margin-bottom: 42px;
+    /* Changed by Zayed */
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: 0.44px;
+    color: #1A1B1F;
+    opacity: 1;
+}
+
+.my-account-container p {
+    /* Changed by Zayed */
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: 0.4px;
+    color: #36373a;
+    margin-bottom: 8px;
+}
+
+.profile-section {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.image-placeholder {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 1px solid #707070;
+}
+
+.profile-info h2 {
+    font-size: 20px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 5px;
+    color: #1A1B1F;
+    letter-spacing: 0.4px;
+}
+
+.profile-info .profession {
+    color: #1A1B1F;
+    font-style: italic;
+    margin-bottom: 12px;
+    letter-spacing: 0.35px;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.profile-info .email, .profile-info .phone {
+    color: #1A1B1F;
+    margin-bottom: 12px;
+    letter-spacing: 0.35px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid rgba(158, 158, 158, .5);
+    margin: 57px -100px 64px;
+}
+
+.personal-information {
+    margin-bottom: 80px;
+}
+
+.personal-information h2 {
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', sans-serif;
+    color: #1A1B1F;
+    letter-spacing: 0.44px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    column-gap: 225px;
+}
+
+.info-group label {
+    display: block;
+    color: #1A1B1F;
+    font-size: 16px;
+    margin-bottom: 15px;
+    letter-spacing: 0.32px;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.info-group p {
+    color: #1A1B1F;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 0.4px;
+}
+
+.edit-button-div {
+    position: absolute;
+    right: 70px;
+    bottom: 90px;
+}
+
+.edit-button {
+    background: transparent;
+    border: none;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: #c8c8c8;
+    text-underline-offset: 4px;
+}
+
+.edit-button:hover {
+    color: #2563eb;
+}
+
+@media (max-width: 768px) {
+
+    .my-account-container {
+        padding: 20px 40px;
+        border-radius: 0;
+        border: 0 solid #707070;
+    }
+
+    .my-account-container h1 {
+        margin-bottom: 60px;
+        font-size: 20px;
+        letter-spacing: 0.4px;
+        border-bottom: 0.5px solid #707070;
+        padding-bottom: 20px;
+
+    }
+
+    .my-account-container p {
+        /* Changed by Zayed */
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 18px;
+        letter-spacing: 0.4px;
+        color: #36373a;
+        margin-bottom: 8px;
+    }
+
+    .personal-information {
+        border: 1px solid #707070;
+        padding: 20px;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .personal-information h2 {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 1.5rem;
+        border-bottom: 0.5px solid #707070;
+        padding-bottom: 10px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-section {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ************************** Wishlist Page for MIRO ********************************** */
+
+.wishlist-container , .no-quotes-container {
+    margin: 0 auto;
+    padding: 65px 0px;
+}
+
+.wishlist-container h2 {
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: -0.38px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    color: #1A1B1F;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.empty-message {
+    font-size: 20px;
+    color: #1A1B1F;
+    margin-bottom: 8px;
+    letter-spacing: 0.4px;
+}
+
+.start-adding {
+    font-size: 20px;
+    color: #1A1B1F;
+    margin-bottom: 40px;
+    letter-spacing: 0.4px;
+}
+
+.browse-products {
+    font-size: 18px;
+}
+
+/* The above part is for the Wishlist false */
+
+.wishlist-page {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 24px;
+    margin-left: 40px;
+    margin-top: 70px;
+    width: 90%;
+}
+
+.wishlist-main {
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.select-all-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border: 1px solid #939393;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+
+.select-all {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #374151;
+}
+
+.select-all input {
+    cursor: pointer;
+}
+
+.saved-products-title {
+    font-style: normal;
+    font-size: 25px;
+    line-height: 30px;
+    font-weight: 500;
+    margin-top: 56px;
+    margin-bottom: 16px;
+    text-align: left;
+    letter-spacing: -0.38px;
+    color: #1A1B1F;
+    opacity: 1;
+}
+
+.product-item {
+    display: grid;
+    grid-template-columns: auto 100px 1fr auto;
+    gap: 24px;
+    padding: 24px;
+    border: 2px solid #bcbcbc;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    align-items: center;
+}
+
+.product-image {
+    width: 100px;
+    height: 100px;
+    background: #F9FAFB;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid #707070;
+    overflow: hidden;
+}
+
+.wishlist-product-details p {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 300;
+    margin-bottom: 8px;
+    text-align: left;
+    letter-spacing: -0.21px;
+}
+
+.product-id {
+    color: #6B7280;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.product-description {
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.product-specs {
+    display: flex;
+    gap: 16px;
+    color: #6B7280;
+    font-size: 14px;
+}
+
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    justify-content: space-evenly;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.quantity-btn {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    background: white;
+    color: #374151;
+    cursor: pointer;
+}
+
+.action-links {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.more-info {
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 15x;
+    font-family: 'Montserrat', 'sans serif';
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-align: left;
+    font-style: normal;
+    letter-spacing: 0px;
+    color: #010101;
+    opacity: 1;
+}
+
+.delete {
+    color: #010101;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+}
+
+.add-more-div {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.add-more {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    color: #1A1B1F;
+    letter-spacing: 0.36px;
+    cursor: pointer;
+    margin-top: 60px;
+    font-size: 18px;
+    line-height: 22x;
+    font-family: 'Montserrat', 'sans serif';
+    font-weight: 300;
+    margin-bottom: 8px;
+    text-align: left;
+    font-style: normal;
+    opacity: 1;
+}
+
+.product-summary {
+    border-radius: 8px;
+    padding: 40px;
+    border: 1px solid #939393;
+}
+
+.product-summary h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 16px 0;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.summary-item h4 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #111827;
+}
+
+.summary-item p {
+    color: #6B7280;
+    font-size: 14px;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    font-weight: 500;
+    color: #111827;
+}
+
+.quotation-div {
+    display: flex;
+    justify-content: end;
+}
+
+.get-quotation {
+    background: #ECECEC;
+    color: #1A1B1F;
+    cursor: pointer;
+    margin-top: 16px;
+    border: 1px solid #BEBEBE;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: normal;
+    display: inline-block;
+    letter-spacing: 0px;
+    opacity: 1;
+}
+
+.mobile-wish-check {
+    display: none;
+}
+
+.mobile-product-actions {
+    display: none;
+}
+
+
+@media (max-width: 1024px) {
+
+    .wishlist-page {
+        grid-template-columns: 1fr;
+        gap: 10x;
+        margin-left: 10px;
+        margin-top: 30px;
+        width: 100%;
+        grid-auto-flow: row-reverse;
+    }
+
+    .wishlist-main {
+        order: 2;
+        padding: 0px;
+    }
+
+    .select-all-bar {
+        padding: 10px;
+    }
+
+    .saved-products-title {
+        font-size: 20px;
+        line-height: 24px;
+        letter-spacing: -0.38px;
+    }
+
+    .product-item {
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .product-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .pc-wish-check {
+        display: none;
+    }
+
+    .mobile-wish-check {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-wish-new-info-delete {
+        display: flex;
+    }
+
+    .mobile-check-div {
+        display: flex;
+        column-gap: 20px;
+    }
+
+    .product-id {
+        font-size: 12px;
+    }
+
+    .product-description {
+        margin-bottom: 0px;
+    }
+
+    .product-specs {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 12px;
+    }
+
+    .product-actions {
+        display: none;
+    }
+
+    .mobile-product-actions {
+        display: flex;
+        flex-direction: column;
+        row-gap: 40px;
+        justify-content: space-evenly;
+        width: 100%;
+        grid-column: 1 / -1;
+    }
+
+    .quantity-control {
+        gap: 10px;
+    }
+
+    .quantity-btn {
+        width: 15px;
+        height: 15px;
+    }
+
+    .action-links {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+    }
+
+    .add-more {
+        letter-spacing: 0px;
+        font-size: 15px;
+        line-height: 18x;
+    }
+
+    .product-summary {
+        order: 1;
+        padding: 20px;
+    }
+
+    .product-summary h2 {
+        font-size: 15px;
+    }
+
+    .summary-item {
+        padding: 10px 0;
+    }
+
+    .summary-item h4 {
+        font-size: 13px;
+    }
+
+    .summary-item p {
+        font-size: 12px;
+    }
+
+    .quotation-div {
+        display: flex;
+        justify-content: end;
+    }
+
+    .get-quotation {
+        padding: 8px 15px;
+        font-size: 14px;
+        line-height: 15px;
+        display: inline-block;
+        letter-spacing: 0px;
+    }
+
+}
+
+@media (max-width: 1024px) {
+
+    .wishlist-page {
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+}
+
+/* ********************************** Part for GET Quotation Page ********************************** */
+
+
+.no-quotes-container h2 {
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: -0.38px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    color: #1A1B1F;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+.go-to-wishlist {
+   font-size: 18px;
+}
+
+.nav-group {
+    position: relative;
+}
+
+.nav-item.dropdown {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    padding-left: 1rem;
+}
+
+.nav-group:hover .dropdown-content {
+    display: block;
+}
+
+/* Quote Page if True */
+
+.quote-page {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 24px;
+    margin-left: 40px;
+    margin-top: 70px;
+    width: 90%;
+}
+
+.quote-main {
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.quote-title {
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: -0.38px;
+    font-weight: medium;
+    margin-bottom: 40px;
+    color: #1A1B1F;
+}
+
+.quote-products-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.quote-product-item {
+    display: grid;
+    grid-template-columns: auto 100px 1fr auto;
+    gap: 24px;
+    padding: 24px;
+    border: 2px solid #bcbcbc;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    align-items: center;
+}
+
+.quote-product-image {
+    width: 100px;
+    height: 100px;
+    background: #F9FAFB;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0.5px solid #707070;
+    overflow: hidden;
+}
+
+.quote-product-details p {
+    font-size: 14px;
+    line-height: 18x;
+    font-family: 'Montserrat', 'sans serif';
+    font-weight: 300;
+    margin-bottom: 8px;
+    text-align: left;
+    font-style: normal;
+    letter-spacing: -0.21px;
+    color: #1A1B1F;
+    opacity: 1;
+}
+
+.quote-product-id {
+    color: #6B7280;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.quote-product-description {
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.quote-product-specs {
+    display: flex;
+    gap: 16px;
+    color: #6B7280;
+    font-size: 14px;
+}
+
+.quote-product-actions {
+    display: flex;
+    flex-direction: column;
+    row-gap: 40px;
+    justify-content: space-evenly;
+}
+
+.quote-quantity-control {
+    display: flex;
+    gap: 16px;
+}
+
+.quote-quantity-btn {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #E5E7EB;
+    border-radius: 4px;
+    background: white;
+    color: #374151;
+    cursor: pointer;
+}
+
+.quote-action-links {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.quote-more-info {
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 15x;
+    font-family: 'Montserrat', 'sans serif';
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-align: left;
+    font-style: normal;
+    letter-spacing: 0px;
+    color: #010101;
+    opacity: 1;
+}
+
+.quote-delete {
+    color: #010101;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+}
+
+.quote-summary {
+    border-radius: 8px;
+    padding: 40px;
+    border: 1px solid #939393;
+}
+
+.quote-summary h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.quote-summary-items {
+    margin-bottom: 24px;
+}
+
+.quote-summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    padding: 16px 0;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.quote-summary-item h4 {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: #111827;
+}
+
+.quote-summary-item p {
+    color: #6B7280;
+    font-size: 14px;
+}
+
+.quote-summary-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    font-weight: 500;
+    color: #111827;
+}
+
+.quote-quotation {
+    display: flex;
+    justify-content: end;
+}
+
+.quote-get-quotation {
+    background: #ECECEC;
+    color: #1A1B1F;
+    cursor: pointer;
+    margin-top: 16px;
+    border: 1px solid #BEBEBE;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.quote-empty {
+    text-align: center;
+}
+
+.quote-add-more {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #1A1B1F;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.quote-boq-request {
+    margin-top: 60px;
+    color: #6B7280;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 0.4px;
+}
+
+@media (max-width: 1024px) {
+
+    .quote-page {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-left: 10px;
+        margin-top: 30px;
+        width: 100%;
+        grid-auto-flow: row-reverse;
+    }
+
+    .quote-main {
+        order: 2;
+        padding: 0px;
+    }
+
+    .quote-title {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .quote-products-list {
+        gap: 10px;
+    }
+
+    .quote-product-item {
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .quote-product-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .quote-product-details p {
+        font-size: 14px;
+        line-height: 18x;
+        margin-bottom: 0px;
+        letter-spacing: -0.21px;
+    }
+
+    .quote-product-id {
+        font-size: 12px;
+        margin-bottom: 0px;
+    }
+
+    .quote-product-description {
+        margin-bottom: 0px;
+    }
+
+    .quote-product-specs {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        font-size: 12px;
+    }
+
+    .quote-product-actions {
+        display: none;
+    }
+
+    .quote-quantity-control {
+        gap: 10px;
+    }
+
+    .quote-quantity-btn {
+        width: 15px;
+        height: 15px;
+    }
+
+    .quote-action-links {
+        gap: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .mobile-product-actions {
+        display: flex;
+        flex-direction: column;
+        row-gap: 40px;
+        justify-content: space-around;
+        width: 100%;
+        grid-column: 1 / -1;
+    }
+
+    .quote-more-info {
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 15x;
+        font-family: 'Montserrat', 'sans serif';
+        font-weight: 500;
+        margin-bottom: 8px;
+        text-align: left;
+        font-style: normal;
+        letter-spacing: 0px;
+        color: #010101;
+        opacity: 1;
+    }
+
+    .quote-delete {
+        color: #010101;
+        cursor: pointer;
+        width: 28px;
+        height: 28px;
+    }
+
+    .quote-summary {
+        border-radius: 8px;
+        padding: 40px;
+        border: 1px solid #939393;
+    }
+
+    .quote-summary h2 {
+        font-size: 15px;
+    }
+
+    .quote-summary-items {
+        margin-bottom: 24px;
+    }
+
+    .quote-summary-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        padding: 16px 0;
+    }
+
+    .quote-summary-item h4 {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 4px;
+        color: #111827;
+    }
+
+    .quote-summary-item p {
+        color: #6B7280;
+        font-size: 14px;
+    }
+
+    .quote-summary-total {
+        display: flex;
+        justify-content: space-between;
+        padding: 16px 0;
+        font-weight: 500;
+        color: #111827;
+    }
+
+    .quote-quotation {
+        display: flex;
+        justify-content: end;
+    }
+
+    .quote-get-quotation {
+        background: #ECECEC;
+        color: #1A1B1F;
+        cursor: pointer;
+        margin-top: 16px;
+        border: 1px solid #BEBEBE;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    .quote-empty {
+        text-align: center;
+    }
+
+    .quote-add-more {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #1A1B1F;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .quote-boq-request {
+        margin-top: 60px;
+        color: #6B7280;
+        font-size: 16px;
+        line-height: 25px;
+        letter-spacing: 0.4px;
+    }
+
+}
+
+@media (max-width: 1024px) {
+
+    .quote-page {
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+}
+
+/* Part for Quote Ends Here */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    padding: 16px 24px;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h3 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #6b7280;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 24px;
+}
+
+.modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.cancel-btn {
+    padding: 8px 16px;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    color: #374151;
+    cursor: pointer;
+}
+
+.confirm-btn {
+    padding: 8px 16px;
+    background: #3b82f6;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+}
+
+.confirm-btn.delete-btn {
+    background: #ef4444;
+}
+
+.cancel-btn:hover {
+    background: #f9fafb;
+}
+
+.confirm-btn:hover {
+    opacity: 0.9;
+}
+
+
+/* Contents Changed by Zayed For Overview Page */
+
+.account-info {
+    margin-bottom: 85px;
+}
+
+
+.empty-state {
+    margin-bottom: 80px;
+}
+
+
+/* Changes for My Account Part made by Zayed */
+
+
+.edit-button-div {
+    display: flex;
+    justify-content: end;
+    text-align: right;
+}
+
+.edit-button {
+    background: transparent;
+    border: none;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: #c8c8c8;
+    text-underline-offset: 4px;
+}
+
+/* Wishlist Part for Changes by Zayed */
+
+.more-info {
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 15x;
+    font-family: 'Montserrat', 'sans serif';
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-align: left;
+    font-style: normal;
+    letter-spacing: 0px;
+    color: #010101;
+    opacity: 1;
+}
+
+.delete {
+    color: #010101;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+}
+
+.add-more-div {
+    display: flex;
+    align-items: end;
+    justify-content: end;
+}
+
+.add-more {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    color: #1A1B1F;
+    letter-spacing: 0.36px;
+    cursor: pointer;
+    margin-top: 60px;
+    /* Changes made by Zayed */
+    font-size: 18px;
+    line-height: 22x;
+    font-family: 'Montserrat', 'sans serif';
+    font-weight: 300;
+    margin-bottom: 8px;
+    text-align: left;
+    font-style: normal;
+    opacity: 1;
+}
+
+.product-summary {
+    border-radius: 8px;
+    padding: 40px;
+    /* Changes made by Zayed */
+    border: 1px solid #939393;
+}
+
+.quotation-div {
+    display: flex;
+    justify-content: end;
+}
+
+.get-quotation {
+    background: #ECECEC;
+    color: #1A1B1F;
+    cursor: pointer;
+    margin-top: 16px;
+    border: 1px solid #BEBEBE;
+    /* Changes made by Zayed */
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: normal;
+    display: inline-block;
+    letter-spacing: 0px;
+    opacity: 1;
+}
+
+
+/**************** Part For Book an Appointment *****************/
+
+
+.dashboard-appointment-form {
+    margin-top: 30px;
+    max-width: 662px;
+}
+
+.dashboard-appointment-form .form-grid {
+    display: flex;
+    gap: 40px;
+    flex-direction: column;
+}
+.dashboard-appointment-form .form-grid .form-group{
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.dashboard-appointment-form .form-grid .form-group input, .dashboard-appointment-form .form-grid .form-group textarea {
+    width: 100%;
+    border-radius: 8px;
+    border: 0.75px solid rgba(112, 112, 112, .75);
+    text-align: left;
+    font-size: 13px;
+    padding: 8px 24px 16px;
+}
+
+
+.dashboard-appointment-form .form-grid .form-group textarea {
+    height: 197px;
+    padding: 22px 25px;
+}
+
+
+
+.dashboard-appointment-form .form-grid .form-group input::placeholder,
+.dashboard-appointment-form .form-grid .form-group textarea::placeholder{
+    color: rgba(26, 27, 31, .7);
+}
+
+
+.form-button {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+/* .form-group input {
+    border-radius: 8px;
+    border: 0.75px solid #707070;
+    text-align: left;
+    font-size: 13px;
+    line-height: 16px;
+    font-style: normal;
+    font-weight: 300px;
+    font-family: 'Montserrat', 'sans-serif';
+    letter-spacing: 0px;
+    color: #1A1B1F;
+} */
+
+.dashboard-appointment-form .form-grid .form-group.form-button .submit-btn {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid rgba(112, 112, 112, .71);
+    padding: 10px 40px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500px;
+    color: #1A1B1F;
+    width: 177px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.dashboard-appointment-form .form-grid .form-group.form-button .submit-btn:hover {
+    background: #2D5586;
+    color: #FFFFFF;
+}
+
+
+/*********************** Edit Profile Container By Zayed **********************/
+
+.edit-profile-container {
+    width: 58.4%;
+}
+
+.edit-profile-container h2 {
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: -0.38px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    margin-bottom: 18px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.edit-profile-container p {
+    font-size: 18px;
+    line-height: 35px;
+    letter-spacing: 0.36px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: normal;
+    margin-bottom: 55px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.edit-profile-image-container {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    margin-bottom: 70px;
+}
+
+.edit-profile-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-color: #F7F7F6;
+    border: 1px solid #707070;
+}
+
+.edit-change-btn {
+    padding: 13px 28px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    border: 1px solid #707070;
+    font-size: 20px;
+    line-height: 25px;
+    letter-spacing: 0.4px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    font-family: 'Montserrat', 'sans-serif';
+}
+
+.edit-form-flex {
+    display: flex;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 95px;
+}
+
+.edit-form-group {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.edit-form-group label {
+    font-weight: 300;
+    display: block;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 19px;
+    letter-spacing: 0px;
+    font-family: 'Montserrat', 'sans-serif';
+    text-align: left;
+    color: #1A1B1F;
+    opacity: 1;
+    margin-bottom: 10px;
+}
+
+.edit-form-group input,
+.edit-form-group select {
+    width: 100%;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-weight: medium;
+    font-style: normal;
+    line-height: 25px;
+    letter-spacing: 0.4px;
+    font-family: 'Montserrat', 'sans-serif';
+    text-align: left;
+    color: #2C2829;
+    opacity: 1;
+}
+
+.profession-select {
+    cursor: pointer;
+}
+
+.edit-submit-btn {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+    border: 1px solid #707070;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    font-family: 'Montserrat', 'sans-serif';
+}
+
+@media (max-width: 1024px) {
+
+    .edit-profile-container {
+        margin-left: 60px;
+        margin-top: 40px;
+        width: 90%;
+    }
+
+    .edit-profile-container h2 {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .edit-profile-container p {
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0px;
+        margin-bottom: 55px;
+    }
+
+    .edit-profile-image-container {
+        column-gap: 20px;
+        margin-bottom: 70px;
+    }
+
+    .edit-profile-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+    .edit-change-btn {
+        padding: 8px 18px;
+        font-size: 15px;
+        line-height: 19px;
+        letter-spacing: 0;
+    }
+
+    .edit-form-flex {
+        display: grid;
+        grid-template-columns: 1fr;
+        column-gap: 0;
+        width: 95%;
+    }
+
+    .edit-form-group label {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .edit-form-group input,
+    .edit-form-group select {
+        width: 100%;
+        padding: 8px;
+        font-size: 16px;
+        line-height: 25px;
+        letter-spacing: 0;
+    }
+
+    .edit-submit-btn {
+        margin-bottom: 50px;
+        padding: 8px 12px;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .edit-profile-container {
+        margin-left: 10px;
+        margin-top: 100px;
+    }
+
+}
+
+/************************* Change Password Container By Zayed *****************/
+
+.edit-pass-container {
+    margin: 0 auto;
+    margin-left: 100px;
+    margin-top: 70px;
+    width: 50%;
+}
+
+.edit-pass-heading {
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: -0.38px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.edit-pass-description {
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.36px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: normal;
+    margin-bottom: 55px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.edit-pass-form-group {
+    margin-bottom: 50px;
+}
+
+.edit-pass-form-group label {
+    font-weight: 300;
+    display: block;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 19px;
+    letter-spacing: 0px;
+    font-family: 'Montserrat', 'sans-serif';
+    text-align: left;
+    color: #1A1B1F;
+    opacity: 1;
+    margin-bottom: 10px;
+}
+
+.edit-pass-box {
+    width: 100%;
+}
+
+.edit-pass-form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.edit-pass-btn-div {
+    display: flex;
+    justify-content: end;
+}
+
+.edit-pass-submit-btn {
+    margin-top: 40px;
+    margin-bottom: 50px;
+    padding: 15px 40px;
+    border-radius: 10px;
+    background-color: #ececec;
+    cursor: pointer;
+    border: 0.5px solid #707070;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.4px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+@media (max-width: 1024px) {
+
+    .edit-pass-container {
+        margin: 0 auto;
+        margin-left: 60px;
+        margin-top: 40px;
+        width: 60%;
+    }
+
+    .edit-pass-heading {
+        font-size: 18px;
+        line-height: 22px;
+        margin-bottom: 25px;
+    }
+
+    .edit-pass-description {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .edit-pass-form-group label {
+        font-size: 12px;
+        line-height: 14px;
+    }
+
+    .edit-pass-form-group input {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .edit-pass-submit-btn {
+        padding: 10px 20px;
+        font-size: 12px;
+        line-height: 16px;
+        letter-spacing: 0;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .edit-pass-container {
+        margin: 0 auto;
+        margin-left: 5px;
+        margin-top: 5px;
+        width: 100%;
+    }
+
+    .edit-pass-heading {
+        font-size: 22px;
+        line-height: 26px;
+        margin-bottom: 20px;
+    }
+
+    .edit-pass-description {
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    .edit-pass-form-group label {
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .edit-pass-form-group input {
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    .edit-pass-submit-btn {
+        padding: 10px 40px;
+        font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0;
+    }
+
+}
+
+/************************* Notifications Page By Zayed *****************/
+
+.edit-notif-container {
+    margin: 0 auto;
+    margin-left: 100px;
+    margin-top: 70px;
+    width: 60%;
+}
+
+.edit-notif-heading {
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: -0.38px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.edit-notif-description {
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.36px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: normal;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.notif-border {
+    border: 1px solid #ededed;
+}
+
+.edit-notif-section {
+    margin-bottom: 50px;
+}
+
+.edit-notif-subheading {
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.30px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+    margin-top: 50px;
+}
+
+.edit-notif-text {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.31px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: normal;
+    margin-bottom: 30px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.edit-notif-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.edit-notif-checkbox input {
+    margin-right: 10px;
+}
+
+.edit-notif-checkbox label {
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.36px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.edit-notif-btn-group {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.edit-notif-submit-btn {
+    padding: 10px 30px;
+    background-color: #ececec;
+    color: #1a1b1f;
+    border-radius: 5px;
+    border: 1px solid #bebece;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: medium;
+}
+
+@media (max-width: 1024px) {
+
+    .edit-notif-container {
+        margin: 0 auto;
+        margin-left: 20px;
+        margin-top: 20px;
+        width: 90%;
+    }
+
+    .edit-notif-btn-group {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+
+}
+
+/************************* Privacy and Data Page By Zayed *****************/
+
+.privacy-container {
+    margin: 0 auto;
+    margin-left: 100px;
+    margin-top: 70px;
+    width: 60%;
+}
+
+.privacy-heading {
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: -0.38px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.privacy-description {
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.36px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: normal;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.privacy-border {
+    border: 1px solid #ededed;
+}
+
+.privacy-sec {
+    margin-bottom: 50px;
+}
+
+.privacy-subheading {
+    margin-top: 50px;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.30px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.privacy-text {
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.31px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: normal;
+    margin-bottom: 30px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.privacy-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.privacy-checkbox input {
+    margin-right: 10px;
+}
+
+.privacy-checkbox label {
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: 0.36px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.privacy-delete-btn {
+    padding: 10px 30px;
+    background-color: #ececec;
+    color: #1a1b1f;
+    border-radius: 5px;
+    border: 1px solid #bebece;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: medium;
+    margin-bottom: 100px;
+}
+
+.privacy-request-btn {
+    padding: 10px 30px;
+    background-color: #ececec;
+    color: #1a1b1f;
+    border-radius: 5px;
+    border: 1px solid #bebece;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: medium;
+    margin-bottom: 100px;
+    margin-top: 50px;
+}
+
+.privacy-delete-data h1 {
+    margin-top: 50px;
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: -0.38px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.privacy-request-data h1 {
+    margin-top: 50px;
+    font-size: 25px;
+    line-height: 30px;
+    letter-spacing: -0.38px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    margin-bottom: 25px;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+}
+
+.privacy-request-data p {
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.36px;
+    color: #1A1B1F;
+    opacity: 1;
+    font-weight: medium;
+    font-family: 'Montserrat', 'sans-serif';
+    font-style: normal;
+    margin-bottom: 15px;
+}
+
+@media (max-width: 1024px) {
+
+    .privacy-container {
+        margin: 0 auto;
+        margin-left: 60px;
+        margin-top: 30px;
+        width: 80%;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .privacy-container {
+        margin: 0 auto;
+        margin-left: 5px;
+        margin-top: 5px;
+        width: 90%;
+    }
+
+}
+
+
+
+@media(max-width: 1490px){
+
+    .left-menu {
+        width: 290px;
+        margin-left: 70px;
+    }
+    .dashboard-container .main-content {
+        padding: 50px 30px 90px 50px;
+    }
+
+    .content-grid {
+        row-gap: 60px;
+        -moz-column-gap: 60px;
+        column-gap: 30px;
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    .content-card {
+        width: 375px;
+        height: 375px;
+        padding: 30px;
+    }
+
+    .my-account-container {
+        padding: 60px;
+    }
+
+    .wishlist-page {
+        display: grid;
+        grid-template-columns: 1fr 350px;
+        gap: 24px;
+        margin-left: 0;
+        margin-top: 0;
+        width: 100%;
+    }
+
+}

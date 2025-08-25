@@ -1,0 +1,129 @@
+.share-tooltip-container {
+    position: absolute;
+    transition: all 0.2s ease;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000;
+    transform: translateX(-50%) translateY(-8px);
+    left: 46px !important;
+    top: 45px !important;
+}
+
+.share-tooltip-container.share-tooltip-show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.share-tooltip-arrow {
+    position: absolute;
+    top: -2px;
+    left: 33%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 16px;
+    height: 16px;
+    background-color: #2D5586;
+    border-left: 1px solid #2D5586;
+    border-top: 1px solid #2D5586;
+    z-index: 1001;
+}
+
+.share-tooltip-content {
+    background-color: #F0F3F6;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    padding: 16px 0;
+    min-width: 200px;
+    position: relative;
+    z-index: 1002;
+}
+
+.share-tooltip-header {
+    border-bottom: 0.5px solid #D4DCE6;
+    padding-bottom: 5px;
+    margin-bottom: 12px;
+}
+
+.share-tooltip-header span {
+    font-size: 16px;
+    margin: 0 0 0 40px;
+    font-weight: 400;
+}
+
+
+.share-tooltip-social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 15px;
+    margin-left: 30px;
+}
+
+.share-tooltip-social-button {
+    fill: #2D5586;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+}
+
+.share-tooltip-social-icon {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
+    color: #3b5998;
+    filter: brightness(0) saturate(100%) invert(33%) sepia(86%) saturate(749%) hue-rotate(179deg) brightness(94%) contrast(92%);
+}
+
+
+.share-tooltip-social-icons .share-tooltip-social-icon {
+    width: auto;
+    height: 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.share-tooltip-linkedin .share-tooltip-social-icon {
+    width: 30px;
+    height: 30px;
+}
+
+
+.share-tooltip-social-icons .share-tooltip-social-icon:hover {
+    scale: 1.1;
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    justify-content: start;
+    margin-top: 15px;
+}
+
+.footer-social-icon svg {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+@media (max-width: 1024px) {
+
+    .share-tooltip-container {
+        position: absolute;
+        right: -110px;
+        top: 45px !important;
+        left: unset !important;
+    }
+
+    .share-tooltip-arrow {
+        top: -2px;
+        left: 90%;
+    }
+}

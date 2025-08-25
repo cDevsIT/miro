@@ -1,0 +1,283 @@
+.project-details-container {
+    margin: 0 auto;
+    background-color: #ffffff;
+    color: #213547;
+}
+
+.project-details-header {
+    margin-bottom: 100px;
+}
+
+.project-details-image {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    max-height: 800px;
+}
+
+.project-details-share {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    border-bottom: 1px solid #dddddd;
+    padding-bottom: 15px;
+    margin-bottom: 30px;
+}
+
+.project-details-share span {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.project-details-share-icons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.project-details-share-icon {
+    width: 30px;
+    height: auto;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.project-details-share-icon-title {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.project-details-share-icon-title svg {
+    width: 26px;
+    height: auto;
+}
+
+.project-details-share-icon.project-details-instagram-icon {
+    height: 26px;
+    opacity: 0.5;
+}
+
+.project-details-content {
+    display: flex;
+    gap: 100px;
+}
+
+.project-details-content-left {
+    width: 40%;
+}
+
+.project-details-description-container {
+    flex: 1;
+}
+
+.project-details-description-container h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.project-details-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.project-details-info-item {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-weight: 500;
+}
+
+.project-details-info-label {
+    color: rgba(44, 40, 41, .6);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.project-details-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.project-details-description {
+    line-height: 50px;
+    color: #2C2829;
+    font-weight: 500;
+}
+
+.project-details-concept {
+    background-color: #e4e3e150;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.project-details-concept-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.project-details-concept-text {
+    padding-right: 150px;
+}
+
+.project-details-concept-title {
+    font-size: 30px;
+    margin-bottom: 40px;
+}
+
+.project-details-concept-description {
+    line-height: 55px;
+    letter-spacing: 0.7px;
+}
+
+.project-details-concept-description span {
+    color: #2D5586;
+}
+
+.project-details-concept-description strong {
+    color: #2D5586;
+    font-weight: 600;
+}
+
+.project-details-benefits-description {
+    letter-spacing: .6px;
+}
+
+
+.project-details-concept-image {
+    margin: 0 auto;
+    -o-object-fit: cover;
+    object-fit: cover;
+    height: 995px;
+    width: 100%;
+}
+
+.project-details-benefits {
+    padding-bottom: 100px;
+}
+
+.project-details-benefits-image {
+    width: 100%;
+    margin: 0 auto;
+    object-fit: cover;
+    max-height: 800px;
+}
+
+.project-details-benefits-title {
+    font-size: 30px;
+    margin: 60px 0 30px;
+}
+
+.project-details-climbing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.project-details-climbing-image {
+    max-width: 812px;
+    width: 100%;
+    margin: 0 auto;
+    object-fit: cover;
+    max-height: 1038px;
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 1490px) {
+    .project-details-concept-text {
+        padding-right: 100px;
+    }
+}
+
+@media (max-width: 980px) {
+    .project-details-concept-image {
+        width: 350px;
+        height: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-details-header {
+        margin-bottom: 0;
+    }
+    .project-details-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .project-details-share-icons {
+        display: none;
+    }
+    .project-details-content-left {
+        width: 100%;
+    }
+    .project-details-description-container h2 {
+        font-size: 18px;
+        margin-bottom: 15px;
+        margin-top: 20px;
+    }
+    .project-details-concept {
+        background-color: #e4e3e150;
+        padding: 30px 0;
+        margin: 30px 0;
+    }
+    .project-details-description {
+        line-height: 30px;
+    }
+    .project-details-title {
+        font-size: 20px;
+    }
+    .project-details-info-item {
+        font-size: 14px;
+    }
+    .project-details-container {
+        padding: 0;
+    }
+    .project-details-concept-container {
+        margin: 0 auto;
+        gap: 30px;
+        grid-template-columns: auto;
+    }
+    .project-details-concept-title {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+    .project-details-concept-description {
+        line-height: 30px;
+    }
+    .project-details-concept-image {
+        width: 100%;
+        height: 100%;
+    }
+    .project-details-benefits {
+        margin-bottom: 30px;
+    }
+    .project-details-benefits-title {
+        font-size: 18px;
+        margin: 30px 0 15px;
+    }
+    .project-details-concept-text {
+        order: 2;
+        padding-right: 0;
+    }
+    .project-details-lighting-section {
+        padding: 0 1rem;
+        margin: 2rem auto;
+    }
+    .project-details-climbing-section {
+        padding: 0 1rem;
+        margin: 2rem auto;
+    }
+    .project-details-climbing-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}

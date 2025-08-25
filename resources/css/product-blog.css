@@ -1,0 +1,380 @@
+/* Section - 1 Banner and Details */
+
+.service-heading-description {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 42px;
+    letter-spacing: 0.36px;
+    color: #2C2829;
+    font-family: 'Montserrat';
+}
+
+.privacy-heading-shorter {
+    width: 38%;
+}
+
+.privacy-line {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 200px;
+    width: calc(50% - 200px);
+    height: 7px;
+    background: #2D5586;
+}
+
+.single-product-holder {
+    position: relative;
+}
+
+.single-product-blog {
+    position: absolute;
+    top: 45px;
+    left: 212px;
+    z-index: 9999;
+    font-weight: 500;
+}
+
+.single-product-blog a{
+    font-size: 18px;
+    transition: all 0.3s ease;
+    padding-bottom: 8px;
+    line-height: 35px;
+    letter-spacing: 0.45px;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+}
+
+.single-product-blog a:hover{
+    border-bottom: 1px solid #707070;
+}   
+
+
+@media (max-width: 1490px) {
+
+    .privacy-line {
+        left: 100px;
+        width: calc(50% - 100px);
+    }
+
+    .single-product-blog {
+        position: absolute;
+        top: 30px;
+        left: 100px;
+        z-index: 9999;
+        font-size: 15px;
+        line-height: 30px;
+        letter-spacing: 0px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .privacy-line {
+        left: 0;
+        width: 50%;
+        height: 4px;
+        bottom: -2px;
+    }
+
+    .single-product-blog {
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        z-index: 9999;
+        font-size: 13px;
+        line-height: 22px;
+    }
+
+    .blog-product-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .privacy-heading-shorter {
+        width: 100%;
+    }
+
+    .service-heading-description {
+        font-size: 15px;
+        line-height: 22px;
+        letter-spacing: 0px;
+    }
+}
+
+/* Section-2 for Picture and Details */
+
+.picture-text-blog-product {
+    display: flex;
+    flex-direction: column;
+}
+
+.pictureDiv {
+    padding: 0 145px;
+    padding-bottom: 90px;
+}
+
+.detailsBannerImage {
+    width: 100%;
+    height: 790px;
+    object-fit: cover;
+}
+
+.detailsHeadingImage {
+    text-align: left;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 60px;
+    font-family: 'Sequel Sans Display';
+    letter-spacing: 1.35px;
+    margin-bottom: 50px;
+}
+
+.detailsDescriptionImage {
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 45px;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.6px;
+    color: #1A1B1F;
+    opacity: 1;
+    padding-bottom: 190px;
+}
+
+.detailsImage {
+    padding: 0 145px;
+}
+
+@media (max-width: 1490px) {
+
+    .pictureDiv {
+        padding: 0 80px;
+        padding-bottom: 90px;
+    }
+
+    .detailsImage {
+        padding: 0 80px;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .picture-text-blog-product {
+        margin-bottom: 20px;
+    }
+
+    .pictureDiv {
+        padding: 0 0px;
+        padding-bottom: 20px;
+        order: 2;
+    }
+
+    .detailsBannerImage {
+        max-width: 700px;
+        width: 100%;
+        max-height: 260px;
+        object-fit: cover;
+    }
+
+    .detailsImage {
+        padding: 0 36px;
+        order: 1;
+    }
+
+    .detailsHeadingImage {
+        font-size: 20px;
+        line-height: 35px;
+        letter-spacing: 0.36px;
+        margin-bottom: 10px;
+    }
+
+    .detailsDescriptionImage {
+        font-size: 16px;
+        line-height: 30px;
+        letter-spacing: 0px;
+        padding-bottom: 10px;
+    }
+
+}
+
+/* Section-3 for Image and Text from Blog Details */
+
+.fit-shine-box {
+    background-color: rgba(228, 227, 225, 0.3);
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 120px;
+}
+
+.fitShine-text-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 50%;
+    text-align: left;
+    padding: 0 70px;
+}
+
+.text-fitShine {
+    max-width: 500px;
+}
+
+.text-fitShine h2 {
+    text-align: left;
+    font-style: normal;
+    font-weight: medium;
+    font-size: 30px;
+    line-height: 60px;
+    letter-spacing: 1.35px;
+    color: #2C2829;
+    opacity: 1;
+    margin-bottom: 60px;
+}
+
+.text-fitShine p {
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 45px;
+    letter-spacing: 0.7px;
+    color: #2C2829;
+    opacity: 1;
+}
+
+.fitShine-image-box {
+    width: 40%;
+}
+
+.fitShine-image-box img {
+    width: 100%;
+    height: 100%;
+}
+
+.fitShine-gap-box {
+    width: 10%;
+}
+
+@media (max-width: 1490px) {
+
+    .fit-shine-box {
+        margin-bottom: 100px;
+    }
+
+    .fitShine-text-box {
+        width: 60%;
+        padding: 40px 70px;
+    }
+
+    .text-fitShine {
+        max-width: 550px;
+    }
+
+    .text-fitShine h2 {
+        font-size: 22px;
+        line-height: 45px;
+        letter-spacing: 0.8px;
+        margin-bottom: 30px;
+    }
+
+    .text-fitShine p {
+        font-size: 18px;
+        line-height: 35px;
+        letter-spacing: 0.6px;
+    }
+
+    .fitShine-image-box {
+        width: 35%;
+    }
+
+    .fitShine-gap-box {
+        width: 5%;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .fit-shine-box {
+        background-color: #FFFFFF;
+        flex-direction: column;
+        margin-bottom: 60px;
+    }
+
+    .fitShine-text-box {
+        order: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        width: 100%;
+        text-align: left;
+        padding: 5px 35px;
+    }
+
+    .text-fitShine {
+        width: 100%;
+    }
+
+    .text-fitShine h2 {
+        font-size: 18px;
+        line-height: 35px;
+        letter-spacing: 0.6px;
+        margin-bottom: 10px;
+    }
+
+    .text-fitShine p {
+        font-size: 15px;
+        line-height: 30px;
+        letter-spacing: 0px;
+    }
+
+    .fitShine-image-box {
+        width: 100%;
+        order: 1;
+        display: flex;
+        margin: 0 auto;
+        padding: 0 35px;
+        margin-bottom: 35px;
+    }
+
+    .fitShine-image-box img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .fitShine-gap-box {
+        width: 0;
+    }
+
+}
+
+/* Section-4 for Features Part */
+
+@media (max-width: 768px) {
+
+    .featuresText {
+        order: 2;
+    }
+
+    .featurePicture {
+        order: 1;
+    }
+
+    .lighting-adapt {
+        background-color: #f7f7f6;
+    }
+
+    .lighting-adapt-img-box {
+        padding-top: 35px;
+    }
+
+}

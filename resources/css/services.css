@@ -1,0 +1,938 @@
+/* Services Component Styles */
+
+html {
+    scroll-behavior: smooth;
+}
+
+.services-container {
+    max-width: 1920px;
+}
+
+.services-image-container {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    height: calc(100vh - 100px);
+    border-top: 1px solid rgba(45, 85, 134, .3);
+}
+
+.service-image {
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 989px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.3s ease-in-out;
+    transform-origin: top left;
+}
+
+
+.image-container-2:hover .service-image {
+    scale: 1.04;
+}
+
+.install-service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.3s ease-in-out;
+}
+
+
+.image-container-2:hover .install-service-image {
+    scale: 1.04;
+}
+
+.image-container-2 {
+    border: 0.5px solid rgba(158, 158, 158, .3);
+}
+
+.image-container-2:hover {
+    border: 0.5px solid rgba(45, 85, 134, .5);
+}
+
+
+.service-content {
+    background-color: rgba(228, 227, 225, .3);
+    padding: 120px 0 150px 0;
+    position: relative;
+    border: 1px solid rgba(45, 85, 134, .3);
+}
+
+.line-at-bottom {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    right: 140px;
+    width: calc(50% - 140px);
+    height: 7px;
+    background: #2D5586;
+}
+
+.content-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 216px;
+}
+
+.service-heading {
+    font-size: 45px;
+    line-height: 85px;
+    font-family: "Sequel Sans Display";
+    font-weight: 500;
+    width: 32.8%;
+    margin-left: 76px;
+}
+
+.service-description {
+    letter-spacing: 0.36px;
+    flex: 1;
+    padding-top: 30px;
+}
+
+.service-description p {
+    margin-bottom: 16px;
+}
+
+/* NEW SECTION STYLES */
+
+.our-services-section {
+    margin-top: 210px;
+}
+
+.our-services-heading {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 35px;
+    letter-spacing: 0.8px;
+    margin-bottom: 25px;
+}
+
+.our-services-subheading {
+    font-size: 25px;
+    line-height: 50px;
+    letter-spacing: 0.5px;
+    margin-bottom: 100px;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 40px;
+}
+
+.service-card {
+    background: rgba(228, 227, 225, .3);
+    border: 1px solid rgba(44, 40, 41, .3);
+    border-radius: 10px;
+    padding: 75px 65px;
+    position: relative;
+}
+
+.card-icon-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 110px;
+}
+
+.card-icon1 svg{
+    width: 106px;
+    height: 106px;
+}
+
+.card-icon2 svg{
+    width: 93px;
+    height: 93px;
+    margin-top: 7px;
+}
+
+.card-icon3 svg{
+    width: 75px;
+    height: 75px;
+    margin-top: 12px;
+}
+
+.card-heading {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 60px;
+    margin-bottom: 20px;
+}
+
+.card-border {
+    margin-bottom: 30px;
+    border: 1px solid rgba(112, 112, 112, .4);
+    width: 100%;
+}
+
+.card-description {
+    margin-bottom: 40px;
+    text-align: left;
+    line-height: 35px;
+}
+
+.learn-more-link {
+    text-align: left;
+    width: 100%;
+    position: absolute;
+    bottom: 70px;
+    left: 65px;
+}
+
+.learn-more-link a {
+    font-size: 16px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid;
+    font-weight: 500;
+    opacity: .7;
+}
+
+.learn-more-link a:hover {
+    color: #2D5586;
+    border-bottom: 1px solid #2D5586;
+    opacity: 1;
+}
+
+
+/* Light Design Consultancy div */
+
+.section-container {
+    padding-top: 100px;
+    margin-top: 80px;
+}
+
+#light-supply {
+    padding-top: 100px;
+    margin-top: 80px;
+}
+
+
+#light-supply .light-bulb-section{
+   margin-bottom: 0;
+}
+
+
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(228, 227, 225, .5);
+}
+
+.image-container-2 {
+    width: calc(54.4% - 140px);
+    height: 100%;
+    overflow: hidden;
+}
+
+.text-container {
+    flex: 1;
+    border-top: 0.5px solid rgba(45, 85, 134, .2);
+    border-bottom: 0.5px solid rgba(45, 85, 134, .2);
+}
+
+.text-area {
+    margin: 90px 270px;
+}
+
+.heading-container h2 {
+    font-weight: 300;
+    font-size: 35px;
+    line-height: 35px;
+    letter-spacing: .6px;
+    background: #ffffff;
+    padding: 45px 25px 45px 135px;
+    border-top: 1px solid rgba(158, 158, 158, .5);
+    border-bottom: 1px solid rgba(158, 158, 158, .5);
+    margin-top: 180px;
+}
+
+.description-container {
+    padding: 90px 140px 0 135px;
+}
+
+.description-container p {
+    line-height: 55px;
+}
+
+.description-text {
+    line-height: 45px;
+    letter-spacing: 0.54px;
+}
+
+
+/* Light Bulb Part */
+
+.light-bulb-section {
+    display: flex;
+    position: relative;
+    margin-bottom: 180px;
+}
+
+.bulb-text-container {
+    width: calc(46.6% + 140px);
+    background: rgba(249, 249, 248, .3);
+    border-top: 1px solid rgba(158, 158, 158, .3);
+    border-bottom: 1px solid rgba(158, 158, 158, .3);
+}
+
+.bulb-heading-container h2 {
+    font-weight: 300;
+    font-size: 35px;
+    padding-left: 80px;
+    line-height: 35px;
+    letter-spacing: 1.4px;
+    background: #ffffff;
+    padding: 45px 25px 45px 140px;
+    border-bottom: 0.5px solid rgba(158, 158, 158, .3);
+}
+
+.bulb-description-container {
+    padding: 95px 120px 80px 140px;
+}
+
+.bulb-description-container p{
+    letter-spacing: 0.54px;
+    line-height: 55px;
+}
+
+.column-two {
+    border: 0.5px solid rgba(158, 158, 158, .3);
+    overflow: hidden;
+}
+
+.column-two:hover {
+    border: 0.5px solid rgba(45, 85, 134, .5);
+}
+
+.light-bulb-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: scale 0.3s ease-in-out;
+    transform-origin: top right;
+}
+
+.column-two:hover .light-bulb-image {
+    scale: 1.05;
+}
+
+
+.light-bulb-section:after {
+    content: '';
+    background: rgba(249, 249, 248, .3);
+    position: absolute;
+    width: 140px;
+    height: calc(100% - 126px);
+    top: 126px;
+    right: -140px;
+    border: 0.5px solid rgba(158, 158, 158, .3);
+    border-left: none;
+}
+
+
+/* Light Installation Part */
+
+
+/* Image and Text Part */
+
+.work-img-box {
+    padding-bottom: 75px;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding-top: 180px;
+}
+
+.work-img-box .work-img {
+    width: 100%;
+}
+
+.work-text {
+    margin-bottom: 180px !important;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 55px;
+    letter-spacing: 0.6px;
+}
+
+.appointment-heading {
+    background-color: #2D5586;
+    padding-bottom: 45px;
+    padding-top: 45px;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: 600;
+    font-size: 35px;
+    line-height: 37px;
+}
+
+.appointment-form-content {
+    background-color: rgba(214, 215, 214, .26);
+    padding-top: 126px;
+    padding-bottom: 190px;
+}
+
+.form-container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 962px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 53px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: row;
+}
+
+.appointment-form-content .form-group {
+    gap: 0;
+}
+
+.form-input {
+    padding: 18px 35px 29px 35px;
+    border: 0.75px solid rgba(112, 112, 112, .7);
+    border-radius: 8px;
+    background: #FFFFFF;
+    opacity: 1;
+    font-size: 20px;
+    font-weight: 300;
+    width: calc(50% - 28px);
+    color: rgba(26, 27, 31, .7);
+    text-align: left;
+    line-height: 24px;
+}
+
+.form-input::placeholder {
+    font-weight: 300;
+    color: rgba(26, 27, 31, .7);
+}
+
+
+.appointment-form-content .form-group .form-input:first-child {
+    margin-right: 57px;
+}
+
+
+.react-datepicker__navigation {
+    align-items: center;
+    background: none !important;
+    display: flex;
+    justify-content: center;
+    text-align: center !important;
+    cursor: pointer;
+    position: absolute;
+    top: 2px;
+    padding: 0 !important;
+    border: none !important;
+    z-index: 1;
+    height: 32px;
+    width: 32px;
+    text-indent: -999em;
+    overflow: hidden;
+}
+
+.react-datepicker-wrapper {
+    flex: 1;
+}
+
+.react-datepicker-wrapper input {
+    width: 100%;
+}
+
+.textarea {
+    width: 100%;
+    height: 285px;
+    padding: 36px;
+    border: 0.25px solid rgba(112, 112, 112, .7);
+    border-radius: 8px;
+    background: #FFFFFF;
+    opacity: 1;
+    font-size: 20px;
+    color: rgba(26, 27, 31, .7);
+    text-align: left;
+    line-height: 24px;
+    margin-top: 10px;
+}
+
+.textarea::placeholder {
+    color: rgba(26, 27, 31, .7);
+}
+
+.button-form-group {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.appointment-form-content .submit-button {
+    padding: 9px 15px;
+    background-color: rgba(255, 255, 255, .7);
+    border: 1px solid rgba(112, 112, 112, .7);
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 22px;
+    color: #1A1B1F;
+    font-weight: 500;
+    font-family: 'Montserrat';
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    min-width: 255px;
+}
+
+.appointment-form-content .submit-button:hover {
+    background-color: #2D5586;
+    color: #FFFFFF;
+    border-color: #2D5586;
+}
+
+.service-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.service-image-wrapper {
+    width: 100%;
+    height: 100%;
+}
+
+.service-image-style {
+    width: 100%;
+    height: 100%;
+}
+
+.title-text {
+    text-transform: uppercase;
+    font-size: 20px;
+    color: #606164;
+    text-align: left;
+    font-weight: 300;
+}
+
+
+/* Hover effects */
+
+.learn-more-link:hover {
+    opacity: 1;
+}
+
+.submit-button:hover {
+    background-color: #2D5586;
+    color: #FFFFFF;
+    border-color: #2D5586;
+}
+
+
+/* Appointment without login */
+
+.appointment-without-login-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.appointment-without-login-text {
+    margin-left: 140px;
+    flex: 1;
+}
+
+.appointment-without-login-text h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #2D5586;
+    margin-bottom: 35px;
+    letter-spacing: 0.3px;
+    font-family: "Montserrat";
+}
+
+.appointment-without-login-text p {
+    font-size: 20px;
+    line-height: 60px;
+    color: #2D5586;
+    margin-bottom: 38px;
+    letter-spacing: 0.2px;
+}
+
+.appointment-without-login-button {
+    border: 1px solid rgba(55, 93, 140, .71);
+    color: rgba(55, 93, 140, 1);
+    padding: 9px 31px;
+    border-radius: 8px;
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.appointment-without-login-button:hover {
+    background-color: rgba(45, 85, 134, 1);
+    color: #FFFFFF;
+    border-color: rgba(45, 85, 134, 1);
+}
+
+.appointment-without-login-img {
+    width: 49.6%;
+}
+
+
+.success-message {
+    margin-bottom: 30px;
+    text-align: center;
+    color: #2D5586;
+}
+
+.appointment-form-content .form-group input, .appointment-form-content .form-group textarea {
+    background: #ffffff;
+}
+
+.appointment-form-content .form-group input::placeholder, .appointment-form-content .form-group textarea::placeholder {
+    color: rgba(26, 27, 31, .7);
+}
+
+
+
+@media (max-width: 1490px) {
+    .services-image-container {
+        height: calc(100vh - 70px);
+    }
+    .service-content {
+        padding: 120px 0;
+    }
+    .bulb-description-container {
+        padding: 80px 80px 80px 100px;
+    }
+    .bulb-heading-container h2 {
+        padding: 40px 25px 40px 100px;
+        font-size: 30px;
+    }
+    .light-bulb-section:after {
+        width: 100px;
+        right: -100px;
+    }
+    .service-heading {
+        font-size: 36px;
+        margin-left: 50px;
+    }
+    .content-center {
+        gap: 150px;
+    }
+    .line-at-bottom {
+        right: 100px;
+        width: calc(50% - 100px);
+    }
+    .our-services-heading {
+        font-size: 35px;
+        margin-bottom: 25px;
+    }
+    .our-services-subheading {
+        font-size: 20px;
+        line-height: 34px;
+        letter-spacing: 0.5px;
+        margin-bottom: 90px;
+    }
+    .card-heading {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 50px;
+        margin-bottom: 20px;
+    }
+
+    .card-description {
+        font-size: 14px;
+        line-height: 26px;
+    }
+
+    .learn-more-link a {
+        font-size: 14px;
+    }
+
+    .heading-container h2 {
+        font-size: 30px;
+        padding: 30px 25px 30px 80px;
+    }
+    .work-text {
+        margin-bottom: 160px !important;
+        font-size: 18px;
+        line-height: 40px;
+    }
+    
+    .appointment-without-login-text h2 {
+        font-size: 26px;
+        margin-bottom: 40px;
+    }
+    .appointment-without-login-text p {
+        line-height: 40px;
+    }
+
+    .description-container {
+        padding: 55px 70px 0 70px;
+    }
+    .appointment-without-login-button {
+        padding: 8px 25px;
+        font-size: 16px;
+    }
+    .section-container {
+        padding-top: 70px;
+        margin-top: 80px;
+    }
+    
+    #light-supply {
+        padding-top: 70px;
+        margin-top: 80px;
+    }
+
+    .appointment-form-content .submit-button {
+        min-width: 220px;
+    }
+}
+
+@media (max-width: 1270px) {
+    .content-center {
+        gap: 120px;
+    }
+
+    .service-heading {
+        font-size: 28px;
+        margin-left: 50px;
+        line-height: 60px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .service-content {
+        padding: 40px 0;
+    }
+    .services-image-container {
+        height: 380px;
+    }
+    .content-center {
+        flex-direction: column;
+        gap: 0;
+    }
+    .service-heading {
+        font-size: 20px;
+        padding-right: 0;
+        width: 100%;
+        line-height: 30px;
+        margin-bottom: 20px;
+        margin-left: 0;
+    }
+    .service-description {
+        padding-top: 0;
+    }
+    .line-at-bottom {
+        right: 0;
+        width: 50%;
+        height: 4px;
+        bottom: -2px;
+    }
+    .our-services-section {
+        margin-top: 60px;
+    }
+    .our-services-heading {
+        font-size: 20px;
+        margin-bottom: 18px;
+    }
+    .our-services-subheading {
+        font-size: 14px;
+        line-height: 30px;
+        letter-spacing: 0.5px;
+        margin-bottom: 60px;
+    }
+    .card-container {
+        gap: 20px;
+        overflow: auto;
+        justify-content: start;
+        padding-bottom: 20px;
+    }
+    .light-bulb-section:after {
+        display: none;
+    }
+    .service-card {
+        padding: 40px 20px;
+        flex: 0 0 80%;
+        max-width: 80%;
+    }
+    .card-heading {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 50px;
+        margin-bottom: 10px;
+    }
+    .card-description {
+        line-height: 26px;
+    }
+    .learn-more-link a {
+        font-size: 14px;
+        padding-bottom: 3px;
+        border-bottom: 1px solid;
+    }
+    .learn-more-link {
+        text-align: left;
+        width: 100%;
+        position: absolute;
+        bottom: 35px;
+        left: 20px;
+    }
+    .section-container {
+        padding-top: 60px;
+        margin-top: 0;
+    }
+
+    #light-supply {
+        padding-top: 60px;
+        margin-top: 0;
+    }
+
+    .content-container {
+        flex-direction: column;
+    }
+
+    #light-supply .light-bulb-section {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .section-container.container-left-offset {
+        width: calc(100% - 60px);
+    }
+    .image-container-2 {
+        width: 100%;
+    }
+    .heading-container h2 {
+        font-size: 20px;
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .appointment-form-content .form {
+        gap: 0;
+    }
+
+    .appointment-form-content .form-group .form-input:first-child {
+        margin-right: 0;
+    }
+    .appointment-form-content .form-group input, .appointment-form-content .form-group textarea {
+        margin-bottom: 20px;
+    }
+    .description-container {
+        padding: 20px;
+    }
+    .light-bulb-section {
+        width: calc(100% - 60px);
+        margin: 60px auto;
+        flex-direction: column;
+    }
+    .bulb-heading-container h2 {
+        font-size: 20px;
+        padding: 20px;
+    }
+    .bulb-description-container {
+        padding: 20px;
+    }
+    .bulb-description-container p {
+        font-size: 14px;
+    }
+    .bulb-text-container {
+        width: 100%;
+        border: 1px solid rgba(158, 158, 158, .3);
+        border-top: none;
+    }
+    .column-two {
+        overflow: hidden;
+        order: -1;
+    }
+    .appointment-heading {
+        background-color: #2D5586;
+        padding-bottom: 35px;
+        padding-top: 35px;
+        align-items: center;
+        text-align: center;
+        color: #FFFFFF;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 28px;
+    }
+    .work-text {
+        margin-bottom: 60px !important;
+        font-size: 14px;
+        line-height: 32px;
+    }
+    .work-img-box {
+        padding-bottom: 40px;
+        padding-top: 60px;
+    }
+    .form-group {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .form-input {
+        font-size: 14px;
+        width: 100%;
+    }
+    .form-container {
+        width: 100%;
+        padding: 30px;
+    }
+    .appointment-form-content {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .textarea {
+        height: 200px;
+        font-size: 14px;
+    }
+    .submit-button {
+        padding: 8px 45px;
+        font-size: 14px;
+        margin-right: 0;
+    }
+
+    .appointment-without-login-content {
+        flex-direction: column;
+    }
+    .appointment-without-login-text {
+        width: 100%;
+        margin-bottom: 60px;
+        margin-left: 0;
+    }
+    .appointment-without-login-img {
+        width: 100%;
+        order: -1;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .appointment-without-login-text h2 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        margin-top: 40px;
+        max-width: 70%;
+        line-height: 30px;
+        margin-left: 30px;
+    }
+    .appointment-without-login-text p {
+        line-height: 32px;
+        font-size: 14px;
+        margin-bottom: 30px;
+        margin-left: 30px;
+    }
+    .appointment-without-login-button {
+        font-size: 14px;
+        margin-left: 30px;
+
+    }
+
+}
