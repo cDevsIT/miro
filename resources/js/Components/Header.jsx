@@ -118,7 +118,6 @@ const Header = () => {
 
                     {/* Desktop Icons */}
                     <div class="header-nav-icons">
-                        <span>WishlistItem</span>
                     <a href="/contact"> 
                         <img class="header-icon" src={contactIcon} alt="Contact" />
                     </a>

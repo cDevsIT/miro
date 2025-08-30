@@ -340,3 +340,26 @@
     border-radius: 3px !important;
     margin-right: 7px;
 }
+
+/* Toggle Section Styles */
+.toggle-header {
+    transition: background-color 0.3s ease;
+}
+
+.toggle-header:hover {
+    background-color: #f8f9fa;
+}
+
+.toggle-content {
+    transition: all 0.3s ease;
+    overflow: hidden;
+    display: none; /* Hidden by default */
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.toggle-icon.rotated {
+    transform: rotate(180deg);
+}
