@@ -7,6 +7,7 @@ import myMiroIcon from '../../../public/images/icons/my-miro.png';
 import searchIcon from '../../../public/images/icons/search.png';   
 import HamBurger from '../../icons/ham-burger';
 import axios from 'axios';
+import Wishlist from './MyMiro/Wishlist';
 const Header = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);   
@@ -117,6 +118,7 @@ const Header = () => {
 
                     {/* Desktop Icons */}
                     <div class="header-nav-icons">
+                        <span>WishlistItem</span>
                     <a href="/contact"> 
                         <img class="header-icon" src={contactIcon} alt="Contact" />
                     </a>

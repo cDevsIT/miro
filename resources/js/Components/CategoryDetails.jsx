@@ -174,7 +174,7 @@ const CategoryDetails = () => {
             </div>
             )}
 
-            {products.length > 0 && (
+            {products.length > 0 ? (
             <div className='productsContainer categoryDetails-productsContainer'>
                 <div className='productsGrid'>
                     {rows.map((row, rowIndex) => (
@@ -213,6 +213,16 @@ const CategoryDetails = () => {
                     )}
                 </div>
             </div>
+            ) : (
+                <div className='container'>
+                    <div className='no-products-message'>
+                        <h3>No products available in this category yet</h3>
+                        <p>We're working on adding products to this category. Please check back soon!</p>
+                        <a href={`/products/category/${category.type}`} className='back-to-categories'>
+                            ← Back to {category.type === 'indoor' ? 'Indoor' : 'Outdoor'} Products
+                        </a>
+                    </div>
+                </div>
             )}
         </div>
     );

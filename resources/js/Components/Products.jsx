@@ -60,13 +60,35 @@ const Products = ({ type }) => {
         }
     }, [type, selectedCategory]);
 
-    const handleCategoryClick = (category) => {
+    const handleCategoryClick = async (category) => {
+        console.log('handleCategoryClick called with category:', category);
+        
         // If the category has a parent_id, it's a subcategory - redirect to details
         if (category.parent_id) {
+            console.log('Category has parent_id, redirecting to details');
             window.location.href = `/products/category-details/${category.id}`;
         } else {
-            // If it's a main category, show its subcategories
-            setSelectedCategory(category);
+            console.log('Category is main category, checking for subcategories...');
+            // If it's a main category, check if it has subcategories
+            try {
+                const response = await axios.get(`/api/categories/${type}/${category.id}`);
+                const subcategories = response.data;
+                console.log('Subcategories response:', subcategories);
+                
+                if (subcategories && subcategories.length > 0) {
+                    console.log('Found subcategories, showing them');
+                    // If there are subcategories, show them
+                    setSelectedCategory(category);
+                } else {
+                    console.log('No subcategories found, redirecting to details');
+                    // If no subcategories, redirect directly to category details
+                    window.location.href = `/products/category-details/${category.id}`;
+                }
+            } catch (error) {
+                console.error('Error checking subcategories:', error);
+                // If there's an error, redirect to category details as fallback
+                window.location.href = `/products/category-details/${category.id}`;
+            }
         }
     };
 
