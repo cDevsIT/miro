@@ -98,10 +98,13 @@
                         </div>
 
                         <div class="card mb-4">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Technical Operation & Electrical Data</h5>
+                            <div class="card-header toggle-header" style="cursor: pointer;" onclick="toggleSection('technical-data')">
+                                <h5 class="card-title mb-0 d-flex justify-content-between align-items-center">
+                                    Technical Operation & Electrical Data
+                                    <i class="fas fa-chevron-down toggle-icon" id="technical-data-icon"></i>
+                                </h5>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body toggle-content" id="technical-data-content">
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
                                         <thead>
@@ -130,10 +133,13 @@
 
 
                         <div class="card mb-4"> 
-                            <div class="card-header">   
-                                <h5 class="card-title mb-0">Additional Information</h5>
+                            <div class="card-header toggle-header" style="cursor: pointer;" onclick="toggleSection('additional-info')">   
+                                <h5 class="card-title mb-0 d-flex justify-content-between align-items-center">
+                                    Additional Information
+                                    <i class="fas fa-chevron-down toggle-icon" id="additional-info-icon"></i>
+                                </h5>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body toggle-content" id="additional-info-content">
                                 <textarea class="form-control" id="description" name="description" rows="3">{{ old('description', $product->description) }}</textarea>
                             </div>
                         </div>
@@ -141,10 +147,13 @@
 
                     <div class="col-md-6">
                         <div class="card mb-4">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Categories</h5>
+                            <div class="card-header toggle-header" style="cursor: pointer;" onclick="toggleSection('categories')">
+                                <h5 class="card-title mb-0 d-flex justify-content-between align-items-center">
+                                    Categories
+                                    <i class="fas fa-chevron-down toggle-icon" id="categories-icon"></i>
+                                </h5>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body toggle-content" id="categories-content">
                                 <div class="mb-3">
                                     <div class="row">
                                         @foreach($categories as $category)
@@ -184,154 +193,206 @@
                             </div>
                         </div>
 
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <h5 class="card-title mb-0">Other Options</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="mb-3">
-                                    <label class="form-label font-weight-bold">Colors</label>
-                                    <div class="row">
-                                        @foreach($colors as $color)
-                                            <div class="col-md-6">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" 
-                                                           id="color_{{ $color->id }}" 
-                                                           name="colors[]" 
-                                                           value="{{ $color->id }}"
-                                                           {{ in_array($color->id, old('colors', $product->colors->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="color_{{ $color->id }}">
-                                                        {{ $color->name }}
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        @endforeach
+                                <!-- Colors Section -->
+                                <div class="card mb-4">
+                                    <div class="card-header toggle-header" style="cursor: pointer;" onclick="toggleSection('colors')">
+                                        <h5 class="card-title mb-0 d-flex justify-content-between align-items-center">
+                                            Colors
+                                            <i class="fas fa-chevron-down toggle-icon" id="colors-icon"></i>
+                                        </h5>
                                     </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label font-weight-bold">Reflector Colors</label>
-                                    <div class="row">
-                                        @foreach($reflectorColors as $color)
-                                            <div class="col-md-6">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" 
-                                                           id="reflector_color_{{ $color->id }}" 
-                                                           name="reflector_colors[]" 
-                                                           value="{{ $color->id }}"
-                                                           {{ in_array($color->id, old('reflector_colors', $product->reflectorColors->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="reflector_color_{{ $color->id }}">
-                                                        {{ $color->name }}
-                                                    </label>
+                                    <div class="card-body toggle-content" id="colors-content">
+                                        <div class="row">
+                                            @foreach($colors as $color)
+                                                <div class="col-md-6">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" 
+                                                               id="color_{{ $color->id }}" 
+                                                               name="colors[]" 
+                                                               value="{{ $color->id }}"
+                                                               {{ in_array($color->id, old('colors', $product->colors->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="color_{{ $color->id }}">
+                                                            {{ $color->name }}
+                                                        </label>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label font-weight-bold">Dimension Options</label>
-                                    <div class="row">
-                                        @foreach($dimensionOptions as $option)
-                                            <div class="col-md-6">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" 
-                                                           id="dimension_{{ $option->id }}" 
-                                                           name="dimension_options[]" 
-                                                           value="{{ $option->id }}"
-                                                           {{ in_array($option->id, old('dimension_options', $product->dimensionOptions->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="dimension_{{ $option->id }}">
-                                                        {{ $option->name }}
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label font-weight-bold">Family Products</label>
-                                    <div class="row">
-                                        @foreach($familyProducts as $family)
-                                            <div class="col-md-6">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" 
-                                                           id="family_{{ $family->id }}" 
-                                                           name="family_products[]" 
-                                                           value="{{ $family->id }}"
-                                                           {{ in_array($family->id, old('family_products', $product->familyProducts->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="family_{{ $family->id }}">
-                                                        {{ $family->model_no }}
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label font-weight-bold">Accessories</label>
-                                    <div class="row">
-                                        @foreach($accessories as $accessory)
-                                            <div class="col-md-6">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" 
-                                                           id="accessory_{{ $accessory->id }}" 
-                                                           name="accessories[]" 
-                                                           value="{{ $accessory->id }}"
-                                                           {{ in_array($accessory->id, old('accessories', $product->accessories->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="accessory_{{ $accessory->id }}">
-                                                        {{ $accessory->name }}
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label class="form-label font-weight-bold">Installation Methods</label>
-                                    <div class="row">
-                                        @foreach($installationMethods as $method)
-                                            <div class="col-md-6">
-                                                <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" 
-                                                           id="method_{{ $method->id }}" 
-                                                           name="installation_methods[]" 
-                                                           value="{{ $method->id }}"
-                                                           {{ in_array($method->id, old('installation_methods', $product->installationMethods->pluck('id')->toArray())) ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="method_{{ $method->id }}">
-                                                        {{ $method->name }}
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="brochure" class="form-label font-weight-bold">Upload Brochure (PDF)</label>
-                                    @if($product->brochure)
-                                        <div class="mb-2">
-                                            <a href="{{ Storage::url($product->brochure) }}" target="_blank">View Current Brochure</a>
+                                            @endforeach
                                         </div>
-                                    @endif
-                                    <input type="file" class="form-control" id="brochure" name="brochure" accept="application/pdf">
-                                    <small class="text-muted">Only PDF files are allowed. Leave empty to keep current file.</small>
+                                    </div>
                                 </div>
 
-                                <div class="mb-3">
-                                    <label for="view_3d" class="form-label font-weight-bold">Upload 3D View (PDF)</label>
-                                    @if($product->view_3d)
-                                        <div class="mb-2">
-                                            <a href="{{ Storage::url($product->view_3d) }}" target="_blank">View Current 3D View</a>
+                                <!-- Reflector Colors Section -->
+                                <div class="card mb-4">
+                                    <div class="card-header toggle-header" style="cursor: pointer;" onclick="toggleSection('reflector-colors')">
+                                        <h5 class="card-title mb-0 d-flex justify-content-between align-items-center">
+                                            Reflector Colors
+                                            <i class="fas fa-chevron-down toggle-icon" id="reflector-colors-icon"></i>
+                                        </h5>
+                                    </div>
+                                    <div class="card-body toggle-content" id="reflector-colors-content">
+                                        <div class="row">
+                                            @foreach($reflectorColors as $color)
+                                                <div class="col-md-6">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" 
+                                                               id="reflector_color_{{ $color->id }}" 
+                                                               name="reflector_colors[]" 
+                                                               value="{{ $color->id }}"
+                                                               {{ in_array($color->id, old('reflector_colors', $product->reflectorColors->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="reflector_color_{{ $color->id }}">
+                                                            {{ $color->name }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endforeach
                                         </div>
-                                    @endif
-                                    <input type="file" class="form-control" id="view_3d" name="view_3d" accept="application/pdf">
-                                    <small class="text-muted">Only PDF files are allowed. Leave empty to keep current file.</small>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+
+                                <!-- Dimension Options Section -->
+                                <div class="card mb-4">
+                                    <div class="card-header toggle-header" style="cursor: pointer;" onclick="toggleSection('dimension-options')">
+                                        <h5 class="card-title mb-0 d-flex justify-content-between align-items-center">
+                                            Dimension Options
+                                            <i class="fas fa-chevron-down toggle-icon" id="dimension-options-icon"></i>
+                                        </h5>
+                                    </div>
+                                    <div class="card-body toggle-content" id="dimension-options-content">
+                                        <div class="row">
+                                            @foreach($dimensionOptions as $option)
+                                                <div class="col-md-6">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" 
+                                                               id="dimension_{{ $option->id }}" 
+                                                               name="dimension_options[]" 
+                                                               value="{{ $option->id }}"
+                                                               {{ in_array($option->id, old('dimension_options', $product->dimensionOptions->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="dimension_{{ $option->id }}">
+                                                            {{ $option->name }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Family Products Section -->
+                                <div class="card mb-4">
+                                    <div class="card-header toggle-header" style="cursor: pointer;" onclick="toggleSection('family-products')">
+                                        <h5 class="card-title mb-0 d-flex justify-content-between align-items-center">
+                                            Family Products
+                                            <i class="fas fa-chevron-down toggle-icon" id="family-products-icon"></i>
+                                        </h5>
+                                    </div>
+                                    <div class="card-body toggle-content" id="family-products-content">
+                                        <div class="row">
+                                            @foreach($familyProducts as $family)
+                                                <div class="col-md-6">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" 
+                                                               id="family_{{ $family->id }}" 
+                                                               name="family_products[]" 
+                                                               value="{{ $family->id }}"
+                                                               {{ in_array($family->id, old('family_products', $product->familyProducts->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="family_{{ $family->id }}">
+                                                            {{ $family->model_no }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Accessories Section -->
+                                <div class="card mb-4">
+                                    <div class="card-header toggle-header" style="cursor: pointer;" onclick="toggleSection('accessories')">
+                                        <h5 class="card-title mb-0 d-flex justify-content-between align-items-center">
+                                            Accessories
+                                            <i class="fas fa-chevron-down toggle-icon" id="accessories-icon"></i>
+                                        </h5>
+                                    </div>
+                                    <div class="card-body toggle-content" id="accessories-content">
+                                        <div class="row">
+                                            @foreach($accessories as $accessory)
+                                                <div class="col-md-6">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" 
+                                                               id="accessory_{{ $accessory->id }}" 
+                                                               name="accessories[]" 
+                                                               value="{{ $accessory->id }}"
+                                                               {{ in_array($accessory->id, old('accessories', $product->accessories->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="accessory_{{ $accessory->id }}">
+                                                            {{ $accessory->name }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Installation Methods Section -->
+                                <div class="card mb-4">
+                                    <div class="card-header toggle-header" style="cursor: pointer;" onclick="toggleSection('installation-methods')">
+                                        <h5 class="card-title mb-0 d-flex justify-content-between align-items-center">
+                                            Installation Methods
+                                            <i class="fas fa-chevron-down toggle-icon" id="installation-methods-icon"></i>
+                                        </h5>
+                                    </div>
+                                    <div class="card-body toggle-content" id="installation-methods-content">
+                                        <div class="row">
+                                            @foreach($installationMethods as $method)
+                                                <div class="col-md-6">
+                                                    <div class="form-check">
+                                                        <input type="checkbox" class="form-check-input" 
+                                                               id="method_{{ $method->id }}" 
+                                                               name="installation_methods[]" 
+                                                               value="{{ $method->id }}"
+                                                               {{ in_array($method->id, old('installation_methods', $product->installationMethods->pluck('id')->toArray())) ? 'checked' : '' }}>
+                                                        <label class="form-check-label" for="method_{{ $method->id }}">
+                                                            {{ $method->name }}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Upload Files Section -->
+                                <div class="card mb-4">
+                                    <div class="card-header toggle-header" style="cursor: pointer;" onclick="toggleSection('upload-files')">
+                                        <h5 class="card-title mb-0 d-flex justify-content-between align-items-center">
+                                            Upload Files
+                                            <i class="fas fa-chevron-down toggle-icon" id="upload-files-icon"></i>
+                                        </h5>
+                                    </div>
+                                    <div class="card-body toggle-content" id="upload-files-content">
+                                        <div class="mb-3">
+                                            <label for="brochure" class="form-label font-weight-bold">Upload Brochure (PDF)</label>
+                                            @if($product->brochure)
+                                                <div class="mb-2">
+                                                    <a href="{{ Storage::url($product->brochure) }}" target="_blank">View Current Brochure</a>
+                                                </div>
+                                            @endif
+                                            <input type="file" class="form-control" id="brochure" name="brochure" accept="application/pdf">
+                                            <small class="text-muted">Only PDF files are allowed. Leave empty to keep current file.</small>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="view_3d" class="form-label font-weight-bold">Upload 3D View (PDF)</label>
+                                            @if($product->view_3d)
+                                                <div class="mb-2">
+                                                    <a href="{{ Storage::url($product->view_3d) }}" target="_blank">View Current 3D View</a>
+                                                </div>
+                                            @endif
+                                            <input type="file" class="form-control" id="view_3d" name="view_3d" accept="application/pdf">
+                                            <small class="text-muted">Only PDF files are allowed. Leave empty to keep current file.</small>
+                                        </div>
+                                    </div>
+                                </div>
                     </div>
                 </div>
 
