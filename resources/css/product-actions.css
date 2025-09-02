@@ -5,7 +5,7 @@
 }
 
 .product-actions-icon-button {
-    
+
     display: flex;
     justify-content: end;
     align-items: center;
@@ -37,19 +37,38 @@
     padding: 7px;
 }
 
-.product-actions-share-icon{
-    position: relative;
-        width: 23px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.2s ease;
+.product-actions-icon:hover {
+    background-color: #90b7e7;
 }
 
 .product-actions-icon:hover svg path {
+    background-color: #90b7e7;
+}
+
+/* Wishlist active state */
+/* .product-actions-icon.wishlist-active {
+    background-color: #FFE6E6;
+    border: 2px solid #FF6B6B;
+} */
+
+.product-actions-icon.wishlist-active svg path {
     fill: #2D5586;
+}
+
+.product-actions-icon.wishlist-active:hover {
+    background-color: #90b7e7;
+    transform: scale(1.05);
+}
+
+.product-actions-share-icon {
+    position: relative;
+    width: 23px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .product-actions-icon .product-actions-icon-svg {

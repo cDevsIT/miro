@@ -5,9 +5,11 @@ import '../../css/product-actions.css';
 import ShareTooltip from './ShareTooltip';
 import LoginModal from './LoginModal';
 import { useAuth } from '../hooks/useAuth';
+import { useWishlist } from '../contexts/WishlistContext';
 
-const ProductActions = () => {
+const ProductActions = ({ product }) => {
     const { isAuthenticated } = useAuth();
+    const { isInWishlist, toggleWishlist } = useWishlist();
     const [showTooltip, setShowTooltip] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
@@ -18,10 +20,10 @@ const ProductActions = () => {
     // Handle click outside to close tooltip
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (showTooltip && 
-                tooltipRef.current && 
+            if (showTooltip &&
+                tooltipRef.current &&
                 !tooltipRef.current.contains(event.target) &&
-                shareIconRef.current && 
+                shareIconRef.current &&
                 !shareIconRef.current.contains(event.target)) {
                 setShowTooltip(false);
             }
@@ -62,11 +64,10 @@ const ProductActions = () => {
     const handleWishlistClick = (e) => {
         e.stopPropagation();
         setShowTooltip(false); // Close tooltip if open
-        if (!isAuthenticated) {
-            setShowModal(true);
-        } else {
-            // Handle authenticated user wishlist action
-            console.log('User is authenticated, handle wishlist action');
+
+        // Temporarily bypass authentication for testing
+        if (product) {
+            toggleWishlist(product);
         }
     }
 
@@ -78,13 +79,17 @@ const ProductActions = () => {
         setShowModal(false);
     };
 
+    // Check if current product is in wishlist
+    const isProductInWishlist = product ? isInWishlist(product.id) : false;
+
     return (
         <div className='product-details-actions'>
             {/* Wishlist Icon  */}
-            <div 
+            <div
                 ref={wishlistIconRef}
-                className='product-actions-icon' 
+                className={`product-actions-icon ${isProductInWishlist ? 'wishlist-active' : ''}`}
                 onClick={handleWishlistClick}
+                title={isProductInWishlist ? 'Remove from wishlist' : 'Add to wishlist'}
             >
                 <WishlistIcon />
             </div>
@@ -93,7 +98,7 @@ const ProductActions = () => {
                 className="product-actions-share-icon"
                 onClick={handleShareClick}>
                 <ProductShare />
-                <ShareTooltip 
+                <ShareTooltip
                     ref={tooltipRef}
                     show={showTooltip}
                     position={tooltipPosition}

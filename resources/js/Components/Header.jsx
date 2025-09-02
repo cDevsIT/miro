@@ -11,8 +11,11 @@ import HamBurger from '../../icons/ham-burger';
 import axios from 'axios';
 import Wishlist from './MyMiro/Wishlist';
 import { useAuth } from '@/hooks/useAuth';
+import { useWishlist } from '../contexts/WishlistContext';
+
 const Header = () => {
     const { isAuthenticated } = useAuth();
+    const { getWishlistCount } = useWishlist();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isProductsDropdownOpen, setIsProductsDropdownOpen] = useState(false);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -117,18 +120,18 @@ const Header = () => {
                             <li>
                                 <a href="/blog" class="header-nav-link">Blog</a>
                             </li>
+
                         </ul>
                     </div>
 
                     {/* Desktop Icons */}
                     <div class="header-nav-icons">
-                        {isAuthenticated ?
+                        <div className="wishlist-icon-container">
                             <img class="header-icon" src={wishlistIcon} alt="WishlistIcon" />
-                            :
-                            <a href="/contact">
-                                <img class="header-icon" src={contactIcon} alt="Contact" />
-                            </a>
-                        }
+                            {getWishlistCount() > 0 && (
+                                <span className="wishlist-badge">{getWishlistCount()}</span>
+                            )}
+                        </div>
 
                         {isAuthenticated ?
                             <a href="/mymiro">
