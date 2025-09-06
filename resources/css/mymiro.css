@@ -517,7 +517,7 @@
 }
 
 
-.auth-form .form-group  {
+.auth-form .form-group {
     flex-direction: column;
 }
 
@@ -613,7 +613,7 @@
 
 .top-bar {
     height: 36px;
-    background:#2C2829;
+    background: #2C2829;
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -659,7 +659,7 @@
 }
 
 .dropdown-box.open {
-    display: flex;   
+    display: flex;
 }
 
 
@@ -830,13 +830,13 @@
     margin-left: -4px;
 }
 
-.left-menu-nav .nav-icon-meetingSchedule svg{
+.left-menu-nav .nav-icon-meetingSchedule svg {
     width: 37px;
     height: 37px;
     margin-left: -4px;
 }
 
-.bottom-nav .nav-icon-back svg{
+.bottom-nav .nav-icon-back svg {
     width: 24px;
     height: 24px;
 }
@@ -981,6 +981,29 @@
         background-color: #444;
     }
 
+    .mobileMenuItems .nav-item .nav-text,
+    .mobileMenuItems .nav-item svg {
+
+        color: #b1b1b1;
+        fill: #b1b1b1;
+        border: none;
+        filter: brightness(0) saturate(100%) invert(72%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(92%) contrast(90%);
+
+    }
+
+    .mobileMenuItems .active .nav-text,
+    .mobileMenuItems .nav-item .nav-text:hover,
+    .mobileMenuItems .active svg,
+    .mobileMenuItems .nav-item svg :hover {
+
+        color: #fff;
+        fill: #fff;
+        stroke: #fff;
+        filter: brightness(0) invert(1);
+    }
+
+
+
     .mymiro-dashboard {
         overflow: hidden;
     }
@@ -1042,7 +1065,7 @@
     margin-bottom: 15px;
 }
 
-.content-card .empty-state-subtitle{
+.content-card .empty-state-subtitle {
     font-weight: 500;
 }
 
@@ -1054,7 +1077,7 @@
 }
 
 
-.action-links-button{
+.action-links-button {
     color: #1A1B1F;
     font-weight: 500;
     font-size: 20px;
@@ -1682,7 +1705,8 @@
     font-size: 16px;
 }
 
-.profile-info .email, .profile-info .phone {
+.profile-info .email,
+.profile-info .phone {
     color: #1A1B1F;
     margin-bottom: 12px;
     letter-spacing: 0.35px;
@@ -1809,7 +1833,8 @@
 
 /* ************************** Wishlist Page for MIRO ********************************** */
 
-.wishlist-container , .no-quotes-container {
+.wishlist-container,
+.no-quotes-container {
     margin: 0 auto;
     padding: 65px 0px;
 }
@@ -2254,7 +2279,7 @@
 
 
 .go-to-wishlist {
-   font-size: 18px;
+    font-size: 18px;
 }
 
 .nav-group {
@@ -2900,13 +2925,15 @@
     gap: 40px;
     flex-direction: column;
 }
-.dashboard-appointment-form .form-grid .form-group{
+
+.dashboard-appointment-form .form-grid .form-group {
     display: flex;
     gap: 40px;
     align-items: center;
 }
 
-.dashboard-appointment-form .form-grid .form-group input, .dashboard-appointment-form .form-grid .form-group textarea {
+.dashboard-appointment-form .form-grid .form-group input,
+.dashboard-appointment-form .form-grid .form-group textarea {
     width: 100%;
     border-radius: 8px;
     border: 0.75px solid rgba(112, 112, 112, .75);
@@ -2924,7 +2951,7 @@
 
 
 .dashboard-appointment-form .form-grid .form-group input::placeholder,
-.dashboard-appointment-form .form-grid .form-group textarea::placeholder{
+.dashboard-appointment-form .form-grid .form-group textarea::placeholder {
     color: rgba(26, 27, 31, .7);
 }
 
@@ -3631,12 +3658,13 @@
 
 
 
-@media(max-width: 1490px){
+@media(max-width: 1490px) {
 
     .left-menu {
         width: 290px;
         margin-left: 70px;
     }
+
     .dashboard-container .main-content {
         padding: 50px 30px 90px 50px;
     }
