@@ -237,14 +237,14 @@ if (footerRoot) {
 }
 
 // Header is now rendered within ProductDetails component
-// const headerRoot = document.getElementById('header-root');
-// if (headerRoot) {
-//     createRoot(headerRoot).render(
-//         <AppWrapper>
-//             <Header />
-//         </AppWrapper>
-//     );
-// }
+const headerRoot = document.getElementById('header-root');
+if (headerRoot) {
+    createRoot(headerRoot).render(
+        <AppWrapper>
+            <Header />
+        </AppWrapper>
+    );
+}
 
 // Mount AdminLogin component
 const adminLoginRoot = document.getElementById('admin-login-root');

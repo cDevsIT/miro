@@ -65,9 +65,14 @@ const ProductActions = ({ product }) => {
         e.stopPropagation();
         setShowTooltip(false); // Close tooltip if open
 
-        // Temporarily bypass authentication for testing
-        if (product) {
-            toggleWishlist(product);
+
+        if (!isAuthenticated) {
+            setShowModal(true);
+        } else {
+            // Handle authenticated user wishlist action
+            if (product) {
+                toggleWishlist(product);
+            }
         }
     }
 
