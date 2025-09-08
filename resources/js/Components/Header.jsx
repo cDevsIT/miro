@@ -126,12 +126,19 @@ const Header = () => {
 
                     {/* Desktop Icons */}
                     <div class="header-nav-icons">
-                        <div className="wishlist-icon-container">
-                            <img class="header-icon" src={wishlistIcon} alt="WishlistIcon" />
-                            {getWishlistCount() > 0 && (
-                                <span className="wishlist-badge">{getWishlistCount()}</span>
-                            )}
-                        </div>
+                        {isAuthenticated ?
+                            <div className="wishlist-icon-container">
+                                <img class="header-icon" src={wishlistIcon} alt="WishlistIcon" />
+                                {getWishlistCount() > 0 && (
+                                    <span className="wishlist-badge">{getWishlistCount()}</span>
+                                )}
+                            </div>
+                            :
+                            <a href="/contact">
+                                <img class="header-icon" src={contactIcon} alt="Contact" />
+                            </a>
+                        }
+                        
 
                         {isAuthenticated ?
                             <a href="/mymiro">
