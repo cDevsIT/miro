@@ -1020,8 +1020,8 @@
 }
 
 .content-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-wrap: wrap;
     row-gap: 87px;
     -moz-column-gap: 60px;
     column-gap: 157px;
@@ -3000,7 +3000,7 @@
 /*********************** Edit Profile Container By Zayed **********************/
 
 .edit-profile-container {
-    width: 58.4%;
+    /* width: 58.4%; */
 }
 
 .edit-profile-container h2 {
@@ -3025,6 +3025,7 @@
     margin-bottom: 55px;
     font-family: 'Montserrat', 'sans-serif';
     font-style: normal;
+    width: 58.4%;
 }
 
 .edit-profile-image-container {
@@ -3138,6 +3139,7 @@
         line-height: 18px;
         letter-spacing: 0px;
         margin-bottom: 55px;
+        width: 100%;
     }
 
     .edit-profile-image-container {
