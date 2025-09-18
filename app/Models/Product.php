@@ -70,4 +70,10 @@ class Product extends Model
     {
         return $this->hasMany(ProductImage::class)->orderBy('order');
     }
+
+    public function wishedBy(): BelongsToMany
+    {
+        return $this->belongsToMany(Customer::class, 'wishlists')
+            ->withTimestamps();
+    }
 }

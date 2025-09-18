@@ -1,54 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BaseAlert from '../Common/BaseAlert';
 import img1 from "../../../../public/images/LED RECESSED/01. MIR-D401A1001/FS-RNDO-002WBMW-W7.jpg";
+import { useWishlist } from '../../contexts/WishlistContext';
+import axios from 'axios';
 
 
 const Wishlist = () => {
 
-    const [wishlist, setWishlist] = useState(false)
+    const { wishlistItems, removeFromWishlist } = useWishlist();
 
-    const [products, setProducts] = useState([
-        {
-            id: 'MIR-D401A1001',
-            name: 'Recessed Adjustable Luminaire',
-            image: img1,
-            description: 'Recessed on ceiling',
-            color: 'Matte White',
-            temperature: '3000k',
-            quantity: 3,
-            selected: false
-        },
-        {
-            id: 'MIR-D401A1030',
-            name: 'Surface Adjustable Luminaire',
-            image: img1,
-            description: 'Recessed on ceiling',
-            color: 'Matte White',
-            temperature: '4000k',
+    // Local UI state mirroring wishlist items for quantity/selection without changing design
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        // Map backend items to UI model expected by the existing design
+        const mapped = (wishlistItems || []).map(item => ({
+            // Use model number as the visible id per existing design
+            id: item.model_number,
+            name: item.title,
+            // Prefer storage thumbnail; fallback to placeholder image if missing
+            image: item.thumbnail ? `/storage/${item.thumbnail}` : img1,
+            description: '',
+            color: '',
+            temperature: '',
             quantity: 1,
-            selected: false
-        },
-        {
-            id: 'MIR-D401A2040',
-            name: 'Surface Non-Adjustable Luminaire',
-            image: img1,
-            description: 'Recessed on ceiling',
-            color: 'Matte Black',
-            temperature: '4000k',
-            quantity: 1,
-            selected: false
-        },
-        {
-            id: 'MIR-D401A1025',
-            name: 'Surface Non-Adjustable Luminaire',
-            image: img1,
-            description: 'Recessed on ceiling',
-            color: 'Matte Black',
-            temperature: '3000k',
-            quantity: 1,
-            selected: false
-        }
-    ]);
+            selected: false,
+            // Keep real product primary key for API ops if needed
+            _productId: item.id,
+        }));
+        setProducts(mapped);
+    }, [wishlistItems]);
 
     const [selectAll, setSelectAll] = useState(false);
     const [alert, setAlert] = useState({
@@ -118,12 +99,22 @@ const Wishlist = () => {
         });
     };
 
-    const handleConfirmDelete = () => {
+    const handleConfirmDelete = async () => {
         if (alert.isMultiple) {
+            const toRemove = products.filter(product => product.selected);
+            // Optimistic UI update
             setProducts(products.filter(product => !product.selected));
             setSelectAll(false);
-        } else {
+            // Persist removals
+            for (const p of toRemove) {
+                try { await removeFromWishlist(p._productId || p.id); } catch (e) {}
+            }
+        } else if (alert.itemId) {
+            const item = products.find(p => p.id === alert.itemId);
             setProducts(products.filter(product => product.id !== alert.itemId));
+            if (item) {
+                try { await removeFromWishlist(item._productId || item.id); } catch (e) {}
+            }
         }
         setAlert({ isOpen: false, itemId: null, isMultiple: false });
     };
@@ -140,7 +131,7 @@ const Wishlist = () => {
 
     return (
         <>
-            {wishlist ? (
+            {products.length > 0 ? (
 
                 <div className="wishlist-page">
                     <div className="wishlist-main">
@@ -256,24 +247,53 @@ const Wishlist = () => {
 
                     <div className="product-summary">
                         <h2>Product Summary</h2>
-                        <div className="summary-items">
-                            {products.map(product => (
-                                <div key={product.id} className="summary-item">
-                                    <div>
-                                        <h4>{product.name}</h4>
-                                        <p>{product.id}</p>
+                        {getSelectedProducts().length > 0 ? (
+                            <>
+                                <div className="summary-items">
+                                    {getSelectedProducts().map(product => (
+                                        <div key={product.id} className="summary-item">
+                                            <div>
+                                                <h4>{product.name}</h4>
+                                                <p>{product.id}</p>
+                                            </div>
+                                            <span>{product.quantity} items</span>
+                                        </div>
+                                    ))}
+                                    <div className="summary-total">
+                                        <span>Total Products</span>
+                                        <span>{getTotalSelectedItems()} items</span>
                                     </div>
-                                    <span>{product.quantity} items</span>
                                 </div>
-                            ))}
-                            <div className="summary-total">
-                                <span>Total Products</span>
-                                <span>{getTotalSelectedItems()} items</span>
-                            </div>
-                        </div>
-                        <div className='quotation-div' >
-                            <button className="get-quotation">Get a quotation</button>
-                        </div>
+                                <div className='quotation-div' >
+                                    <button
+                                        className="get-quotation"
+                                        onClick={async () => {
+                                            const selected = getSelectedProducts();
+                                            if (selected.length === 0) return;
+                                            try {
+                                                const payload = {
+                                                    items: selected.map(p => ({
+                                                        product_id: p._productId || p.id,
+                                                        quantity: p.quantity || 1,
+                                                    }))
+                                                };
+                                                await axios.post('/api/quotes', payload);
+                                                // Optionally navigate to quotes tab if parent provides it
+                                                if (typeof window?.setActiveTab === 'function') {
+                                                    window.setActiveTab('get-quote');
+                                                }
+                                            } catch (e) {
+                                                console.error('Failed to create quote', e);
+                                            }
+                                        }}
+                                    >
+                                        Get a quotation
+                                    </button>
+                                </div>
+                            </>
+                        ) : (
+                            <p className="empty-message">No products selected.</p>
+                        )}
                     </div>
                 </div>
 

@@ -1,32 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import BaseAlert from '../Common/BaseAlert';
 import img1 from "../../../../public/images/LED RECESSED/01. MIR-D401A1001/FS-RNDO-002WBMW-W7.jpg";
+import axios from 'axios';
 
 const QuotePage = ({ setActiveTab }) => {
-    const [quote, setQuote] = useState(false); // State to handle if there is a quote or not
+    const [quote, setQuote] = useState(false);
 
-    const [products, setProducts] = useState([
-        {
-            id: 'MIR-D401A1001',
-            name: 'Recessed Adjustable Luminaire',
-            image: img1,
-            description: 'Recessed on ceiling',
-            color: 'Matte White',
-            temperature: '3000k',
-            quantity: 3,
-            selected: false
-        },
-        {
-            id: 'MIR-D401A1030',
-            name: 'Surface Adjustable Luminaire',
-            image: img1,
-            description: 'Recessed on ceiling',
-            color: 'Matte White',
-            temperature: '4000k',
-            quantity: 1,
-            selected: false
-        }
-    ]);
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const loadLatestQuote = async () => {
+            try {
+                const { data } = await axios.get('/api/quotes/latest');
+                if (data && data.items) {
+                    // Keep UI shape, mark none selected initially
+                    setProducts(data.items.map(it => ({
+                        id: it.id,
+                        name: it.name,
+                        image: it.image || img1,
+                        description: '',
+                        color: '',
+                        temperature: '',
+                        quantity: it.quantity || 1,
+                        selected: false
+                    })));
+                    setQuote(true);
+                } else {
+                    setProducts([]);
+                    setQuote(false);
+                }
+            } catch (e) {
+                setProducts([]);
+                setQuote(false);
+            }
+        };
+        loadLatestQuote();
+    }, []);
 
     const [selectAll, setSelectAll] = useState(false);
     const [alert, setAlert] = useState({

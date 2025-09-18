@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import axios from 'axios';
+import { useAuth } from '../hooks/useAuth';
 
 const WishlistContext = createContext();
 
@@ -13,6 +15,28 @@ export const useWishlist = () => {
 export const WishlistProvider = ({ children }) => {
     // Start with empty wishlist
     const [wishlistItems, setWishlistItems] = useState([]);
+    const { isAuthenticated, user } = useAuth();
+
+    // Load wishlist for authenticated customer
+    useEffect(() => {
+        const loadWishlist = async () => {
+            if (!isAuthenticated) {
+                setWishlistItems([]);
+                return;
+            }
+            try {
+                const { data } = await axios.get('/api/wishlist');
+                // Expect items: [{id, title, model_number, thumbnail}]
+                setWishlistItems(data || []);
+            } catch (err) {
+                // Fallback to empty if unauthorized or error
+                if (err.response && err.response.status === 401) {
+                    setWishlistItems([]);
+                }
+            }
+        };
+        loadWishlist();
+    }, [isAuthenticated, user?.id]);
 
     // Check if item is in wishlist
     const isInWishlist = (productId) => {
@@ -20,23 +44,38 @@ export const WishlistProvider = ({ children }) => {
     };
 
     // Add item to wishlist
-    const addToWishlist = (product) => {
-        if (!isInWishlist(product.id)) {
-            setWishlistItems(prev => [...prev, { ...product, quantity: 1 }]);
+    const addToWishlist = async (product) => {
+        if (isInWishlist(product.id)) return;
+        // Optimistic update
+        setWishlistItems(prev => [...prev, { ...product, quantity: 1 }]);
+        try {
+            await axios.post('/api/wishlist/toggle', { product_id: product.id });
+        } catch (err) {
+            // Revert on failure
+            setWishlistItems(prev => prev.filter(item => item.id !== product.id));
+            throw err;
         }
     };
 
     // Remove item from wishlist
-    const removeFromWishlist = (productId) => {
+    const removeFromWishlist = async (productId) => {
+        const previous = wishlistItems;
         setWishlistItems(prev => prev.filter(item => item.id !== productId));
+        try {
+            await axios.delete(`/api/wishlist/${productId}`);
+        } catch (err) {
+            setWishlistItems(previous);
+            throw err;
+        }
     };
 
     // Toggle wishlist item (add if not present, remove if present)
-    const toggleWishlist = (product) => {
+    const toggleWishlist = async (product) => {
+        if (!product || !product.id) return;
         if (isInWishlist(product.id)) {
-            removeFromWishlist(product.id);
+            await removeFromWishlist(product.id);
         } else {
-            addToWishlist(product);
+            await addToWishlist(product);
         }
     };
 
@@ -72,3 +111,5 @@ export const WishlistProvider = ({ children }) => {
         </WishlistContext.Provider>
     );
 };
+
+export default WishlistContext;

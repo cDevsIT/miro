@@ -22,6 +22,8 @@ use App\Http\Controllers\Admin\FamilyProductController;
 use App\Http\Controllers\Admin\AccessoryController;
 use App\Http\Controllers\Admin\InstallationMethodController;
 use App\Http\Controllers\Api\CategoryController as ApiCategoryController;
+use App\Http\Controllers\Api\WishlistController as ApiWishlistController;
+use App\Http\Controllers\Api\QuoteController as ApiQuoteController;
 
 Route::get('/', function () {
     return view('pages.home');
@@ -161,6 +163,10 @@ Route::prefix('mymiro')->group(function () {
     Route::get('/customer-data', [CustomerController::class, 'getCustomerData'])
         ->middleware('auth:customer');
 
+    Route::post('/profile/update', [CustomerController::class, 'update'])
+        ->middleware('auth:customer')
+        ->name('mymiro.profile.update');
+
     Route::post('/book-appointment', [AppointmentController::class, 'store'])
         ->middleware('auth:customer')
         ->name('mymiro.book-appointment');
@@ -186,6 +192,17 @@ Route::get('/api/product-category/details/{id}', [ApiCategoryController::class, 
 
 Route::get('/api/products/search', [ApiCategoryController::class, 'searchProducts']);
 Route::get('/api/products/{modelNumber}', [ProductController::class, 'getByModelNumber']);
+
+// Wishlist API (customer auth)
+Route::middleware('auth:customer')->group(function () {
+    Route::get('/api/wishlist', [ApiWishlistController::class, 'index']);
+    Route::post('/api/wishlist/toggle', [ApiWishlistController::class, 'toggle']);
+    Route::delete('/api/wishlist/{product}', [ApiWishlistController::class, 'destroy']);
+
+    // Quotes
+    Route::post('/api/quotes', [ApiQuoteController::class, 'create']);
+    Route::get('/api/quotes/latest', [ApiQuoteController::class, 'latest']);
+});
 
 require __DIR__.'/auth.php';
 

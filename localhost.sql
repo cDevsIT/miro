@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 31, 2025 at 02:54 PM
+-- Generation Time: Sep 18, 2025 at 02:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -179,6 +179,7 @@ CREATE TABLE `appointments` (
   `date` date NOT NULL,
   `time` time NOT NULL,
   `remarks` text DEFAULT NULL,
+  `status` varchar(50) DEFAULT 'pending',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -187,8 +188,10 @@ CREATE TABLE `appointments` (
 -- Dumping data for table `appointments`
 --
 
-INSERT INTO `appointments` (`id`, `customer_id`, `name`, `email`, `phone`, `date`, `time`, `remarks`, `created_at`, `updated_at`) VALUES
-(1, 1, 'cvxcv', 'cdevsit@gmail.com', '01886350525', '2025-05-29', '11:18:00', 'xcvcxvcxv', '2025-05-24 05:18:44', '2025-05-24 05:18:44');
+INSERT INTO `appointments` (`id`, `customer_id`, `name`, `email`, `phone`, `date`, `time`, `remarks`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'cvxcv', 'cdevsit@gmail.com', '01886350525', '2025-05-29', '11:18:00', 'xcvcxvcxv', 'complete', '2025-05-24 05:18:44', '2025-05-24 05:18:44'),
+(2, 1, 'Md Rafiqul Islam', 'dsfsdf@sdfd.dsf', '01886350525', '2025-09-18', '12:57:00', 'sdfdsfsdfsd', 'complete', '2025-09-18 00:57:25', '2025-09-18 00:57:25'),
+(3, 1, 'Md Rafiqul Islam', 'dsfdg@dfgdg.dfg', '01886350525', '2025-09-19', '17:43:00', 'xfvdvxcvcvxcvcx', 'scheduled', '2025-09-18 05:43:59', '2025-09-18 05:43:59');
 
 -- --------------------------------------------------------
 
@@ -1976,6 +1979,8 @@ CREATE TABLE `customers` (
   `password` varchar(255) NOT NULL,
   `profession` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1985,9 +1990,9 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `name`, `email`, `password`, `profession`, `phone`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Md Rafiqul Islam', 'rumon24h@gmail.com', '$2y$12$YSnTTqlfJYf3QEk3XPW12uCyLXBclF2CE7/4fUVgJOoEwlp57JvlK', 'Architect', '01886350525', NULL, '2025-05-11 21:24:16', '2025-05-11 21:24:16'),
-(2, 'Meem Zaman', 'intrends.meem@gmail.com', '$2y$12$eng./eJGNYByAktN.ec4fO66ygOiDya7EtVc2/JJWAsd4Z1UJkS0W', 'Architect', '01683976571', NULL, '2025-05-19 11:25:06', '2025-05-19 11:25:06');
+INSERT INTO `customers` (`id`, `name`, `email`, `password`, `profession`, `phone`, `address`, `avatar`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Md Rafiqul', 'rumon24h@gmail.com', '$2y$12$YSnTTqlfJYf3QEk3XPW12uCyLXBclF2CE7/4fUVgJOoEwlp57JvlK', 'designer', '01886350525', 'sddsdgdg 44', 'customers/avatars/iPN5ePfVJlE7szITJanezxIQbkWsul6Mchg5DH79.jpg', NULL, '2025-05-11 21:24:16', '2025-09-18 06:36:45'),
+(2, 'Meem Zaman', 'intrends.meem@gmail.com', '$2y$12$eng./eJGNYByAktN.ec4fO66ygOiDya7EtVc2/JJWAsd4Z1UJkS0W', 'Architect', '01683976571', NULL, NULL, NULL, '2025-05-19 11:25:06', '2025-05-19 11:25:06');
 
 -- --------------------------------------------------------
 
@@ -3286,7 +3291,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (37, '2025_05_10_040154_remove_description_and_specifications_from_products_table', 1),
 (38, '2025_05_09_114445_create_product_attribute_table', 2),
 (39, '2025_08_03_063411_create_category_banners_table', 3),
-(40, '2025_08_03_073714_add_link_to_categories_table', 4);
+(40, '2025_08_03_073714_add_link_to_categories_table', 4),
+(41, '2025_09_18_000000_create_wishlists_table', 5),
+(42, '2025_09_18_000100_create_quotes_table', 6),
+(43, '2025_09_18_000101_create_quote_items_table', 6);
 
 -- --------------------------------------------------------
 
@@ -4059,6 +4067,53 @@ INSERT INTO `product_reflector_color` (`id`, `product_id`, `reflector_color_id`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `quotes`
+--
+
+CREATE TABLE `quotes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
+  `code` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL DEFAULT 'pending',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quotes`
+--
+
+INSERT INTO `quotes` (`id`, `customer_id`, `code`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'MIRQ01', 'pending', '2025-09-18 02:06:46', '2025-09-18 02:06:46'),
+(2, 1, 'MIRQ02', 'pending', '2025-09-18 02:08:19', '2025-09-18 02:08:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quote_items`
+--
+
+CREATE TABLE `quote_items` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `quote_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `quote_items`
+--
+
+INSERT INTO `quote_items` (`id`, `quote_id`, `product_id`, `quantity`, `created_at`, `updated_at`) VALUES
+(1, 1, 31, 1, '2025-09-18 02:06:46', '2025-09-18 02:06:46'),
+(2, 2, 31, 1, '2025-09-18 02:08:19', '2025-09-18 02:08:19'),
+(3, 2, 35, 1, '2025-09-18 02:08:19', '2025-09-18 02:08:19');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `reflector_colors`
 --
 
@@ -4112,10 +4167,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('jtD8HNPtZeHANDRjEwPWlSHZm36wVtchxFcahPzN', NULL, '::1', 'curl/7.53.1', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiQzRCTjIzRHRZejF6UHpMdnlKQVJwUTAwMXhKU3lZRHd2bDMzSlh6TSI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTQ6Imh0dHA6Ly9sb2NhbGhvc3QvbWlyby9wdWJsaWMvYXBpL2NhdGVnb3JpZXMvb3V0ZG9vci8yNiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1756531847),
-('LvzN9xaJyOc6PnJjo8Atji4LwJ4f1P3okOiqzwme', NULL, '::1', 'curl/7.53.1', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoidWdTV25kMlpJdXBLN25EdHlQNmZpazZyZjF3Snp3bnFQQ3dCY3FsaiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTE6Imh0dHA6Ly9sb2NhbGhvc3QvbWlyby9wdWJsaWMvYXBpL2NhdGVnb3JpZXMvb3V0ZG9vciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1756531840),
-('twGgOj1M7meclI9t0lLIwLSCLUwjdYc3FFakoBmJ', NULL, '::1', 'curl/7.53.1', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiZkVycmF3Nm11NU9BMU5TNGxibjNxSFlUbHFQRnh1N2l2bmFLVDZVQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NjA6Imh0dHA6Ly9sb2NhbGhvc3QvbWlyby9wdWJsaWMvYXBpL3Byb2R1Y3QtY2F0ZWdvcnkvZGV0YWlscy8zOCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1756531854),
-('UJvOXzvFqwT2BJqLUDpRIU1ehIhjJCIUvY68sxuV', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoibzJhTXJ5UThzV2dFM1hCVlNhNUNkSG1lMzZLcjNDRkl2T3dWZUJnRCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDQ6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9wcm9kdWN0cy9NSVItRDQwMUExMDAxIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MjtzOjU1OiJsb2dpbl9jdXN0b21lcl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1756534470);
+('uDscbVQi4L35PkHtOLxKxIeMDftoRq6DdGQ9yNMv', 1, '127.0.0.1', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoib1pWbElIaUdLS2dRSzl1bFVDWHVXNUEzdnJZV0E2bE5HUE5PVWhFOCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mjg6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9teW1pcm8iO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToyO3M6NTU6ImxvZ2luX2N1c3RvbWVyXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1758199005);
 
 -- --------------------------------------------------------
 
@@ -4145,6 +4197,28 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (5, 'Sharmin', 'sharminmeena24h@gmail.com', NULL, '$2y$12$0ueu99Eh.Q8pTohYqPfRT.mZGmKcHsJZh7fQtwh9aMdMtiZMN4wIC', NULL, '2025-05-23 07:42:51', '2025-05-23 07:42:51'),
 (6, 'Zayed', 'zayedbinalam123@gmail.com', NULL, '$2y$12$NVTUUHR5MaacFVh.x/.xH.ycn2ueuk1.V9muQLaE7yhJ7xAURoN3.', NULL, '2025-05-23 07:44:22', '2025-05-23 07:44:22'),
 (7, 'Meem', 'intrends.meem@gmail.com', NULL, '$2y$12$UGra1Aq/ZQ0BO95BUXcP.uj6wTsxJIx/b4.MHVSNKL9cqOhg.0IPG', NULL, '2025-05-23 07:48:26', '2025-05-23 07:48:26');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlists`
+--
+
+CREATE TABLE `wishlists` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `customer_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `wishlists`
+--
+
+INSERT INTO `wishlists` (`id`, `customer_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(3, 1, 31, '2025-09-18 00:50:59', '2025-09-18 00:50:59'),
+(4, 1, 35, '2025-09-18 00:51:04', '2025-09-18 00:51:04');
 
 --
 -- Indexes for dumped tables
@@ -4400,6 +4474,22 @@ ALTER TABLE `product_reflector_color`
   ADD KEY `product_reflector_color_reflector_color_id_foreign` (`reflector_color_id`);
 
 --
+-- Indexes for table `quotes`
+--
+ALTER TABLE `quotes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `quotes_code_unique` (`code`),
+  ADD KEY `quotes_customer_id_foreign` (`customer_id`);
+
+--
+-- Indexes for table `quote_items`
+--
+ALTER TABLE `quote_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `quote_items_quote_id_foreign` (`quote_id`),
+  ADD KEY `quote_items_product_id_foreign` (`product_id`);
+
+--
 -- Indexes for table `reflector_colors`
 --
 ALTER TABLE `reflector_colors`
@@ -4421,6 +4511,14 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
+-- Indexes for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `wishlists_customer_id_product_id_unique` (`customer_id`,`product_id`),
+  ADD KEY `wishlists_product_id_foreign` (`product_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -4440,7 +4538,7 @@ ALTER TABLE `accessory_product`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `attributes`
@@ -4548,7 +4646,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -4611,6 +4709,18 @@ ALTER TABLE `product_reflector_color`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=156;
 
 --
+-- AUTO_INCREMENT for table `quotes`
+--
+ALTER TABLE `quotes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `quote_items`
+--
+ALTER TABLE `quote_items`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `reflector_colors`
 --
 ALTER TABLE `reflector_colors`
@@ -4621,6 +4731,12 @@ ALTER TABLE `reflector_colors`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -4760,6 +4876,26 @@ ALTER TABLE `product_installation_method`
 ALTER TABLE `product_reflector_color`
   ADD CONSTRAINT `product_reflector_color_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `product_reflector_color_reflector_color_id_foreign` FOREIGN KEY (`reflector_color_id`) REFERENCES `reflector_colors` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `quotes`
+--
+ALTER TABLE `quotes`
+  ADD CONSTRAINT `quotes_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `quote_items`
+--
+ALTER TABLE `quote_items`
+  ADD CONSTRAINT `quote_items_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `quote_items_quote_id_foreign` FOREIGN KEY (`quote_id`) REFERENCES `quotes` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `wishlists`
+--
+ALTER TABLE `wishlists`
+  ADD CONSTRAINT `wishlists_customer_id_foreign` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `wishlists_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

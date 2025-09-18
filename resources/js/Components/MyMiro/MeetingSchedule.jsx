@@ -60,8 +60,10 @@ const MeetingSchedule = () => {
             const response = await axios.post('/mymiro/appointments/store', formData);
 
             if (response.data.success) {
-                // Directly switch to meeting schedule tab on success
-                setActiveTab('meetingSchedule');
+                // Refresh the appointments list so the schedule view is shown
+                await fetchAppointments();
+                // Reset form
+                setFormData({ name: '', email: '', phone: '', date: '', time: '', remarks: '' });
             }
         } catch (err) {
             console.error('Appointment booking error:', err);
@@ -83,28 +85,19 @@ const MeetingSchedule = () => {
     };
 
     if (loading) return <div className="loading">Loading appointments...</div>;
-    if (error) return <div className="error-message">{error}</div>;
+
+    // Consider status: only treat schedules with status 'pending' or 'scheduled' as active
+    const hasActiveSchedule = Array.isArray(appointments) && appointments.some(a => (a?.status === 'pending' || a?.status === 'scheduled'));
 
     return (
         <div className="meeting-schedule">
 
-            {/* {appointments.legth === 0 ? ( */}
-            {appointments.legth !=0 ? (
+            {!hasActiveSchedule ? (
                 <div className="book-appointment">
                     <h2>Book an appointment</h2>
 
                     {error && (
-                        <div className="error-message">
-                            {error}
-                            {/* Show detailed error if available */}
-                            {error.response?.data?.errors && (
-                                <ul>
-                                    {Object.values(error.response.data.errors).map((err, index) => (
-                                        <li key={index}>{err[0]}</li>
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
+                        <div className="error-message">{error}</div>
                     )}
 
                     <form onSubmit={handleSubmit} className="dashboard-appointment-form">
@@ -173,38 +166,42 @@ const MeetingSchedule = () => {
             ) : (
                 <div className="appointments-list">
                     <div className="meeting-schedule-container">
-
                         <h2 className="meeting-schedule-title">Meeting Schedule</h2>
-
-                        <div className='meeting-box' >
-
-                            <div className="meeting-details-card">
-                                <div className="meeting-image">
-                                    <img src={img1} alt='Meeting Scheduled Image For Miro' />
-                                </div>
-
-                                <div className="meeting-footer footer-vanish">
-                                    <p>Looking forward to seeing you there!</p>
-                                </div>
-
-                                <div className="meeting-details">
-                                    <h3>Meeting Details</h3>
-                                    <div className="meeting-info">
-                                        <p><strong>Date:</strong> 00-00-00</p>
-                                        <p><strong>Time:</strong> Preferred</p>
-                                        <p><strong>Location:</strong> 10 am</p>
-                                        <p><strong>Attendees:</strong> Ar. Nasir, Ar. Alvi</p>
-                                        <p><strong>Contact no:</strong> +880 1786-711975</p>
+                        {appointments.filter(appt => appt.status !== 'complete').map((appt) => (
+                            <div key={appt.id} className='meeting-box'>
+                                {(() => {
+                                    const s = (appt.status || 'pending').toLowerCase();
+                                    appt._footerMsg = s === 'scheduled' ? 'Looking forward to seeing you there!'
+                                        : s === 'complete' ? 'Thanks for meeting with us!'
+                                        : 'We\'ll review your request and confirm soon.';
+                                })()}
+                                <div className="meeting-details-card">
+                                    <div className="meeting-image">
+                                        <img src={img1} alt='Meeting Scheduled Image For Miro' />
+                                    </div>
+                                    <div className="meeting-footer footer-vanish">
+                                        <p>{appt._footerMsg}</p>
+                                    </div>
+                                    <div className="meeting-details">
+                                        <h3>Meeting Details</h3>
+                                        <div className="meeting-info">
+                                            <p><strong>Date:</strong> {formatDate(appt.date)}</p>
+                                            <p><strong>Time:</strong> {appt.time}</p>
+                                            <p><strong>Status:</strong> {appt.status || 'pending'}</p>
+                                            <p><strong>Name:</strong> {appt.name}</p>
+                                            <p><strong>Email:</strong> {appt.email}</p>
+                                            <p><strong>Contact no:</strong> {appt.phone}</p>
+                                            {appt.remarks && (
+                                                <p><strong>Remarks:</strong> {appt.remarks}</p>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
+                                <div className="meeting-footer footer-pc">
+                                    <p>{appt._footerMsg}</p>
+                                </div>
                             </div>
-
-                            <div className="meeting-footer footer-pc">
-                                <p>Looking forward to seeing you there!</p>
-                            </div>
-
-                        </div>
-
+                        ))}
                     </div>
                 </div>
             )}

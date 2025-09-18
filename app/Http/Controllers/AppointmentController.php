@@ -20,7 +20,8 @@ class AppointmentController extends Controller
                 'phone' => 'required|string',
                 'date' => 'required|date',
                 'time' => 'required|date_format:H:i',
-                'remarks' => 'nullable|string'
+                'remarks' => 'nullable|string',
+                'status' => 'nullable|in:pending,scheduled,complete'
             ]);
 
             // Get the authenticated customer
@@ -39,6 +40,7 @@ class AppointmentController extends Controller
                 'date' => $validated['date'],
                 'time' => $validated['time'],
                 'remarks' => $validated['remarks'] ?? null,
+                'status' => $validated['status'] ?? 'pending',
             ]);
 
             // Log successful creation

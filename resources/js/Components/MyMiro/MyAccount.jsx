@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const MyAccount = ({ customer, setActiveTab, setShowSettingsTabs }) => {
+const MyAccount = ({ customer: customerProp, setActiveTab, setShowSettingsTabs }) => {
+    const [customer, setCustomer] = useState(customerProp || null);
+
+    useEffect(() => {
+        if (!customerProp) {
+            axios.get('/mymiro/customer-data').then(({ data }) => {
+                if (data && data.customer) setCustomer(data.customer);
+            }).catch(() => {});
+        }
+    }, [customerProp]);
+
+    const firstName = (customer?.name || '').split(' ')[0] || '';
+    const lastName = (customer?.name || '').split(' ').slice(1).join(' ') || '';
     return (
         <div className="my-account-container">
             <h1>My Account</h1>
 
             <div className="profile-section">
                 <div className="profile-image">
-                    {/* Placeholder circle for profile image */}
-                    <div className="image-placeholder"></div>
+                    <div className="image-placeholder">
+                        {customer?.avatar && (
+                            <img src={customer.avatar} alt="Avatar" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
+                        )}
+                    </div>
                 </div>
                 <div className="profile-info">
                     <h2>{customer?.name}</h2>
-                    <p className="profession">architect</p>
+                    <p className="profession">{customer?.profession || '—'}</p>
                     <p className="email">{customer?.email}</p>
                     <p className="phone">{customer?.phone}</p>
                 </div>
@@ -26,12 +42,12 @@ const MyAccount = ({ customer, setActiveTab, setShowSettingsTabs }) => {
                 <div className="info-grid">
                     <div className="info-group">
                         <label>First Name</label>
-                        <p>{customer?.name.split(' ')[0]}</p>
+                        <p>{firstName}</p>
                     </div>
 
                     <div className="info-group">
                         <label>Last Name</label>
-                        <p>{customer?.name.split(' ')[1]} {''} {customer?.name.split(' ')[2]} {''} {customer?.name.split(' ')[3]}</p>
+                        <p>{lastName}</p>
                     </div>
 
                     <div className="info-group">
@@ -46,12 +62,12 @@ const MyAccount = ({ customer, setActiveTab, setShowSettingsTabs }) => {
 
                     <div className="info-group">
                         <label>Profession</label>
-                        <p>Architect</p>
+                        <p>{customer?.profession || '—'}</p>
                     </div>
 
                     <div className="info-group">
                         <label>Address</label>
-                        <p>Add +</p>
+                        <p>{customer?.address || '—'}</p>
                     </div>
                 </div>
 

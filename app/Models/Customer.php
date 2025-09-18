@@ -15,10 +15,18 @@ class Customer extends Authenticatable
         'password',
         'profession',
         'phone',
+        'address',
+        'avatar',
     ];
 
     protected $hidden = [
         'password',
         'remember_token',
     ];
+
+    public function wishlist()
+    {
+        return $this->belongsToMany(Product::class, 'wishlists')
+            ->withTimestamps();
+    }
 }
