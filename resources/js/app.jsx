@@ -1,5 +1,6 @@
 // import './bootstrap';
 import '../css/app.css';
+import '../css/header-wishlist.css';
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -24,17 +25,20 @@ import Signup from './Components/MyMiro/Auth/Signup';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 import AdminLogin from './Components/Admin/Auth/Login';
+import { WishlistProvider } from './contexts/WishlistContext';
 import Dashboard from './Components/Admin/Dashboard';
 import AttributesList from './Components/Admin/AttributesList';
 import AddAttribute from './Components/Admin/AddAttribute';
-import EditAttribute from './Components/Admin/EditAttribute';   
+import EditAttribute from './Components/Admin/EditAttribute';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
-// Create a wrapper component that includes the Router
+// Create a wrapper component that includes the Router and WishlistProvider
 const AppWrapper = ({ children }) => (
     <BrowserRouter>
-        {children}
+        <WishlistProvider>
+            {children}
+        </WishlistProvider>
     </BrowserRouter>
 );
 
@@ -232,7 +236,7 @@ if (footerRoot) {
     );
 }
 
-// Mount Header component
+// Header is now rendered within ProductDetails component
 const headerRoot = document.getElementById('header-root');
 if (headerRoot) {
     createRoot(headerRoot).render(
@@ -284,11 +288,11 @@ if (addAttributeRoot) {
 }
 
 // Mount EditAttribute component
-const editAttributeRoot = document.getElementById('edit-attribute');    
+const editAttributeRoot = document.getElementById('edit-attribute');
 if (editAttributeRoot) {
     createRoot(editAttributeRoot).render(
         <AppWrapper>
             <EditAttribute />
         </AppWrapper>
     );
-}       
+}
