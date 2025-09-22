@@ -127,12 +127,14 @@ const Header = () => {
                     {/* Desktop Icons */}
                     <div class="header-nav-icons">
                         {isAuthenticated ?
+                         <a href="/mymiro" onClick={() => localStorage.setItem('mymiroActiveTab', 'wishlist')}>
                             <div className="wishlist-icon-container">
                                 <img class="header-icon" src={wishlistIcon} alt="WishlistIcon" />
                                 {getWishlistCount() > 0 && (
                                     <span className="wishlist-badge">{getWishlistCount()}</span>
                                 )}
                             </div>
+                            </a>
                             :
                             <a href="/contact">
                                 <img class="header-icon" src={contactIcon} alt="Contact" />
@@ -141,7 +143,7 @@ const Header = () => {
                         
 
                         {isAuthenticated ?
-                            <a href="/mymiro">
+                            <a href="/mymiro" onClick={() => localStorage.setItem('mymiroActiveTab', 'getQuote')}>
                                 <img class="header-icon" src={boqIcon} alt="My Miro" />
                             </a>
                             :

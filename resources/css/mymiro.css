@@ -2326,7 +2326,7 @@
 
 .quote-product-item {
     display: grid;
-    grid-template-columns: auto 100px 1fr auto;
+    grid-template-columns: auto auto auto;
     gap: 24px;
     padding: 24px;
     border: 2px solid #bcbcbc;
@@ -2374,8 +2374,7 @@
 .quote-product-specs {
     display: flex;
     gap: 16px;
-    color: #6B7280;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .quote-product-actions {
@@ -2388,6 +2387,7 @@
 .quote-quantity-control {
     display: flex;
     gap: 16px;
+    justify-content: end;
 }
 
 .quote-quantity-btn {
@@ -2404,13 +2404,13 @@
     display: flex;
     gap: 16px;
     align-items: center;
+    justify-content: end;
+    text-decoration: underline;
 }
 
 .quote-more-info {
     cursor: pointer;
     font-size: 12px;
-    line-height: 15x;
-    font-family: 'Montserrat', 'sans serif';
     font-weight: 500;
     margin-bottom: 8px;
     text-align: left;
@@ -2418,6 +2418,7 @@
     letter-spacing: 0px;
     color: #010101;
     opacity: 1;
+    text-decoration: underline;
 }
 
 .quote-delete {
@@ -2585,7 +2586,7 @@
     .quote-action-links {
         gap: 10px;
         display: flex;
-        justify-content: space-between;
+        justify-content: end;
     }
 
     .mobile-product-actions {

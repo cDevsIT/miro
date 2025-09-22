@@ -5,6 +5,8 @@ import axios from 'axios';
 
 const QuotePage = ({ setActiveTab }) => {
     const [quote, setQuote] = useState(false);
+    const [quoteStatus, setQuoteStatus] = useState('');
+    const [quoteCode, setQuoteCode] = useState('');
 
     const [products, setProducts] = useState([]);
 
@@ -13,25 +15,56 @@ const QuotePage = ({ setActiveTab }) => {
             try {
                 const { data } = await axios.get('/api/quotes/latest');
                 if (data && data.items) {
-                    // Keep UI shape, mark none selected initially
-                    setProducts(data.items.map(it => ({
-                        id: it.id,
-                        name: it.name,
-                        image: it.image || img1,
-                        description: '',
-                        color: '',
-                        temperature: '',
-                        quantity: it.quantity || 1,
-                        selected: false
-                    })));
+                    // Set quote information
+                    setQuoteStatus(data.status || 'pending');
+                    setQuoteCode(data.code || '');
+                    
+                    // Fetch full product details for each item to get colors
+                    const productsWithDetails = await Promise.all(
+                        data.items.map(async (it) => {
+                            try {
+                                const productResponse = await axios.get(`/api/products/${it.id}`);
+                                const productData = productResponse.data;
+                                return {
+                                    id: it.id,
+                                    name: it.name,
+                                    image: it.image || img1,
+                                    quantity: it.quantity || 1,
+                                    selected: false,
+                                    bodyColors: productData.colors && productData.colors.length > 0 
+                                        ? productData.colors.map(color => color.name)
+                                        : ['Standard'],
+                                    colorTemperature: productData.specifications && productData.specifications['Color Temperature (CCT)'] 
+                                        ? productData.specifications['Color Temperature (CCT)']
+                                        : 'Standard'
+                                };
+                            } catch (e) {
+                                // Fallback if product details can't be fetched
+                                return {
+                                    id: it.id,
+                                    name: it.name,
+                                    image: it.image || img1,
+                                    quantity: it.quantity || 1,
+                                    selected: false,
+                                    bodyColors: ['Standard'],
+                                    colorTemperature: 'Standard'
+                                };
+                            }
+                        })
+                    );
+                    setProducts(productsWithDetails);
                     setQuote(true);
                 } else {
                     setProducts([]);
                     setQuote(false);
+                    setQuoteStatus('');
+                    setQuoteCode('');
                 }
             } catch (e) {
                 setProducts([]);
                 setQuote(false);
+                setQuoteStatus('');
+                setQuoteCode('');
             }
         };
         loadLatestQuote();
@@ -88,69 +121,34 @@ const QuotePage = ({ setActiveTab }) => {
                         <div className="quote-products-list">
                             {products.map((product) => (
                                 <div key={product.id} className="quote-product-item">
-                                    <div className="quote-checkbox-wrapper pc-wish-check">
-                                        <input
-                                            type="checkbox"
-                                            checked={product.selected}
-                                            onChange={() => handleSelect(product.id)}
-                                        />
-                                    </div>
                                     <div className="quote-product-image">
                                         <img src={product.image} alt={product.name} />
                                     </div>
                                     <div className="quote-product-details">
                                         <div className='mobile-check-div' >
                                             <h3>{product.name}</h3>
-                                            <div className="quote-checkbox-wrapper mobile-wish-check">
-                                                <input
-                                                    type="checkbox"
-                                                    checked={product.selected}
-                                                    onChange={() => handleSelect(product.id)}
-                                                />
-                                            </div>
                                         </div>
                                         <p className="quote-product-id">{product.id}</p>
-                                        <p className="quote-product-description">{product.description}</p>
                                         <div className="quote-product-specs">
-                                            <span>{product.color}</span>
-                                            <span>{product.temperature}</span>
+                                            <span>{product.bodyColors.join(', ')}</span>
+                                            <span>{product.colorTemperature}</span>
                                         </div>
                                     </div>
 
                                     <div className="quote-product-actions mobile-wish-info-delete">
 
                                         <div className="quote-quantity-control">
-                                            <button
-                                                className="quote-quantity-btn"
-                                                onClick={() => handleQuantityChange(product.id, -1)}
-                                            >−</button>
-                                            <span>{product.quantity}</span>
-                                            <button
-                                                className="quote-quantity-btn"
-                                                onClick={() => handleQuantityChange(product.id, 1)}
-                                            >+</button>
+                                            <span>{product.quantity} Items</span>
                                         </div>
 
                                         <div className="quote-action-links">
-                                            <button className="quote-more-info">more info</button>
-                                            <button
-                                                className="quote-delete"
-                                                onClick={() => handleDelete(product.id)}
-                                            >
-                                                <i className="far fa-trash-alt"></i>
-                                            </button>
+                                            <a target='_blank' href={`/products/${product.id}`} className="quote-more-info">more info</a>
                                         </div>
                                     </div>
 
                                     <div className='mobile-product-actions mobile-wish-new-info-delete' >
                                         <div className="quote-action-links">
-                                            <button className="quote-more-info">more info</button>
-                                            <button
-                                                className="quote-delete"
-                                                onClick={() => handleDelete(product.id)}
-                                            >
-                                                <i className="far fa-trash-alt"></i>
-                                            </button>
+                                            <a href={`/products/${product.id}`} className="quote-more-info">more info</a>
                                         </div>
                                     </div>
 
@@ -158,7 +156,7 @@ const QuotePage = ({ setActiveTab }) => {
                             ))}
 
                             <div className='add-more-div' >
-                                <button className="add-more">
+                                <button onClick={() => setActiveTab('wishlist')} className="add-more">
                                     + get another quote
                                 </button>
                             </div>
@@ -185,7 +183,9 @@ const QuotePage = ({ setActiveTab }) => {
                         </div>
 
                         <div className="quote-quotation">
-                            <button className="quote-get-quotation">Get a quotation</button>
+                            <button className="quote-get-quotation">
+                            Status : {quoteStatus.charAt(0).toUpperCase() + quoteStatus.slice(1)}
+                            </button>
                         </div>
 
                         <p className='quote-boq-request' >Your BOQ request is under review. Please check back soon for updates.</p>
@@ -194,7 +194,7 @@ const QuotePage = ({ setActiveTab }) => {
             ) : (
                 <div className="no-quotes-container">
                     <h2>No Quotes Yet – Request One Now!</h2>
-                    <p className='empty-message' >You haven’t requested a quote yet!</p>
+                    <p className='empty-message' >You haven't requested a quote yet!</p>
                     <p className='start-adding' >Need pricing or details? Submit your request now!</p>
                     <button className="go-to-wishlist action-links-button"
                         onClick={() => {

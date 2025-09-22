@@ -1,34 +1,69 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BaseAlert from '../Common/BaseAlert';
 import img1 from "../../../../public/images/LED RECESSED/01. MIR-D401A1001/FS-RNDO-002WBMW-W7.jpg";
 import { useWishlist } from '../../contexts/WishlistContext';
 import axios from 'axios';
 
 
-const Wishlist = () => {
-
+const Wishlist = ({ setActiveTab }) => {
+    const navigate = useNavigate();
     const { wishlistItems, removeFromWishlist } = useWishlist();
 
     // Local UI state mirroring wishlist items for quantity/selection without changing design
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        // Map backend items to UI model expected by the existing design
-        const mapped = (wishlistItems || []).map(item => ({
-            // Use model number as the visible id per existing design
-            id: item.model_number,
-            name: item.title,
-            // Prefer storage thumbnail; fallback to placeholder image if missing
-            image: item.thumbnail ? `/storage/${item.thumbnail}` : img1,
-            description: '',
-            color: '',
-            temperature: '',
-            quantity: 1,
-            selected: false,
-            // Keep real product primary key for API ops if needed
-            _productId: item.id,
-        }));
-        setProducts(mapped);
+        const loadWishlistWithDetails = async () => {
+            if (!wishlistItems || wishlistItems.length === 0) {
+                setProducts([]);
+                return;
+            }
+
+            // Fetch full product details for each wishlist item to get colors and temperature
+            const productsWithDetails = await Promise.all(
+                wishlistItems.map(async (item) => {
+                    try {
+                        const productResponse = await axios.get(`/api/products/${item.model_number}`);
+                        const productData = productResponse.data;
+                        return {
+                            // Use model number as the visible id per existing design
+                            id: item.model_number,
+                            name: item.title,
+                            // Prefer storage thumbnail; fallback to placeholder image if missing
+                            image: item.thumbnail ? `/storage/${item.thumbnail}` : img1,
+                            description: '',
+                            color: productData.colors && productData.colors.length > 0 
+                                ? productData.colors.map(color => color.name).join(', ')
+                                : 'Standard',
+                            temperature: productData.specifications && productData.specifications['Color Temperature (CCT)'] 
+                                ? productData.specifications['Color Temperature (CCT)']
+                                : 'Standard',
+                            quantity: 1,
+                            selected: false,
+                            // Keep real product primary key for API ops if needed
+                            _productId: item.id,
+                        };
+                    } catch (e) {
+                        // Fallback if product details can't be fetched
+                        return {
+                            id: item.model_number,
+                            name: item.title,
+                            image: item.thumbnail ? `/storage/${item.thumbnail}` : img1,
+                            description: '',
+                            color: 'Standard',
+                            temperature: 'Standard',
+                            quantity: 1,
+                            selected: false,
+                            _productId: item.id,
+                        };
+                    }
+                })
+            );
+            setProducts(productsWithDetails);
+        };
+
+        loadWishlistWithDetails();
     }, [wishlistItems]);
 
     const [selectAll, setSelectAll] = useState(false);
@@ -206,7 +241,7 @@ const Wishlist = () => {
                                             </div>
 
                                             <div className="action-links">
-                                                <button className="more-info">more info</button>
+                                            <a target='_blank' href={`/products/${product.id}`} className="quote-more-info">more info</a>
                                                 <button
                                                     className="delete"
                                                     onClick={() => handleDelete(product.id)}
@@ -220,7 +255,7 @@ const Wishlist = () => {
                                         <div className="mobile-product-actions mobile-wish-new-info-delete">
 
                                             <div className="action-links">
-                                                <button className="more-info">more info</button>
+                                            <a target='_blank' href={`/products/${product.id}`} className="quote-more-info">more info</a>
                                                 <button
                                                     className="delete"
                                                     onClick={() => handleDelete(product.id)}
@@ -278,10 +313,8 @@ const Wishlist = () => {
                                                     }))
                                                 };
                                                 await axios.post('/api/quotes', payload);
-                                                // Optionally navigate to quotes tab if parent provides it
-                                                if (typeof window?.setActiveTab === 'function') {
-                                                    window.setActiveTab('get-quote');
-                                                }
+                                                // Navigate to getQuote tab
+                                                setActiveTab('getQuote');
                                             } catch (e) {
                                                 console.error('Failed to create quote', e);
                                             }
