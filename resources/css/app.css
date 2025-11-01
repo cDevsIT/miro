@@ -1816,6 +1816,7 @@
 
     .contact-text-lets-collaborate {
         margin-top: 154px;
+        margin-right: 20px;
     }
 
     .contact-text-lets-collaborate h2 {
@@ -2319,6 +2320,12 @@
             min-width: 665px !important;
         }
     }
+
+    @media (max-width: 1700px) {
+        .contact-image img {
+            max-width: 320px;
+        }
+    }
     
     @media (max-width: 1490px) {
 
@@ -2631,6 +2638,17 @@
         .product-info {
             width: 50%;
         }
+
+
+    }
+
+    @media screen and (max-width: 1100px) {
+
+        .contact-image img {
+            max-width: 250px;
+        
+        }
+        
     }
     
     @media (max-width: 1024px) {
