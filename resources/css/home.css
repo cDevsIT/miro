@@ -71,8 +71,9 @@ body::-webkit-scrollbar {
     display: flex;
     align-items: center;
     z-index: 10;
-    width: 25.65%;
+    width: 390px;
     margin-left: 80px;
+    margin-right: 80px;
 }
 
 .mobile-image {
@@ -1074,8 +1075,9 @@ p.second-section-description {
 @media (max-width: 1490px) {
 
     .text-content {
-        width: 25.6%;
-        margin-left: 50px;
+        width: 310px;
+        margin-left: 0;
+        margin-right: 60px;
     }
 
     .hero-container {
@@ -1344,6 +1346,7 @@ p.second-section-description {
         color: white;
         width: 100% !important;
         margin-left: 0;
+        margin-right: 0;
     }
 
     .section-three-image-title h3 {
@@ -1366,6 +1369,7 @@ p.second-section-description {
     .section-four-main-content {
         text-align: left;
         align-items: flex-start;
+        margin-bottom: 40px;
     }
 
     .section-four-left {

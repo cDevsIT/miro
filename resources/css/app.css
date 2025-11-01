@@ -161,7 +161,7 @@
 
     .header-logo-link {
         margin-left: 80px;
-        width: 26.9%;
+        width: 455px;
     }
     
     .header-logo {
@@ -2343,8 +2343,8 @@
             width: calc(100% - 95px);
         }
         .header-logo-link {
-            margin-left: 50px;
-            width: 26.8%;
+            margin-left: 0;
+            width: 355px;
         }
         .header-logo {
             width: 126px;

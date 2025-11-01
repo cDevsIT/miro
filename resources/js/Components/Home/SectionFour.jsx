@@ -15,7 +15,7 @@ const SectionFour = () => {
                     <div className="section-four-main-content">
                         <h2>Miro's vision.</h2>
                         <p>Become the leading provider of high-quality, contemporary lighting solutions that transform spaces and exceed customer expectations.</p>
-                        <a href="/products" className="cta-button section-four-cta-button">Get inspired</a>
+                        <a href="/about-us" className="cta-button section-four-cta-button">Get inspired</a>
                     </div>
                 </div>
                 <div className="section-four-right">
