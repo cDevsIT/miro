@@ -21,6 +21,11 @@ use App\Http\Controllers\Admin\DimensionOptionController;
 use App\Http\Controllers\Admin\FamilyProductController;
 use App\Http\Controllers\Admin\AccessoryController;
 use App\Http\Controllers\Admin\InstallationMethodController;
+use App\Http\Controllers\Admin\ActivityController as AdminActivityController;
+use App\Http\Controllers\Admin\SettingsController as AdminSettingsController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\InsightsController as AdminInsightsController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Api\CategoryController as ApiCategoryController;
 use App\Http\Controllers\Api\WishlistController as ApiWishlistController;
 use App\Http\Controllers\Api\QuoteController as ApiQuoteController;
@@ -70,10 +75,10 @@ Route::get('/privacy', function () {
 // Default Laravel Auth Routes
 // Auth::routes();
 
-// Admin Routes
+// Admin Routes - Redirect /dashboard to /admin/dashboard
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('admin.dashboard');
+        return redirect()->route('admin.dashboard');
     })->name('dashboard');
 });
 
@@ -92,25 +97,31 @@ Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logou
 
 // Admin Dashboard Route
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
+    
     Route::get('/navigation', function () {
         return view('admin.navigation');
-    })->name('admin.navigation');
+    })->name('navigation');
     
-    Route::get('/insights', function () {
-        return view('admin.insights');
-    })->name('admin.insights');
+    // Insights Routes
+    Route::get('/insights', [AdminInsightsController::class, 'index'])->name('insights');
+    Route::get('/insights/messages', [AdminInsightsController::class, 'listMessages'])->name('insights.messages');
+    Route::get('/insights/appointments', [AdminInsightsController::class, 'listAppointments'])->name('insights.appointments');
+    Route::get('/insights/quotes', [AdminInsightsController::class, 'listQuotes'])->name('insights.quotes');
+    Route::get('/insights/message/{id}', [AdminInsightsController::class, 'showMessage'])->name('insights.message');
+    Route::get('/insights/appointment/{id}', [AdminInsightsController::class, 'showAppointment'])->name('insights.appointment');
+    Route::get('/insights/quote/{id}', [AdminInsightsController::class, 'showQuote'])->name('insights.quote');
+    Route::post('/insights/message/{id}/read', [AdminInsightsController::class, 'markMessageAsRead'])->name('insights.message.read');
     
-    Route::get('/client', function () {
-        return view('admin.client');
-    })->name('admin.client');
+    // Settings Routes
+    Route::get('/settings', [AdminSettingsController::class, 'index'])->name('settings');
+    Route::put('/settings/profile', [AdminSettingsController::class, 'updateProfile'])->name('settings.profile.update');
+    Route::put('/settings/password', [AdminSettingsController::class, 'updatePassword'])->name('settings.password.update');
     
-    Route::get('/settings', function () {
-        return view('admin.settings');
-    })->name('admin.settings');
-    
-    Route::get('/activity', function () {
-        return view('admin.activity');
-    })->name('admin.activity');
+    // Activity Log Routes
+    Route::get('/activity', [AdminActivityController::class, 'index'])->name('activity.index');
+    Route::post('/activity/clear', [AdminActivityController::class, 'clear'])->name('activity.clear');
+    Route::delete('/activity/{id}', [AdminActivityController::class, 'destroy'])->name('activity.destroy');
 
     // Product Management Routes
     Route::resource('products', ProductController::class);
@@ -128,6 +139,12 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::delete('categories/{category}/delete-image/{type}', [CategoryController::class, 'deleteImage'])->name('categories.delete-image');
     Route::delete('categories/{category}/banners/{banner}', [CategoryController::class, 'deleteBanner'])->name('categories.banners.destroy');
     Route::post('categories/{category}/banners/reorder', [CategoryController::class, 'reorderBanners'])->name('categories.banners.reorder');
+
+    // Customer Management Routes
+    Route::resource('customers', \App\Http\Controllers\Admin\CustomerController::class)->only(['index', 'show', 'edit', 'update', 'destroy']);
+
+    // User Management Routes
+    Route::resource('users', AdminUserController::class);
 
 });
 

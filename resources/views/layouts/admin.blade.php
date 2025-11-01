@@ -18,19 +18,209 @@
             const content = document.getElementById(`${sectionId}-content`);
             const icon = document.getElementById(`${sectionId}-icon`);
             
-            // Check if content is currently hidden (either by CSS or inline style)
-            const isHidden = content.style.display === 'none' || 
-                           (content.style.display === '' && window.getComputedStyle(content).display === 'none');
-            
-            if (isHidden) {
-                content.style.display = 'block';
-                icon.classList.add('rotated');
-            } else {
-                content.style.display = 'none';
-                icon.classList.remove('rotated');
+            if (content && icon) {
+                // Toggle the show class
+                if (content.classList.contains('show')) {
+                    content.classList.remove('show');
+                    icon.classList.remove('rotated');
+                } else {
+                    content.classList.add('show');
+                    icon.classList.add('rotated');
+                }
             }
         }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('click', function(event) {
+                const navGroup = document.querySelector('.nav-group');
+                const productsContent = document.getElementById('products-content');
+                const productsIcon = document.getElementById('products-icon');
+                
+                // Check if click is outside the nav-group
+                if (navGroup && !navGroup.contains(event.target)) {
+                    if (productsContent && productsContent.classList.contains('show')) {
+                        productsContent.classList.remove('show');
+                        if (productsIcon) {
+                            productsIcon.classList.remove('rotated');
+                        }
+                    }
+                }
+            });
+
+            // Initialize Bootstrap dropdowns manually
+            if (typeof $ !== 'undefined') {
+                $('.dropdown-toggle').dropdown();
+                
+                // Debug click handlers
+                $('#notificationDropdown').on('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $(this).next('.dropdown-menu').toggle();
+                });
+
+                $('#userMenuDropdown').on('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $(this).next('.dropdown-menu').toggle();
+                });
+
+                // Close dropdowns when clicking outside
+                $(document).on('click', function(e) {
+                    if (!$(e.target).closest('.dropdown').length) {
+                        $('.dropdown-menu').hide();
+                    }
+                });
+
+                // Prevent dropdown from closing when clicking inside
+                $('.dropdown-menu').on('click', function(e) {
+                    e.stopPropagation();
+                });
+            }
+        });
     </script>
+    <style>
+        /* Dropdown styles - Click only, no hover - Override mymiro.css */
+        .admin-sidebar .nav-group .dropdown-content {
+            display: block !important;
+            max-height: 0 !important;
+            overflow: hidden !important;
+            transition: max-height 0.3s ease !important;
+            pointer-events: none !important;
+        }
+        
+        .admin-sidebar .nav-group .dropdown-content.show {
+            max-height: 500px !important;
+            pointer-events: auto !important;
+        }
+        
+        /* Completely disable hover effects on dropdown */
+        .admin-sidebar .nav-group:hover .dropdown-content {
+            display: block !important;
+            max-height: 0 !important;
+        }
+        
+        .admin-sidebar .nav-group:hover .dropdown-content.show {
+            max-height: 500px !important;
+        }
+        
+        .admin-sidebar .nav-item.dropdown {
+            cursor: pointer;
+            justify-content: space-between;
+        }
+        
+        .admin-sidebar .nav-item.dropdown i.rotated {
+            transform: rotate(180deg);
+        }
+        
+        .admin-sidebar         .nav-item.dropdown i {
+            transition: transform 0.3s ease;
+        }
+
+        /* Header Notifications & User Menu */
+        .notification-btn, .user-menu-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+            font-size: 18px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .notification-btn:hover, .user-menu-btn:hover {
+            background-color: #f5f5f5;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: #dc3545;
+            color: white;
+            border-radius: 10px;
+            padding: 2px 6px;
+            font-size: 10px;
+            font-weight: bold;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        .user-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #3B5998;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .user-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .notification-menu, .user-menu-dropdown {
+            min-width: 320px;
+            max-height: 400px;
+            overflow-y: auto;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            border: none;
+            margin-top: 10px;
+        }
+
+        .notification-item {
+            padding: 12px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: background-color 0.2s;
+        }
+
+        .notification-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-header {
+            padding: 12px 20px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .dropdown-logout-form {
+            margin: 0;
+        }
+
+        .dropdown-logout-form button {
+            width: 100%;
+            text-align: left;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .dropdown-logout-form button:hover {
+            background-color: #f8f9fa;
+        }
+
+        .dropdown-item {
+            padding: 10px 20px;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="admin-layout">
@@ -41,17 +231,17 @@
             </div>
             
             <nav class="sidebar-nav">
-                <a href="/admin/dashboard" class="nav-item">
+                <a href="{{ route('admin.dashboard') }}" class="nav-item">
                     <span>Dashboard</span>
                 </a>
                 
                 <!-- Add Products dropdown -->
                 <div class="nav-group">
-                    <div class="nav-item dropdown">
+                    <div class="nav-item dropdown" onclick="toggleSection('products')">
                         <span>Products</span>
-                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-chevron-down" id="products-icon"></i>
                     </div>
-                    <div class="dropdown-content">
+                    <div class="dropdown-content" id="products-content">
                         <a href="/admin/products" class="nav-item">
                             <span>All Products</span>
                         </a>
@@ -82,22 +272,22 @@
                     </div>
                 </div>
 
-                <a href="/admin/navigation" class="nav-item">
-                    <span>Navigation Menu</span>
-                </a>
-                <a href="/admin/insights" class="nav-item">
+                <a href="{{ route('admin.insights') }}" class="nav-item">
                     <span>Insights</span>
                 </a>
-                <a href="/admin/client" class="nav-item">
-                    <span>Client Panel</span>
+                <a href="{{ route('admin.customers.index') }}" class="nav-item">
+                    <span>Customers</span>
+                </a>
+                <a href="{{ route('admin.users.index') }}" class="nav-item">
+                    <span>Users</span>
                 </a>
             </nav>
 
             <div class="sidebar-footer">
-                <a href="/admin/settings" class="nav-item">
+                <a href="{{ route('admin.settings') }}" class="nav-item">
                     <span>Settings</span>
                 </a>
-                <a href="/admin/activity" class="nav-item">
+                <a href="{{ route('admin.activity.index') }}" class="nav-item">
                     <span>Activity Log</span>
                 </a>
                 <form method="POST" action="{{ route('logout') }}" class="logout-form">
@@ -112,11 +302,90 @@
         <main class="admin-main">
             <header class="admin-header">
                 <div class="header-right">
-                    <button class="search-btn">
-                        <i class="fas fa-search"></i>
-                    </button>
-                    <div class="user-menu">
-                        <i class="fas fa-user"></i>
+                    <!-- Notifications Dropdown -->
+                    <div class="dropdown notification-dropdown">
+                        <button class="notification-btn" id="notificationDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bell"></i>
+                            @php
+                                $unreadCount = App\Models\Message::where('read_status', 0)->count();
+                            @endphp
+                            @if($unreadCount > 0)
+                                <span class="notification-badge">{{ $unreadCount > 9 ? '9+' : $unreadCount }}</span>
+                            @endif
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right notification-menu" aria-labelledby="notificationDropdown">
+                            <div class="dropdown-header">
+                                <strong>Notifications</strong>
+                                @if($unreadCount > 0)
+                                    <span class="badge badge-danger ml-2">{{ $unreadCount }}</span>
+                                @endif
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            @php
+                                $recentNotifications = App\Models\Message::with('customer')
+                                    ->where('read_status', 0)
+                                    ->orderBy('created_at', 'desc')
+                                    ->limit(5)
+                                    ->get();
+                            @endphp
+                            @forelse($recentNotifications as $notification)
+                                <a href="{{ route('admin.insights.message', $notification->id) }}" class="dropdown-item notification-item">
+                                    <div class="d-flex">
+                                        <i class="fas fa-envelope text-info mr-2 mt-1"></i>
+                                        <div class="flex-grow-1">
+                                            <strong>{{ $notification->subject }}</strong>
+                                            <p class="mb-0 small text-muted">{{ $notification->customer ? $notification->customer->name : 'Guest' }}</p>
+                                            <small class="text-muted">{{ $notification->created_at->diffForHumans() }}</small>
+                                        </div>
+                                    </div>
+                                </a>
+                            @empty
+                                <div class="dropdown-item text-center py-3">
+                                    <i class="fas fa-check-circle fa-2x text-success mb-2"></i>
+                                    <p class="text-muted mb-0">No new notifications</p>
+                                </div>
+                            @endforelse
+                            @if($unreadCount > 0)
+                                <div class="dropdown-divider"></div>
+                                <a href="{{ route('admin.insights.messages') }}" class="dropdown-item text-center text-primary">
+                                    <strong>View All Messages</strong>
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+
+                    <!-- User Menu Dropdown -->
+                    <div class="dropdown user-dropdown">
+                        <button class="user-menu-btn" id="userMenuDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="user-avatar">
+                                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                            </div>
+                            <span class="user-name d-none d-md-inline ml-2">{{ Auth::user()->name }}</span>
+                            <i class="fas fa-chevron-down ml-2"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right user-menu-dropdown" aria-labelledby="userMenuDropdown">
+                            <div class="dropdown-header">
+                                <strong>{{ Auth::user()->name }}</strong>
+                                <p class="mb-0 small text-muted">{{ Auth::user()->email }}</p>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ route('admin.dashboard') }}" class="dropdown-item">
+                                <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+                            </a>
+                            <a href="{{ route('admin.settings') }}" class="dropdown-item">
+                                <i class="fas fa-cog mr-2"></i> Settings
+                            </a>
+                            <a href="{{ route('admin.activity.index') }}" class="dropdown-item">
+                                <i class="fas fa-history mr-2"></i> Activity Log
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <form method="POST" action="{{ route('logout') }}" class="dropdown-logout-form">
+                                @csrf
+                                <button type="submit" class="dropdown-item text-danger">
+                                    <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </header>
