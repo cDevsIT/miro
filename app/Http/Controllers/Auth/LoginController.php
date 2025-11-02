@@ -34,7 +34,26 @@ class LoginController extends Controller
                 \Log::error('Failed to log login activity: ' . $e->getMessage());
             }
             
+            // Return JSON for AJAX requests
+            if ($request->expectsJson() || $request->ajax()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Login successful',
+                    'redirect' => route('admin.dashboard')
+                ]);
+            }
+            
             return redirect()->route('admin.dashboard');
+        }
+
+        // Return JSON for AJAX requests
+        if ($request->expectsJson() || $request->ajax()) {
+            return response()->json([
+                'success' => false,
+                'errors' => [
+                    'email' => ['The provided credentials do not match our records.']
+                ]
+            ], 422);
         }
 
         return back()->withErrors([

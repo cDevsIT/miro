@@ -150,3 +150,4 @@ document.getElementById('avatar').addEventListener('change', function(e) {
 </script>
 @endsection
 
+

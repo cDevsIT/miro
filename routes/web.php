@@ -82,12 +82,13 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard');
 });
 
-// Guest Routes
-Route::middleware('guest')->group(function () {
-    Route::get('/login', function () {
-        return view('auth.login');
-    })->name('login');
-});
+// Guest Routes (redirect to dashboard if already logged in)
+Route::get('/login', function () {
+    if (Auth::check()) {
+        return redirect()->route('admin.dashboard');
+    }
+    return view('admin.auth.login');
+})->name('login');
 
 // Authentication Routes
 Route::post('/login', [App\Http\Controllers\Auth\LoginController::class, 'login']);
@@ -223,9 +224,6 @@ Route::middleware('auth:customer')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/login', function () {
-    return view('admin.auth.login');
-})->name('login');
 
 Route::get('/blog/{id}', function ($id) {
     return view('pages.blog-details', ['id' => $id]);
