@@ -57,6 +57,12 @@
                                     <span class="badge badge-{{ $message->read_status == 0 ? 'danger' : 'success' }}">
                                         {{ $message->read_status == 0 ? 'Unread' : 'Read' }}
                                     </span>
+                                    @if($message->admin_reply)
+                                        <br>
+                                        <span class="badge badge-info mt-1">
+                                            <i class="fas fa-reply"></i> Replied
+                                        </span>
+                                    @endif
                                 </td>
                                 <td>
                                     <strong>{{ $message->customer ? $message->customer->name : 'Guest' }}</strong>

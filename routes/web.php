@@ -110,9 +110,11 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/insights/appointments', [AdminInsightsController::class, 'listAppointments'])->name('insights.appointments');
     Route::get('/insights/quotes', [AdminInsightsController::class, 'listQuotes'])->name('insights.quotes');
     Route::get('/insights/message/{id}', [AdminInsightsController::class, 'showMessage'])->name('insights.message');
-    Route::get('/insights/appointment/{id}', [AdminInsightsController::class, 'showAppointment'])->name('insights.appointment');
-    Route::get('/insights/quote/{id}', [AdminInsightsController::class, 'showQuote'])->name('insights.quote');
     Route::post('/insights/message/{id}/read', [AdminInsightsController::class, 'markMessageAsRead'])->name('insights.message.read');
+    Route::post('/insights/message/{id}/reply', [AdminInsightsController::class, 'replyToMessage'])->name('insights.message.reply');
+    Route::get('/insights/appointment/{id}', [AdminInsightsController::class, 'showAppointment'])->name('insights.appointment');
+    Route::put('/insights/appointment/{id}', [AdminInsightsController::class, 'updateAppointment'])->name('insights.appointment.update');
+    Route::get('/insights/quote/{id}', [AdminInsightsController::class, 'showQuote'])->name('insights.quote');
     
     // Settings Routes
     Route::get('/settings', [AdminSettingsController::class, 'index'])->name('settings');

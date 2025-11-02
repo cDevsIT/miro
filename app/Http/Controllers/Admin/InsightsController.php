@@ -115,6 +115,26 @@ class InsightsController extends Controller
     }
 
     /**
+     * Update appointment (reschedule or add notes)
+     */
+    public function updateAppointment(Request $request, $id)
+    {
+        $appointment = Appointment::findOrFail($id);
+
+        $validated = $request->validate([
+            'date' => 'nullable|date',
+            'time' => 'nullable',
+            'admin_notes' => 'nullable|string',
+            'status' => 'nullable|in:pending,confirmed,completed,cancelled',
+        ]);
+
+        $appointment->update($validated);
+
+        return redirect()->route('admin.insights.appointment', $id)
+            ->with('success', 'Appointment updated successfully');
+    }
+
+    /**
      * Show quote details
      */
     public function showQuote($id)
@@ -181,6 +201,27 @@ class InsightsController extends Controller
 
         $quotes = $query->paginate(20);
         return view('admin.insights.quotes', compact('quotes'));
+    }
+
+    /**
+     * Reply to message
+     */
+    public function replyToMessage(Request $request, $id)
+    {
+        $message = Message::findOrFail($id);
+
+        $validated = $request->validate([
+            'admin_reply' => 'required|string',
+        ]);
+
+        $message->update([
+            'admin_reply' => $validated['admin_reply'],
+            'replied_at' => now(),
+            'read_status' => 1, // Mark as read when replying
+        ]);
+
+        return redirect()->route('admin.insights.message', $id)
+            ->with('success', 'Reply sent successfully');
     }
 
     /**

@@ -16,7 +16,9 @@ class Appointment extends Model
         'phone',
         'date',
         'time',
-        'remarks'
+        'remarks',
+        'admin_notes',
+        'status'
     ];
 
     protected $casts = [

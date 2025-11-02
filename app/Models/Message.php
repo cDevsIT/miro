@@ -13,7 +13,13 @@ class Message extends Model
         'customer_id',
         'subject',
         'message',
-        'read_status'
+        'read_status',
+        'admin_reply',
+        'replied_at'
+    ];
+
+    protected $casts = [
+        'replied_at' => 'datetime',
     ];
 
     public function customer()
