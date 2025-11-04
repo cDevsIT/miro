@@ -117,12 +117,6 @@ const MyMiro = () => {
                     <div className="content-grid">
 
                         <div className='overview-mobile-data' >
-                            <div className='mobile-hi' >
-                                <h2> HI {customer?.name} </h2>
-                                <button className="mobile-logout" onClick={handleLogout}>
-                                    <span className="mobile-logout-text">Logout</span>
-                                </button>
-                            </div>
                             <div className='menu-name-mobile' >
                                 <h2> Overview </h2>
                             </div>
@@ -162,6 +156,7 @@ const MyMiro = () => {
                                 <p>Take a look at our products &</p>
                                 <p>add items to your wishlist!</p>
                             </div>
+                            <div className='action-links'>
                             <a href="#" className="action-links-button"
                                 onClick={() => {
                                     setActiveTab('wishlist');
@@ -170,6 +165,7 @@ const MyMiro = () => {
                                 View products
                                 <span className='action-link-underline'></span>
                             </a>
+                            </div>
                         </div>
 
                         <div className="content-card">
@@ -179,6 +175,7 @@ const MyMiro = () => {
                                 <p>explore our products</p>
                                 <p>& get your quote for your project</p>
                             </div>
+                            <div className='action-links'>
                             <a href="#" className="action-links-button"
                                 onClick={() => {
                                     setActiveTab('getQuote');
@@ -187,6 +184,7 @@ const MyMiro = () => {
                                 Build your BOQ
                                 <span className='action-link-underline'></span>
                             </a>
+                            </div>
                         </div>
 
                         <div className="content-card">
@@ -196,6 +194,7 @@ const MyMiro = () => {
                                 <p>You have no upcoming meetings</p>
                                 <p>& get your quote for your project</p>
                             </div>
+                            <div className='action-links'>
                             <button
                                 className="action-links-button"
                                 onClick={() => setActiveTab('meetingSchedule')}
@@ -203,6 +202,7 @@ const MyMiro = () => {
                                 Schedule your Meeting
                                 <span className='action-link-underline'></span>
                             </button>
+                            </div>
                         </div>
                     </div>
                 );
