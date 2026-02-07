@@ -5,27 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }} - Admin</title>
-    @viteReactRefresh
-    @vite(['resources/css/admin.css', 'resources/js/app.jsx'])
-    @stack('scripts')
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    @viteReactRefresh
+    @vite(['resources/css/admin.css', 'resources/js/app.jsx'])
+    @stack('scripts')
     <script>
+        // Generic toggle handler used both in sidebar (products dropdown)
+        // and in admin forms (product sections, blog sections, etc.)
         function toggleSection(sectionId) {
             const content = document.getElementById(`${sectionId}-content`);
             const icon = document.getElementById(`${sectionId}-icon`);
-            
-            if (content && icon) {
-                // Toggle the show class
+
+            if (!content) {
+                return;
+            }
+
+            const isSidebarDropdown = content.classList.contains('dropdown-content');
+            const isToggleContent = content.classList.contains('toggle-content');
+
+            if (isSidebarDropdown) {
+                // Sidebar dropdown (Products group) – use CSS class only
                 if (content.classList.contains('show')) {
                     content.classList.remove('show');
-                    icon.classList.remove('rotated');
+                    if (icon) icon.classList.remove('rotated');
                 } else {
                     content.classList.add('show');
-                    icon.classList.add('rotated');
+                    if (icon) icon.classList.add('rotated');
+                }
+            } else if (isToggleContent) {
+                // Form sections – be robust even if other CSS interferes
+                const currentDisplay = window.getComputedStyle(content).display;
+                const isHidden = currentDisplay === 'none';
+
+                if (isHidden) {
+                    content.style.display = 'block';
+                    content.classList.add('show');
+                    if (icon) icon.classList.add('rotated');
+                } else {
+                    content.style.display = 'none';
+                    content.classList.remove('show');
+                    if (icon) icon.classList.remove('rotated');
+                }
+            } else {
+                // Fallback: simple class toggle
+                if (content.classList.contains('show')) {
+                    content.classList.remove('show');
+                    if (icon) icon.classList.remove('rotated');
+                } else {
+                    content.classList.add('show');
+                    if (icon) icon.classList.add('rotated');
                 }
             }
         }
@@ -79,148 +111,6 @@
             }
         });
     </script>
-    <style>
-        /* Dropdown styles - Click only, no hover - Override mymiro.css */
-        .admin-sidebar .nav-group .dropdown-content {
-            display: block !important;
-            max-height: 0 !important;
-            overflow: hidden !important;
-            transition: max-height 0.3s ease !important;
-            pointer-events: none !important;
-        }
-        
-        .admin-sidebar .nav-group .dropdown-content.show {
-            max-height: 500px !important;
-            pointer-events: auto !important;
-        }
-        
-        /* Completely disable hover effects on dropdown */
-        .admin-sidebar .nav-group:hover .dropdown-content {
-            display: block !important;
-            max-height: 0 !important;
-        }
-        
-        .admin-sidebar .nav-group:hover .dropdown-content.show {
-            max-height: 500px !important;
-        }
-        
-        .admin-sidebar .nav-item.dropdown {
-            cursor: pointer;
-            justify-content: space-between;
-        }
-        
-        .admin-sidebar .nav-item.dropdown i.rotated {
-            transform: rotate(180deg);
-        }
-        
-        .admin-sidebar         .nav-item.dropdown i {
-            transition: transform 0.3s ease;
-        }
-
-        /* Header Notifications & User Menu */
-        .notification-btn, .user-menu-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #333;
-            font-size: 18px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: background-color 0.3s;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .notification-btn:hover, .user-menu-btn:hover {
-            background-color: #f5f5f5;
-        }
-
-        .notification-badge {
-            position: absolute;
-            top: 2px;
-            right: 2px;
-            background: #dc3545;
-            color: white;
-            border-radius: 10px;
-            padding: 2px 6px;
-            font-size: 10px;
-            font-weight: bold;
-            min-width: 18px;
-            text-align: center;
-        }
-
-        .user-avatar {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background: #3B5998;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .user-name {
-            font-weight: 500;
-            color: #333;
-        }
-
-        .notification-menu, .user-menu-dropdown {
-            min-width: 320px;
-            max-height: 400px;
-            overflow-y: auto;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-            border: none;
-            margin-top: 10px;
-        }
-
-        .notification-item {
-            padding: 12px 20px;
-            border-bottom: 1px solid #f0f0f0;
-            transition: background-color 0.2s;
-        }
-
-        .notification-item:hover {
-            background-color: #f8f9fa;
-        }
-
-        .notification-item:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-header {
-            padding: 12px 20px;
-            font-size: 14px;
-            color: #333;
-        }
-
-        .dropdown-logout-form {
-            margin: 0;
-        }
-
-        .dropdown-logout-form button {
-            width: 100%;
-            text-align: left;
-            border: none;
-            background: none;
-            cursor: pointer;
-        }
-
-        .dropdown-logout-form button:hover {
-            background-color: #f8f9fa;
-        }
-
-        .dropdown-item {
-            padding: 10px 20px;
-        }
-
-        .dropdown-item i {
-            width: 20px;
-        }
-    </style>
 </head>
 <body>
     <div class="admin-layout">
@@ -280,6 +170,9 @@
                 </a>
                 <a href="{{ route('admin.users.index') }}" class="nav-item">
                     <span>Users</span>
+                </a>
+                <a href="{{ route('admin.blogs.index') }}" class="nav-item">
+                    <span>Blogs</span>
                 </a>
             </nav>
 

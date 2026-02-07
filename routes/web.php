@@ -60,6 +60,8 @@ Route::get('/blog', function () {
     return view('pages.blog');
 })->name('blog');
 
+Route::get('/blog/{slug}', [\App\Http\Controllers\Frontend\BlogController::class, 'show'])->name('blog.detail');
+
 // Route::get('/my-miro', function () {
 //     return view('pages.mymiro');
 // })->name('mymiro');
@@ -148,6 +150,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
 
     // User Management Routes
     Route::resource('users', AdminUserController::class);
+
+    // Blog Management Routes
+    Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
 
 });
 

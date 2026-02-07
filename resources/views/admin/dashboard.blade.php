@@ -12,7 +12,7 @@
     <!-- Today's Activity -->
     <div class="row mb-4">
         <div class="col-12">
-            <div class="card border-0 shadow-sm bg-primary text-white">
+            <div class="card border-0 shadow-sm dashboard-card text-white">
                 <div class="card-body">
                     <h5 class="mb-3"><i class="fas fa-calendar-day"></i> Today's Activity</h5>
                     <div class="row">
@@ -349,53 +349,5 @@
         }
     });
 </script>
-
-<style>
-.stat-card-link {
-    text-decoration: none;
-    color: inherit;
-    display: block;
-}
-
-.stat-card-link:hover {
-    text-decoration: none;
-    color: inherit;
-}
-
-.stat-card {
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-}
-
-.btn-lg {
-    padding: 20px;
-    font-size: 16px;
-}
-
-.btn-lg i {
-    font-size: 24px;
-    margin-bottom: 8px;
-}
-
-a.list-group-item-action {
-    color: inherit;
-    text-decoration: none;
-}
-
-a.list-group-item-action:hover {
-    background-color: #f8f9fa;
-    color: inherit;
-    text-decoration: none;
-}
-
-.list-group-item {
-    border-left: none;
-    border-right: none;
-}
-</style>
 
 @endsection

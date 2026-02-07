@@ -32,11 +32,11 @@
             </form>
         </div>
     </div>
-
+    
     <!-- Statistics Cards -->
-    <div class="row mb-4">
+    <div class="row mb-4 d-flex">
         <div class="col-lg-3 col-md-6 mb-3">
-            <a href="{{ route('admin.customers.index') }}" class="stat-card-link">
+            <a href="{{ route('admin.customers.index') }}" class="stat-card-link h-100">
                 <div class="card border-0 shadow-sm h-100 stat-card">
                     <div class="card-body">
                         <div class="d-flex align-items-center">

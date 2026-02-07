@@ -24,7 +24,7 @@ const Footer = () => {
 
             <div class="footer-custom-links">
               <a href="/products">Products</a>
-              <a href="/projects">Projects</a>
+              <a href="/projects/1">Projects</a>
               <a href="/services">Service</a>
               <a href="/blog">Blog</a>
             </div>
@@ -55,7 +55,7 @@ const Footer = () => {
           <div class="footer-right">
             <div class="footer-custom-links">
               <a href="/products">Products</a>
-              <a href="/projects">Projects</a>
+              <a href="/projects/1">Projects</a>
               <a href="/services">Service</a>
               <a href="/blog">Blog</a>
             </div>
