@@ -174,6 +174,9 @@
                 <a href="{{ route('admin.blogs.index') }}" class="nav-item">
                     <span>Blogs</span>
                 </a>
+                <a href="{{ route('admin.projects.index') }}" class="nav-item">
+                    <span>Projects</span>
+                </a>
             </nav>
 
             <div class="sidebar-footer">

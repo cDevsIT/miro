@@ -154,6 +154,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // Blog Management Routes
     Route::resource('blogs', \App\Http\Controllers\Admin\BlogController::class);
 
+    // Project Management Routes
+    Route::resource('projects', \App\Http\Controllers\Admin\ProjectController::class);
+
 });
 
 // MyMiro Routes
@@ -242,7 +245,7 @@ Route::get('installation', function () {
 
 Route::get('/products/category-details/{id}', [FrontendCategoryController::class, 'show'])->name('category.show');
 
-Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
+Route::get('/projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
 
 Route::get('/products/{modelNumber}', function ($modelNumber) {
     return view('pages.product-details', ['modelNumber' => $modelNumber]);

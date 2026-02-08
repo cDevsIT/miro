@@ -13,8 +13,16 @@ const ShareTooltip = forwardRef(({ show, position, onClose }, ref) => {
 
     const handleSocialIconClick = (e, platform) => {
         e.stopPropagation();
-        console.log(`Sharing on ${platform}`);
-        // Add your sharing logic here
+        const shareUrl = encodeURIComponent(window.location.href);
+        const url = window.location.href;
+
+        if (platform === 'Facebook') {
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`, '_blank', 'noopener,noreferrer');
+        } else if (platform === 'LinkedIn') {
+            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`, '_blank', 'noopener,noreferrer');
+        } else if (platform === 'Instagram') {
+            window.open('https://www.instagram.com/', '_blank', 'noopener,noreferrer');
+        }
         onClose();
     };
 

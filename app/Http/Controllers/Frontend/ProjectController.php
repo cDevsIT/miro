@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Project;
 
 class ProjectController extends Controller
 {
-    public function show()
+    public function show($slug)
     {
-        return view('frontend.projects.show');
+        $project = Project::where('slug', $slug)
+            ->where('is_active', true)
+            ->firstOrFail();
+
+        return view('pages.project-detail', compact('project'));
     }
-} 
+}

@@ -1,5 +1,32 @@
 @extends('layouts.app')
 
+@section('title', $blog->title . ' - Miro Lighting')
+
+@push('meta')
+    @php
+        $shareUrl = url()->current();
+        $shareTitle = $blog->title;
+        $shareDescription = Str::limit(strip_tags($blog->intro ?? ''), 160);
+        $shareImage = $blog->feature_image ? asset('storage/' . $blog->feature_image) : '';
+    @endphp
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ $shareUrl }}">
+    <meta property="og:title" content="{{ $shareTitle }}">
+    <meta property="og:description" content="{{ $shareDescription }}">
+    @if($shareImage)
+    <meta property="og:image" content="{{ $shareImage }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    @endif
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="{{ $shareUrl }}">
+    <meta name="twitter:title" content="{{ $shareTitle }}">
+    <meta name="twitter:description" content="{{ $shareDescription }}">
+    @if($shareImage)
+    <meta name="twitter:image" content="{{ $shareImage }}">
+    @endif
+@endpush
+
 @section('content')
     <!-- Feature Image Banner -->
     <div class="blogBannerContainer">
@@ -9,13 +36,30 @@
     <!-- Blog Details -->
     <div class="detailsContainer">
         <div class="detailsText">
-            <div class="detailsIcons">
-                <img src="{{ asset('images/BLOG 5 Ways to Elevate Your Space with/SHARE.svg') }}" alt="Share" class="blogDetailsImage" />
-                <div class="shareText">Share this blog</div>
-                <img src="{{ asset('images/BLOG 5 Ways to Elevate Your Space with/EMAIL LOGO.svg') }}" alt="Email" class="blogDetailsImage blogMobileVanish" />
-                <img src="{{ asset('images/BLOG 5 Ways to Elevate Your Space with/FACEBOOK LOGO 60.svg') }}" alt="Facebook" class="blogDetailsImage blogMobileVanish" />
-                <img src="{{ asset('images/BLOG 5 Ways to Elevate Your Space with/INSTRAGRAM LOGO 60.svg') }}" alt="Instagram" class="blogDetailsImage blogMobileVanish" />
-                <img src="{{ asset('images/BLOG 5 Ways to Elevate Your Space with/LINKDIN LOGO BLACK 60.svg') }}" alt="LinkedIn" class="blogDetailsImage blogMobileVanish" />
+            <div class="detailsIcons project-details-share">
+                <span class="project-details-share-icon-title">
+                    <img src="{{ asset('images/BLOG 5 Ways to Elevate Your Space with/SHARE.svg') }}" alt="Share" class="project-details-share-icon" />
+                    <span>Share this blog</span>
+                </span>
+                @php
+                    $facebookUrl = 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode($shareUrl);
+                    $linkedInUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' . rawurlencode($shareUrl);
+                    $emailUrl = 'mailto:?subject=' . rawurlencode($shareTitle) . '&body=' . rawurlencode($shareUrl . "\n\n" . $shareTitle . ($shareDescription ? "\n" . $shareDescription : ''));
+                @endphp
+                <div class="project-details-share-icons">
+                    <a href="{{ $emailUrl }}" class="project-details-share-link" title="Share via Email" aria-label="Share via Email">
+                        <img src="{{ asset('images/icons/EMAIL-LOGO.svg') }}" alt="Email" class="project-details-share-icon" />
+                    </a>
+                    <a href="{{ $facebookUrl }}" class="project-details-share-link" target="_blank" rel="noopener noreferrer" title="Share on Facebook" aria-label="Share on Facebook">
+                        <img src="{{ asset('images/icons/FACEBOOK-LOGO.svg') }}" alt="Facebook" class="project-details-share-icon" />
+                    </a>
+                    <a href="https://www.instagram.com/" class="project-details-share-link" target="_blank" rel="noopener noreferrer" title="Share on Instagram" aria-label="Share on Instagram">
+                        <img src="{{ asset('images/icons/INSTRAGRAM-LOGO.svg') }}" alt="Share on Instagram" class="project-details-share-icon project-details-instagram-icon" />
+                    </a>
+                    <a href="{{ $linkedInUrl }}" class="project-details-share-link" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn" aria-label="Share on LinkedIn">
+                        <img src="{{ asset('images/icons/LINKDIN-LOGO.svg') }}" alt="LinkedIn" class="project-details-share-icon" />
+                    </a>
+                </div>
             </div>
             <div class="detailsBorder"></div>
             <div class="detailsTitle">{{ $blog->title }}</div>
@@ -33,7 +77,19 @@
                 $isEven = $index % 2 == 0;
             @endphp
 
-            @if($section['type'] === 'full_image')
+            @if($section['type'] === 'double_image')
+                <div class="container">
+                    <div class="project-details-climbing-grid">
+                        @if(!empty($section['image_1']))
+                            <img src="{{ asset('storage/' . $section['image_1']) }}" alt="Section Image 1" class="project-details-climbing-image" />
+                        @endif
+                        @if(!empty($section['image_2']))
+                            <img src="{{ asset('storage/' . $section['image_2']) }}" alt="Section Image 2" class="project-details-climbing-image" />
+                        @endif
+                    </div>
+                </div>
+
+            @elseif($section['type'] === 'full_image')
                 <!-- Full Width Image Section (same structure as BlogInstallation.jsx Section-3 image part) -->
                 <div class="picture-text-blog-product">
                     <div class="pictureDiv visionPicture">
@@ -129,6 +185,6 @@
 @endsection
 
 @push('scripts')
-    @vite(['resources/css/blog-page2.css'])
+    @vite(['resources/css/blog-page2.css', 'resources/css/ProjectDetails.css'])
 @endpush
 

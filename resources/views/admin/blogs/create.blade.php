@@ -105,6 +105,9 @@
                     <button class="section-menu-item" type="button" onclick="addSection('left_image'); closeSectionMenu();">
                         <i class="fas fa-grip-horizontal fa-flip-horizontal"></i> Left Image
                     </button>
+                    <button class="section-menu-item" type="button" onclick="addSection('double_image'); closeSectionMenu();">
+                        <i class="fas fa-images"></i> Double Image
+                    </button>
                 </div>
             </div>
 
@@ -418,6 +421,43 @@ function addSection(type) {
                 </div>
             `;
             break;
+
+        case 'double_image':
+            typeName = 'Double Image';
+            badgeClass = 'bg-dark';
+            sectionHTML = `
+                <div class="section-card" id="${sectionId}" data-type="${type}">
+                    <div class="section-header">
+                        <div>
+                            <i class="fas fa-grip-vertical sortable-handle"></i>
+                            <span class="section-type-badge ${badgeClass} text-white ms-2">${typeName}</span>
+                        </div>
+                        <button type="button" class="btn btn-sm btn-danger" onclick="removeSection('${sectionId}')">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="section-content">
+                        <input type="hidden" name="sections[${sectionCounter}][type]" value="${type}">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Image 1 <span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control" name="sections[${sectionCounter}][image_1]" accept="image/*" onchange="previewDoubleImage(event, '${sectionId}', 1)" required>
+                                </div>
+                                <div id="${sectionId}-preview-1"></div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Image 2 <span class="text-danger">*</span></label>
+                                    <input type="file" class="form-control" name="sections[${sectionCounter}][image_2]" accept="image/*" onchange="previewDoubleImage(event, '${sectionId}', 2)" required>
+                                </div>
+                                <div id="${sectionId}-preview-2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            break;
     }
     
     container.insertAdjacentHTML('beforeend', sectionHTML);
@@ -460,6 +500,18 @@ function previewImage(event, sectionId) {
         reader.onload = function(e) {
             preview.innerHTML = `<img src="${e.target.result}" class="image-preview">`;
         }
+        reader.readAsDataURL(file);
+    }
+}
+
+function previewDoubleImage(event, sectionId, num) {
+    const preview = document.getElementById(`${sectionId}-preview-${num}`);
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.innerHTML = `<img src="${e.target.result}" class="image-preview">`;
+        };
         reader.readAsDataURL(file);
     }
 }
