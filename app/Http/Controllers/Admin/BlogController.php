@@ -34,8 +34,11 @@ class BlogController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:blogs,slug',
             'intro' => 'required|string',
             'feature_image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+            'category' => 'required|in:general,product',
+            'product_category' => 'nullable|required_if:category,product|in:indoor_product,outdoor_product',
             'order' => 'nullable|integer|min:0',
             'is_active' => 'nullable|boolean',
         ]);
@@ -81,6 +84,9 @@ class BlogController extends Controller
         }
 
         $validated['sections'] = $sections;
+        if (($validated['category'] ?? null) !== 'product') {
+            $validated['product_category'] = null;
+        }
         $validated['is_active'] = $request->has('is_active') ? 1 : 0;
 
         Blog::create($validated);
@@ -111,8 +117,11 @@ class BlogController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:blogs,slug,' . $blog->id,
             'intro' => 'required|string',
             'feature_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+            'category' => 'required|in:general,product',
+            'product_category' => 'nullable|required_if:category,product|in:indoor_product,outdoor_product',
             'order' => 'nullable|integer|min:0',
             'is_active' => 'nullable|boolean',
         ]);
@@ -170,6 +179,9 @@ class BlogController extends Controller
         }
 
         $validated['sections'] = $sections;
+        if (($validated['category'] ?? null) !== 'product') {
+            $validated['product_category'] = null;
+        }
         $validated['is_active'] = $request->has('is_active') ? 1 : 0;
 
         $blog->update($validated);

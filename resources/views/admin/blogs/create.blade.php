@@ -34,11 +34,38 @@
                             <label for="title" class="form-label">Blog Title <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" required>
                         </div>
+                        <div class="mb-3">
+                            <label for="slug" class="form-label">Page Slug <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug') }}" required>
+                            <small class="text-muted">Auto-generates from title on blur. You can edit it.</small>
+                        </div>
 
                         <div class="mb-3">
                             <label for="intro" class="form-label">Introduction <span class="text-danger">*</span></label>
                             <textarea class="form-control" id="intro" name="intro" rows="4" required>{{ old('intro') }}</textarea>
                             <small class="text-muted">A brief introduction that appears on the blog listing page.</small>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="category" class="form-label">Category <span class="text-danger">*</span></label>
+                                    <select class="form-control" id="category" name="category" onchange="toggleProductCategory()" required>
+                                        <option value="general" {{ old('category', 'general') === 'general' ? 'selected' : '' }}>General</option>
+                                        <option value="product" {{ old('category') === 'product' ? 'selected' : '' }}>Product</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="productCategoryWrapper" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="product_category" class="form-label">Product Category <span class="text-danger">*</span></label>
+                                    <select class="form-control" id="product_category" name="product_category">
+                                        <option value="">Select product category</option>
+                                        <option value="indoor_product" {{ old('product_category') === 'indoor_product' ? 'selected' : '' }}>Indoor Product</option>
+                                        <option value="outdoor_product" {{ old('product_category') === 'outdoor_product' ? 'selected' : '' }}>Outdoor Product</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="row">
@@ -267,6 +294,31 @@ function previewFeatureImage(event) {
         }
         reader.readAsDataURL(file);
     }
+}
+
+function toggleProductCategory() {
+    const category = document.getElementById('category');
+    const wrapper = document.getElementById('productCategoryWrapper');
+    const productCategory = document.getElementById('product_category');
+    if (!category || !wrapper || !productCategory) return;
+
+    if (category.value === 'product') {
+        wrapper.style.display = '';
+        productCategory.setAttribute('required', 'required');
+    } else {
+        wrapper.style.display = 'none';
+        productCategory.removeAttribute('required');
+        productCategory.value = '';
+    }
+}
+
+function slugifyText(text) {
+    return (text || '')
+        .toString()
+        .toLowerCase()
+        .trim()
+        .replace(/[\s\W-]+/g, '-')
+        .replace(/^-+|-+$/g, '');
 }
 
 function addSection(type) {
@@ -535,6 +587,8 @@ function initializeTinyMCE() {
                 height: 200,
                 content_css: '//www.tiny.cloud/css/codepen.min.css',
                 paste_data_images: false,
+                valid_elements: '*[*]',
+                extended_valid_elements: 'span[*],div[*],p[*],a[*],img[*],ul[*],ol[*],li[*],strong[*],em[*],u[*],h1[*],h2[*],h3[*],h4[*],h5[*],h6[*],br[*],table[*],thead[*],tbody[*],tr[*],th[*],td[*],blockquote[*]',
                 setup: function(editor) {
                     editor.on('init', function() {
                         console.log('TinyMCE initialized for:', editor.id);
@@ -580,6 +634,16 @@ function updateSectionIndices() {
 
 // Form validation before submission
 document.addEventListener('DOMContentLoaded', function() {
+    const titleInput = document.getElementById('title');
+    const slugInput = document.getElementById('slug');
+    if (titleInput && slugInput) {
+        titleInput.addEventListener('blur', function() {
+            if (!slugInput.value.trim()) {
+                slugInput.value = slugifyText(titleInput.value);
+            }
+        });
+    }
+    toggleProductCategory();
     initializeTinyMCE();
     initializeSortable();
     

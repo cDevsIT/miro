@@ -7,5 +7,8 @@
 @endsection
 
 @push('scripts')
+    <script>
+        window.projectsData = @json($projects);
+    </script>
     @vite(['resources/js/app.jsx'])
 @endpush 

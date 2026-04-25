@@ -38,7 +38,7 @@ class Project extends Model
         });
 
         static::updating(function ($project) {
-            if ($project->isDirty('title')) {
+            if (empty($project->slug)) {
                 $project->slug = Str::slug($project->title);
             }
         });

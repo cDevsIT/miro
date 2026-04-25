@@ -30,6 +30,17 @@
 @section('content')
     <!-- Feature Image Banner -->
     <div class="blogBannerContainer">
+        @if(($blog->category ?? 'general') === 'product')
+            @php
+                $productType = $blog->product_category === 'outdoor_product' ? 'outdoor' : 'indoor';
+                $productTypeLabel = $blog->product_category === 'outdoor_product' ? 'Outdoor Products' : 'Indoor Products';
+            @endphp
+            <div class="single-product-blog">
+                <a href="{{ url('/products/category/' . $productType) }}">{{ $productTypeLabel }}</a>
+                <span class="breadcrumb-slash">/</span>
+                <a class="breadcrumb-last" href="{{ url()->current() }}">{{ $blog->title }}</a>
+            </div>
+        @endif
         <img src="{{ asset('storage/' . $blog->feature_image) }}" alt="{{ $blog->title }}" class="blogBannerImage" />
     </div>
 

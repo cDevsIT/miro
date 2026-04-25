@@ -12,6 +12,8 @@ class Blog extends Model
         'slug',
         'intro',
         'feature_image',
+        'category',
+        'product_category',
         'sections',
         'is_active',
         'order'
@@ -33,7 +35,7 @@ class Blog extends Model
         });
 
         static::updating(function ($blog) {
-            if ($blog->isDirty('title')) {
+            if (empty($blog->slug)) {
                 $blog->slug = Str::slug($blog->title);
             }
         });

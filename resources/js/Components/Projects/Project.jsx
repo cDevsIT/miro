@@ -1,82 +1,68 @@
 import React from 'react';
 import '../../../css/Project.css';
 
-const projects = [
-    {
-        id: 1,
-        title: "RADIANT DENTAL CLINIC",
-        location: "Mohakhali DOHS, Dhaka",
-        image: "/images/DEMO-2ND-PROJECT.jpg"
-    },
-    {
-        id: 2,
-        title: "AKHLAQ RESIDENCE",
-        location: "Baridhara, Dhaka",
-        image: "/images/DEMO-3RD-PROJECT.jpg"
-
-    },
-    {
-        id: 3,
-        title: "KHAN FARMS",
-        location: "Manikganj, Dhaka",
-        image: "/images/DEMO-4TH-PICTURE.jpg"
-
-    },
-    {
-        id: 4,
-        title: "Dr. SHAYLA RESIDENCE",
-        location: "Mohakhali DOHS, Dhaka",
-        image: "/images/DEMO-5TH-PICTURE.jpg"
-
-    }
-];
-
 function Project() {
+    const projects = Array.isArray(window.projectsData) ? window.projectsData : [];
+    const firstProject = projects.length > 0 ? projects[0] : null;
+    const remainingProjects = projects.slice(1);
+
+    const getImageUrl = (path) => {
+        if (!path) return '';
+        return `/storage/${path}`;
+    };
+
+    const getIntro = (text) => {
+        if (!text) return '';
+        return text.length > 420 ? `${text.slice(0, 420)}...` : text;
+    };
+
     return (
         <div>
-            <div className="project-page-container">
-                <div className="project-page-content">
-                    <div className="project-page-image">
-                        <div className="project-page-image-wrapper">
-                            <img
-                                src="/images/1ST-PROJECT.jpg"
-                                alt="BRAC University Day Care"
-                            />
+            {firstProject ? (
+                <div className="project-page-container">
+                    <div className="project-page-content">
+                        <div className="project-page-image">
+                            <div className="project-page-image-wrapper">
+                                <img
+                                    src={getImageUrl(firstProject.feature_image)}
+                                    alt={firstProject.title}
+                                />
+                            </div>
+                        </div>
+                        <div className="project-page-text">
+                            <h1 className="project-page-title">{firstProject.title}</h1>
+                            <p className="project-page-location">{firstProject.info_location || ''}</p>
+                            <p className="project-page-description">{getIntro(firstProject.intro)}</p>
+                            <a href={`/projects/${firstProject.slug}`} className="project-page-button">
+                                Learn more
+                            </a>
                         </div>
                     </div>
-                    <div className="project-page-text">
-                        <h1 className="project-page-title">BRAC University Day Care</h1>
-                        <p className="project-page-location">Badda, Dhaka</p>
-                        <p className="project-page-description">
-                            Mira Lighting Solutions transformed the BRAC University Day Care into a bright and inviting space, perfectly
-                            designed for children. By incorporating child-friendly and efficient lighting, we ensured safety, optimal
-                            brightness, and a playful yet cozy ambiance. Durable, energy-efficient fixtures were carefully selected to
-                            enhance the environment, creating a well-lit haven where children can learn, play, and grow with comfort
-                            and confidence.
-                        </p>
-                        <a href="/projects/1" className="project-page-button">
-                            Learn more
-                        </a>
-                    </div>
                 </div>
-            </div>
+            ) : (
+                <div className="container py-5">
+                    <p className="text-muted">No projects found.</p>
+                </div>
+            )}
 
-            <div className="projects-section container">
-                <div className="projects-grid">
-                    {projects.map((project) => (
-                        <div key={project.id} className="project-card">
+            {remainingProjects.length > 0 && (
+                <div className="projects-section container">
+                    <div className="projects-grid">
+                        {remainingProjects.map((project) => (
+                        <a key={project.id} href={`/projects/${project.slug}`} className="project-card">
                             <div className="project-card-image-wrapper">
-                                <img src={project.image} alt={project.title} />
+                                <img src={getImageUrl(project.feature_image)} alt={project.title} />
                             </div>
                             <div className="project-card-content">
                                 <h3 className="project-card-title">{project.title}</h3>
-                                <p className="project-card-location">{project.location}</p>
+                                <p className="project-card-location">{project.info_location || ''}</p>
                                 <div className="project-card-hover-bar"></div>
                             </div>
-                        </div>
-                    ))}
+                        </a>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            )}
         </div>
     );
 }

@@ -29,6 +29,8 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Api\CategoryController as ApiCategoryController;
 use App\Http\Controllers\Api\WishlistController as ApiWishlistController;
 use App\Http\Controllers\Api\QuoteController as ApiQuoteController;
+use App\Models\Blog;
+use App\Models\Project as ProjectModel;
 
 Route::get('/', function () {
     return view('pages.home');
@@ -49,7 +51,13 @@ Route::middleware('auth')->group(function () {
 // })->name('products');
 
 Route::get('/projects', function () {
-    return view('pages.projects');
+    $projects = ProjectModel::query()
+        ->where('is_active', true)
+        ->orderBy('order', 'asc')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    return view('pages.projects', compact('projects'));
 })->name('projects');
 
 Route::get('/services', function () {
@@ -57,7 +65,13 @@ Route::get('/services', function () {
 })->name('services');
 
 Route::get('/blog', function () {
-    return view('pages.blog');
+    $blogs = Blog::query()
+        ->where('is_active', true)
+        ->orderBy('order', 'asc')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    return view('pages.blog', compact('blogs'));
 })->name('blog');
 
 Route::get('/blog/{slug}', [\App\Http\Controllers\Frontend\BlogController::class, 'show'])->name('blog.detail');

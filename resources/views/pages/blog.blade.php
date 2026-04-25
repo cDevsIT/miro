@@ -7,5 +7,8 @@
 @endsection
 
 @push('scripts')
+    <script>
+        window.blogsData = @json($blogs);
+    </script>
     @vite(['resources/js/app.jsx'])
 @endpush 

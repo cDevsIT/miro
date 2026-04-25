@@ -27,6 +27,11 @@
                             <input type="text" class="form-control" id="title" name="title" value="{{ old('title', $project->title) }}" required>
                         </div>
                         <div class="mb-3">
+                            <label for="slug" class="form-label">Page Slug <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug', $project->slug) }}" required>
+                            <small class="text-muted">Auto-generates from title on blur. You can edit it.</small>
+                        </div>
+                        <div class="mb-3">
                             <label for="subtitle" class="form-label">Subtitle / Tagline (h2)</label>
                             <input type="text" class="form-control" id="subtitle" name="subtitle" value="{{ old('subtitle', $project->subtitle) }}">
                         </div>
@@ -217,9 +222,12 @@ function addSection(type){
 function removeSection(sectionId){if(!confirm('Remove this section?'))return;var el=document.getElementById(sectionId);el.remove();var c=document.getElementById('sections-container');if(c.children.length===0)c.innerHTML='<p class="text-muted text-center py-4">No sections added yet. Click "Add Section" to start building your project.</p>';else updateSectionIndices();}
 function previewImage(event,sectionId){var p=document.getElementById(sectionId+'-preview'),f=event.target.files[0];if(f){var r=new FileReader();r.onload=function(e){p.innerHTML='<img src="'+e.target.result+'" class="image-preview">';};r.readAsDataURL(f);}}
 function previewDoubleImage(event,sectionId,num){var p=document.getElementById(sectionId+'-preview-'+num),f=event.target.files[0];if(f){var r=new FileReader();r.onload=function(e){p.innerHTML='<img src="'+e.target.result+'" class="image-preview">';};r.readAsDataURL(f);}}
-function initializeTinyMCE(){document.querySelectorAll('.tinymce-editor').forEach(function(ta){if(!tinymce.get(ta.id)){if(!ta.id)ta.id='tinymce-'+Math.random().toString(36).substr(2,9);tinymce.init({target:ta,plugins:'lists link code',toolbar:'undo redo | bold italic underline | bullist numlist | link | code',menubar:false,height:200,content_css:'//www.tiny.cloud/css/codepen.min.css',paste_data_images:false});}});}
+function slugifyText(text){return(text||'').toString().toLowerCase().trim().replace(/[\s\W-]+/g,'-').replace(/^-+|-+$/g,'');}
+function initializeTinyMCE(){document.querySelectorAll('.tinymce-editor').forEach(function(ta){if(!tinymce.get(ta.id)){if(!ta.id)ta.id='tinymce-'+Math.random().toString(36).substr(2,9);tinymce.init({target:ta,plugins:'lists link code',toolbar:'undo redo | bold italic underline | bullist numlist | link | code',menubar:false,height:200,content_css:'//www.tiny.cloud/css/codepen.min.css',paste_data_images:false,valid_elements:'*[*]',extended_valid_elements:'span[*],div[*],p[*],a[*],img[*],ul[*],ol[*],li[*],strong[*],em[*],u[*],h1[*],h2[*],h3[*],h4[*],h5[*],h6[*],br[*],table[*],thead[*],tbody[*],tr[*],th[*],td[*],blockquote[*]'});}});}
 function updateSectionIndices(){document.querySelectorAll('.section-card').forEach(function(section,index){section.querySelectorAll('input[name^="sections["], textarea[name^="sections["]').forEach(function(input){var m=input.name.match(/sections\[\d+\]\[(.+)\]/);if(m)input.name='sections['+index+']['+m[1]+']';});});}
 document.addEventListener('DOMContentLoaded',function(){
+    var titleInput=document.getElementById('title'),slugInput=document.getElementById('slug');
+    if(titleInput&&slugInput){titleInput.addEventListener('blur',function(){if(!slugInput.value.trim())slugInput.value=slugifyText(titleInput.value);});}
     if(!document.getElementById('sections-container').classList.contains('sortable-initialized')&&document.querySelector('.section-card')){new Sortable(document.getElementById('sections-container'),{animation:150,handle:'.sortable-handle',ghostClass:'sortable-ghost',chosenClass:'sortable-chosen',dragClass:'sortable-drag',onEnd:function(){updateSectionIndices();}});document.getElementById('sections-container').classList.add('sortable-initialized');}
     initializeTinyMCE();
     var form=document.getElementById('projectForm');

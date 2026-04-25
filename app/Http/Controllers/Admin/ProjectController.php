@@ -24,6 +24,7 @@ class ProjectController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:projects,slug',
             'subtitle' => 'nullable|string|max:255',
             'intro' => 'nullable|string',
             'feature_image' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
@@ -84,6 +85,7 @@ class ProjectController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
+            'slug' => 'required|string|max:255|unique:projects,slug,' . $project->id,
             'subtitle' => 'nullable|string|max:255',
             'intro' => 'nullable|string',
             'feature_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
